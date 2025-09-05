@@ -514,6 +514,32 @@
         .car {
           font-size: 1.5rem;
         }
+
+        /* Scale down geometric shapes for mobile */
+        .geometric-shape {
+          transform: scale(0.7);
+        }
+
+        .triangle {
+          border-left-width: 18px;
+          border-right-width: 18px;
+          border-bottom-width: 32px;
+        }
+
+        .hexagon {
+          width: 28px;
+          height: 16px;
+        }
+
+        .diamond {
+          width: 25px;
+          height: 25px;
+        }
+
+        .octagon {
+          width: 28px;
+          height: 28px;
+        }
       }
 
       /* Tablet styles */
@@ -725,7 +751,9 @@
 
         .floating-element,
         .yacht,
-        .car {
+        .car,
+        .geometric-shape,
+        .geometric-light {
           animation: none;
         }
       }
@@ -1622,134 +1650,269 @@
         backdrop-filter: none !important;
       }
 
-      /* Running Sprite Animation */
-      .sprite-runner {
+      /* Floating Geometric Light Show - More visually stunning than running sprites */
+      .geometric-light {
         position: fixed;
-        width: 60px;
-        height: 60px;
         z-index: -2;
         pointer-events: none;
-        opacity: 0.8;
+        opacity: 0.6;
+        filter: blur(1px);
       }
 
-      .sprite {
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
-        border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-        position: relative;
-        animation: spriteRun 0.5s infinite;
-        filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
-      }
-
-      .sprite::before {
-        content: "🏃‍♂️";
+      .geometric-shape {
         position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        font-size: 2rem;
-        animation: spriteMove 0.3s infinite alternate;
+        background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #f9ca24);
+        background-size: 400% 400%;
+        animation: geometricFloat 8s ease-in-out infinite,
+          gradientShift 6s ease-in-out infinite;
+        filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.3));
       }
 
-      .sprite-path-1 {
-        animation: runPath1 12s linear infinite;
-        top: 20%;
+      .triangle {
+        width: 0;
+        height: 0;
+        border-left: 25px solid transparent;
+        border-right: 25px solid transparent;
+        border-bottom: 45px solid #00ffcc;
+        background: none;
+        filter: drop-shadow(0 0 15px rgba(0, 255, 204, 0.8));
       }
 
-      .sprite-path-2 {
-        animation: runPath2 15s linear infinite;
-        top: 70%;
-        animation-delay: 6s;
+      .hexagon {
+        width: 40px;
+        height: 23px;
+        background: linear-gradient(45deg, #ff4081, #00ffcc);
+        position: relative;
+        margin: 11.5px 0;
       }
 
-      .sprite-path-3 {
-        animation: runPath3 18s linear infinite;
-        top: 45%;
-        animation-delay: 3s;
+      .hexagon:before,
+      .hexagon:after {
+        content: "";
+        position: absolute;
+        width: 0;
+        border-left: 20px solid transparent;
+        border-right: 20px solid transparent;
       }
 
-      @keyframes spriteRun {
+      .hexagon:before {
+        bottom: 100%;
+        border-bottom: 11.5px solid #ff4081;
+      }
+
+      .hexagon:after {
+        top: 100%;
+        border-top: 11.5px solid #00ffcc;
+      }
+
+      .diamond {
+        width: 35px;
+        height: 35px;
+        background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+        transform: rotate(45deg);
+        border-radius: 5px;
+      }
+
+      .octagon {
+        width: 40px;
+        height: 40px;
+        background: linear-gradient(45deg, #45b7d1, #f9ca24);
+        clip-path: polygon(
+          30% 0%,
+          70% 0%,
+          100% 30%,
+          100% 70%,
+          70% 100%,
+          30% 100%,
+          0% 70%,
+          0% 30%
+        );
+      }
+
+      .geometric-path-1 {
+        animation: floatPath1 15s linear infinite;
+        top: 15%;
+        left: -60px;
+      }
+
+      .geometric-path-2 {
+        animation: floatPath2 18s linear infinite;
+        top: 60%;
+        left: calc(100% + 60px);
+        animation-delay: 5s;
+      }
+
+      .geometric-path-3 {
+        animation: floatPath3 20s linear infinite;
+        top: 35%;
+        left: -60px;
+        animation-delay: 8s;
+      }
+
+      .geometric-path-4 {
+        animation: floatPath4 22s linear infinite;
+        top: 80%;
+        left: calc(100% + 60px);
+        animation-delay: 12s;
+      }
+
+      @keyframes geometricFloat {
         0%,
         100% {
-          transform: scaleX(1) translateY(0);
+          transform: translateY(0px) rotate(0deg);
         }
         25% {
-          transform: scaleX(0.9) translateY(-2px);
-        }
-        75% {
-          transform: scaleX(1.1) translateY(1px);
-        }
-      }
-
-      @keyframes spriteMove {
-        0% {
-          transform: translate(-50%, -50%) rotate(-2deg);
-        }
-        100% {
-          transform: translate(-50%, -50%) rotate(2deg);
-        }
-      }
-
-      @keyframes runPath1 {
-        0% {
-          left: -100px;
-        }
-        25% {
-          left: 30%;
+          transform: translateY(-20px) rotate(90deg);
         }
         50% {
-          left: 70%;
+          transform: translateY(-10px) rotate(180deg);
         }
         75% {
-          left: 90%;
-        }
-        100% {
-          left: calc(100% + 100px);
+          transform: translateY(-30px) rotate(270deg);
         }
       }
 
-      @keyframes runPath2 {
+      @keyframes gradientShift {
         0% {
-          left: calc(100% + 100px);
+          background-position: 0% 50%;
+          filter: drop-shadow(0 0 20px rgba(255, 107, 107, 0.6));
         }
         25% {
-          left: 70%;
+          background-position: 100% 50%;
+          filter: drop-shadow(0 0 20px rgba(78, 205, 196, 0.6));
         }
         50% {
-          left: 30%;
+          background-position: 0% 50%;
+          filter: drop-shadow(0 0 20px rgba(69, 183, 209, 0.6));
         }
         75% {
-          left: 10%;
+          background-position: 100% 50%;
+          filter: drop-shadow(0 0 20px rgba(249, 202, 36, 0.6));
         }
         100% {
-          left: -100px;
+          background-position: 0% 50%;
+          filter: drop-shadow(0 0 20px rgba(255, 107, 107, 0.6));
         }
       }
 
-      @keyframes runPath3 {
+      @keyframes floatPath1 {
         0% {
-          left: -100px;
+          left: -60px;
+          transform: translateY(0px) rotate(0deg);
         }
         20% {
-          left: 20%;
-          top: 45%;
+          left: 25%;
+          transform: translateY(-30px) rotate(72deg);
         }
         40% {
           left: 50%;
-          top: 25%;
+          transform: translateY(-10px) rotate(144deg);
         }
         60% {
-          left: 80%;
-          top: 65%;
+          left: 75%;
+          transform: translateY(-40px) rotate(216deg);
         }
         80% {
           left: 90%;
-          top: 35%;
+          transform: translateY(-20px) rotate(288deg);
         }
         100% {
-          left: calc(100% + 100px);
-          top: 45%;
+          left: calc(100% + 60px);
+          transform: translateY(0px) rotate(360deg);
+        }
+      }
+
+      @keyframes floatPath2 {
+        0% {
+          left: calc(100% + 60px);
+          transform: translateY(0px) rotate(0deg);
+        }
+        25% {
+          left: 75%;
+          transform: translateY(-25px) rotate(-90deg);
+        }
+        50% {
+          left: 50%;
+          transform: translateY(-15px) rotate(-180deg);
+        }
+        75% {
+          left: 25%;
+          transform: translateY(-35px) rotate(-270deg);
+        }
+        100% {
+          left: -60px;
+          transform: translateY(0px) rotate(-360deg);
+        }
+      }
+
+      @keyframes floatPath3 {
+        0% {
+          left: -60px;
+          top: 35%;
+          transform: scale(1) rotate(0deg);
+        }
+        15% {
+          left: 20%;
+          top: 20%;
+          transform: scale(1.2) rotate(54deg);
+        }
+        30% {
+          left: 40%;
+          top: 60%;
+          transform: scale(0.8) rotate(108deg);
+        }
+        45% {
+          left: 60%;
+          top: 15%;
+          transform: scale(1.3) rotate(162deg);
+        }
+        60% {
+          left: 80%;
+          top: 70%;
+          transform: scale(0.9) rotate(216deg);
+        }
+        75% {
+          left: 90%;
+          top: 40%;
+          transform: scale(1.1) rotate(270deg);
+        }
+        100% {
+          left: calc(100% + 60px);
+          top: 35%;
+          transform: scale(1) rotate(324deg);
+        }
+      }
+
+      @keyframes floatPath4 {
+        0% {
+          left: calc(100% + 60px);
+          top: 80%;
+          transform: translateY(0px) rotate(0deg) scale(1);
+        }
+        20% {
+          left: 80%;
+          top: 65%;
+          transform: translateY(-20px) rotate(-72deg) scale(1.1);
+        }
+        40% {
+          left: 60%;
+          top: 85%;
+          transform: translateY(-10px) rotate(-144deg) scale(0.9);
+        }
+        60% {
+          left: 40%;
+          top: 70%;
+          transform: translateY(-30px) rotate(-216deg) scale(1.2);
+        }
+        80% {
+          left: 20%;
+          top: 90%;
+          transform: translateY(-15px) rotate(-288deg) scale(0.8);
+        }
+        100% {
+          left: -60px;
+          top: 80%;
+          transform: translateY(0px) rotate(-360deg) scale(1);
         }
       }
 
@@ -1907,17 +2070,21 @@
       <div class="morph-shape"></div>
     </div>
 
-    <!-- Running Sprite Animation -->
-    <div class="sprite-runner sprite-path-1">
-      <div class="sprite"></div>
+    <!-- Floating Geometric Light Show - More visually stunning -->
+    <div class="geometric-light geometric-path-1">
+      <div class="geometric-shape triangle"></div>
     </div>
 
-    <div class="sprite-runner sprite-path-2">
-      <div class="sprite"></div>
+    <div class="geometric-light geometric-path-2">
+      <div class="geometric-shape hexagon"></div>
     </div>
 
-    <div class="sprite-runner sprite-path-3">
-      <div class="sprite"></div>
+    <div class="geometric-light geometric-path-3">
+      <div class="geometric-shape diamond"></div>
+    </div>
+
+    <div class="geometric-light geometric-path-4">
+      <div class="geometric-shape octagon"></div>
     </div>
 
     <!-- Scroll Progress Indicator -->
@@ -2548,38 +2715,40 @@
       // Welcome to Edward's JavaScript playground!
       // Where bugs are features and features are... well, also bugs sometimes
 
-      // Interactive sparkle effect on mouse movement
+      // Interactive sparkle effect on mouse movement - DEFERRED
       // Because who doesn't need sparkles in their life?
-      document.addEventListener("mousemove", (e) => {
-        if (Math.random() > 0.92) {
-          createSparkle(e.clientX, e.clientY);
-        }
-      });
+      function initializeSparkleEffects() {
+        document.addEventListener("mousemove", (e) => {
+          if (Math.random() > 0.92) {
+            createSparkle(e.clientX, e.clientY);
+          }
+        });
 
-      // Touch support for mobile with throttling
-      // Because mobile users deserve sparkles too, but not too many
-      let touchThrottle = false;
-      document.addEventListener("touchmove", (e) => {
-        if (touchThrottle) return;
-        touchThrottle = true;
-        setTimeout(() => {
-          touchThrottle = false;
-        }, 100);
+        // Touch support for mobile with throttling
+        // Because mobile users deserve sparkles too, but not too many
+        let touchThrottle = false;
+        document.addEventListener("touchmove", (e) => {
+          if (touchThrottle) return;
+          touchThrottle = true;
+          setTimeout(() => {
+            touchThrottle = false;
+          }, 100);
 
-        if (Math.random() > 0.95) {
-          const touch = e.touches[0];
-          createSparkle(touch.clientX, touch.clientY);
-        }
-      });
+          if (Math.random() > 0.95) {
+            const touch = e.touches[0];
+            createSparkle(touch.clientX, touch.clientY);
+          }
+        });
 
-      // Tap sparkles for mobile
-      // Tap tap sparkle sparkle!
-      document.addEventListener("touchstart", (e) => {
-        if (Math.random() > 0.7) {
-          const touch = e.touches[0];
-          createSparkle(touch.clientX, touch.clientY);
-        }
-      });
+        // Tap sparkles for mobile
+        // Tap tap sparkle sparkle!
+        document.addEventListener("touchstart", (e) => {
+          if (Math.random() > 0.7) {
+            const touch = e.touches[0];
+            createSparkle(touch.clientX, touch.clientY);
+          }
+        });
+      }
 
       function createSparkle(x, y) {
         const sparkle = document.createElement("div");
@@ -2593,16 +2762,19 @@
         setTimeout(() => sparkle.remove(), 1000);
       }
 
-      // Smooth scroll for anchor links
-      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener("click", function (e) {
-          e.preventDefault();
-          const target = document.querySelector(this.getAttribute("href"));
-          if (target) {
-            target.scrollIntoView({ behavior: "smooth" });
-          }
+      // DOM operations will be deferred until page is ready
+      function initializeDOMOperations() {
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute("href"));
+            if (target) {
+              target.scrollIntoView({ behavior: "smooth" });
+            }
+          });
         });
-      });
+      }
 
       // Add random floating elements
       function addRandomFloatingElement() {
@@ -2617,42 +2789,73 @@
         setTimeout(() => element.remove(), 12000);
       }
 
-      // Add new floating elements periodically
-      setInterval(addRandomFloatingElement, 3000);
+      // Intervals will be started after page loads
+      let intervalsInitialized = false;
 
-      // Intersection Observer for scroll animations
-      const observerOptions = {
-        threshold: 0.1,
-        rootMargin: "0px 0px -50px 0px",
-      };
+      function initializeIntervals() {
+        if (intervalsInitialized) return;
+        intervalsInitialized = true;
 
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.style.opacity = "1";
-            entry.target.style.transform = "translateY(0)";
-          }
-        });
-      }, observerOptions);
+        // Add new floating elements periodically
+        setInterval(addRandomFloatingElement, 3000);
 
-      // Observe all cards for scroll animations
-      document
-        .querySelectorAll(".skill-card, .project-card")
-        .forEach((card) => {
-          card.style.opacity = "0";
-          card.style.transform = "translateY(30px)";
-          card.style.transition = "opacity 0.6s ease, transform 0.6s ease";
-          observer.observe(card);
-        });
+        // Matrix rain effect
+        setInterval(createMatrixRain, 3000);
+
+        // Update system stats
+        setInterval(updateSystemStats, 3000);
+      }
+
+      // Intersection Observer for scroll animations - DEFERRED
+      let scrollAnimationInitialized = false;
+
+      function initializeScrollAnimations() {
+        if (scrollAnimationInitialized) return;
+        scrollAnimationInitialized = true;
+
+        const observerOptions = {
+          threshold: 0.1,
+          rootMargin: "0px 0px -50px 0px",
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.style.opacity = "1";
+              entry.target.style.transform = "translateY(0)";
+            }
+          });
+        }, observerOptions);
+
+        // Observe all cards for scroll animations
+        document
+          .querySelectorAll(".skill-card, .project-card")
+          .forEach((card) => {
+            card.style.opacity = "0";
+            card.style.transform = "translateY(30px)";
+            card.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+            observer.observe(card);
+          });
+      }
 
       console.log(
         "🇹🇿 Welcome to Edward Terry's digital empire! Built with love from Tanzania."
       );
       console.log("🎮 Try the Konami code for a surprise!");
+      console.log(
+        "✨ Enjoy the new geometric light show - upgraded from running sprites!"
+      );
+      console.log("🤖 AI Snake game and live terminal are now enabled!");
 
       // Matrix Rain Effect - Because we're living in the Matrix
       function createMatrixRain() {
         const matrixContainer = document.getElementById("matrixRain");
+
+        if (!matrixContainer) {
+          console.error("Matrix rain container not found");
+          return;
+        }
+
         const chars =
           "01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン";
 
@@ -2672,9 +2875,7 @@
         }
       }
 
-      // Start matrix rain and repeat
-      createMatrixRain();
-      setInterval(createMatrixRain, 3000);
+      // Matrix rain will be initialized after page loads
 
       // Dynamic system stats updates
       function updateSystemStats() {
@@ -2698,39 +2899,39 @@
         }
       }
 
-      // Update stats every 3 seconds
-      setInterval(updateSystemStats, 3000);
+      // System stats will be updated after page loads
 
-      // Cool cursor trail effect
+      // Cursor trail variables - will be initialized later
       const coords = { x: 0, y: 0 };
-      const circles = document.querySelectorAll(".circle");
+      let cursorCircles = [];
 
-      // Create cursor trail circles
-      for (let i = 0; i < 20; i++) {
-        const circle = document.createElement("div");
-        circle.className = "circle";
-        circle.style.position = "fixed";
-        circle.style.width = "10px";
-        circle.style.height = "10px";
-        circle.style.background = i % 2 === 0 ? "#00ffcc" : "#ff4081";
-        circle.style.borderRadius = "50%";
-        circle.style.pointerEvents = "none";
-        circle.style.zIndex = "9999";
-        circle.style.transition = "transform 0.1s ease-out";
-        document.body.appendChild(circle);
+      function initializeCursorTrail() {
+        // Create cursor trail circles
+        for (let i = 0; i < 20; i++) {
+          const circle = document.createElement("div");
+          circle.className = "circle";
+          circle.style.position = "fixed";
+          circle.style.width = "10px";
+          circle.style.height = "10px";
+          circle.style.background = i % 2 === 0 ? "#00ffcc" : "#ff4081";
+          circle.style.borderRadius = "50%";
+          circle.style.pointerEvents = "none";
+          circle.style.zIndex = "9999";
+          circle.style.transition = "transform 0.1s ease-out";
+          document.body.appendChild(circle);
+          cursorCircles.push(circle);
+        }
+
+        cursorCircles.forEach(function (circle, index) {
+          circle.x = 0;
+          circle.y = 0;
+        });
+
+        window.addEventListener("mousemove", function (e) {
+          coords.x = e.clientX;
+          coords.y = e.clientY;
+        });
       }
-
-      const cursorCircles = document.querySelectorAll(".circle");
-
-      cursorCircles.forEach(function (circle, index) {
-        circle.x = 0;
-        circle.y = 0;
-      });
-
-      window.addEventListener("mousemove", function (e) {
-        coords.x = e.clientX;
-        coords.y = e.clientY;
-      });
 
       function animateCircles() {
         let x = coords.x;
@@ -2756,7 +2957,19 @@
         requestAnimationFrame(animateCircles);
       }
 
-      animateCircles();
+      // Cursor animation will be initialized after page loads
+      let cursorAnimationInitialized = false;
+
+      function initializeCursorAnimation() {
+        if (cursorAnimationInitialized) return;
+        cursorAnimationInitialized = true;
+
+        // Initialize cursor trail first
+        initializeCursorTrail();
+
+        // Then start the animation
+        animateCircles();
+      }
 
       // Secret developer console easter egg
       console.log(`
@@ -2793,7 +3006,7 @@
 
       // Terminal Simulator
       // Fake it 'til you make it! This isn't a real terminal, but it looks cool
-      const terminal = document.getElementById("terminal");
+      let terminal; // Will be initialized later
       const terminalCommands = [
         {
           delay: 1000,
@@ -2896,8 +3109,43 @@
         }
       }
 
-      // Start terminal animation
-      typeTerminalLine();
+      // Terminal and game will be initialized after page loads
+      let terminalInitialized = false;
+      let gameInitialized = false;
+
+      function initializeTerminal() {
+        if (terminalInitialized) return;
+        terminalInitialized = true;
+
+        console.log("Starting terminal initialization...");
+        try {
+          // Initialize terminal element
+          terminal = document.getElementById("terminal");
+          if (!terminal) {
+            console.error("Terminal element not found!");
+            return;
+          }
+
+          // Start terminal animation
+          typeTerminalLine();
+          console.log("Terminal initialized successfully!");
+        } catch (error) {
+          console.error("Error initializing terminal:", error);
+        }
+      }
+      function initializeGame() {
+        if (gameInitialized) return;
+        gameInitialized = true;
+
+        console.log("Starting game initialization...");
+        try {
+          // Start the game
+          new AutoSnake();
+          console.log("Game initialized successfully!");
+        } catch (error) {
+          console.error("Error initializing game:", error);
+        }
+      }
 
       // Auto-playing Snake Game
       // Because every portfolio needs a pointless but cool game
@@ -3037,33 +3285,38 @@
         }
       }
 
-      // Start the game
-      new AutoSnake();
+      // Game will be initialized after page loads
 
-      // Floating Action Button - Quick Contact
-      const fab = document.createElement("div");
-      fab.className = "fab tooltip";
-      fab.setAttribute("data-tooltip", "Quick Contact");
-      fab.innerHTML = "✉️";
-      fab.onclick = () => {
-        window.location.href =
-          "mailto:edwardterry94@gmail.com?subject=Hello Edward!&body=Hi Edward, I found your portfolio and would love to connect!";
-      };
-      document.body.appendChild(fab);
+      // Floating Action Button - Quick Contact - DEFERRED
+      function createFloatingActionButton() {
+        const fab = document.createElement("div");
+        fab.className = "fab tooltip";
+        fab.setAttribute("data-tooltip", "Quick Contact");
+        fab.innerHTML = "✉️";
+        fab.onclick = () => {
+          window.location.href =
+            "mailto:edwardterry94@gmail.com?subject=Hello Edward!&body=Hi Edward, I found your portfolio and would love to connect!";
+        };
+        document.body.appendChild(fab);
+      }
 
       // Scroll Progress Indicator
       function updateScrollProgress() {
+        const scrollProgressElement = document.getElementById("scrollProgress");
+
+        if (!scrollProgressElement) {
+          console.error("Scroll progress element not found");
+          return;
+        }
+
         const scrollTop =
           window.pageYOffset || document.documentElement.scrollTop;
         const scrollHeight =
           document.documentElement.scrollHeight -
           document.documentElement.clientHeight;
         const scrollProgress = (scrollTop / scrollHeight) * 100;
-        document.getElementById("scrollProgress").style.width =
-          scrollProgress + "%";
+        scrollProgressElement.style.width = scrollProgress + "%";
       }
-
-      window.addEventListener("scroll", updateScrollProgress);
 
       // Initialize Progress Rings (removed - function kept for compatibility)
       function initProgressRings() {
@@ -3099,31 +3352,31 @@
         }, 1000);
       }
 
-      // Add particle fade animation
-      const style = document.createElement("style");
-      style.textContent = `
-      @keyframes particleFade {
-        0% { opacity: 1; transform: scale(1); }
-        100% { opacity: 0; transform: scale(0) translateY(-20px); }
-      }
-    `;
-      document.head.appendChild(style);
-
-      // Cursor trail effect
-      let mouseTrail = [];
-      document.addEventListener("mousemove", (e) => {
-        if (Math.random() < 0.3) {
-          // Reduce frequency for performance
-          createParticle(e.clientX, e.clientY);
+      // Add particle fade animation - DEFERRED
+      function addParticleFadeStyles() {
+        const style = document.createElement("style");
+        style.textContent = `
+        @keyframes particleFade {
+          0% { opacity: 1; transform: scale(1); }
+          100% { opacity: 0; transform: scale(0) translateY(-20px); }
         }
-      });
+      `;
+        document.head.appendChild(style);
+      }
 
-      // Initialize all effects
-      document.addEventListener("DOMContentLoaded", () => {
-        initProgressRings();
-        initTextReveal();
-        initCounters();
-      });
+      // Cursor trail effect - DEFERRED
+      function initializeParticleTrail() {
+        let mouseTrail = [];
+        document.addEventListener("mousemove", (e) => {
+          if (Math.random() < 0.3) {
+            // Reduce frequency for performance
+            createParticle(e.clientX, e.clientY);
+          }
+        });
+      }
+
+      // Initialize all effects - REMOVED TO AVOID CONFLICTS
+      // Moved to single load event listener
 
       // Animated Counters
       function initCounters() {
@@ -3157,29 +3410,88 @@
       // Page transition effect
       function smoothPageTransition() {
         const transition = document.getElementById("pageTransition");
+
+        if (!transition) {
+          console.error("Page transition element not found");
+          return;
+        }
+
         transition.style.opacity = "1";
 
         setTimeout(() => {
-          transition.style.opacity = "0";
+          if (transition) {
+            transition.style.opacity = "0";
+          }
         }, 500);
       }
 
-      // Initialize page with loading screen
+      // Initialize page with loading screen - SINGLE LOAD HANDLER
       window.addEventListener("load", () => {
+        console.log("Page load event fired!");
+
+        // Handle loading screen
         const loadingScreen = document.getElementById("loadingScreen");
+        if (loadingScreen) {
+          console.log("Removing loading screen...");
+          loadingScreen.style.display = "none";
+        }
 
-        // Wait a bit for dramatic effect, then fade out
-        setTimeout(() => {
-          loadingScreen.classList.add("fade-out");
-
-          // Remove from DOM after transition
-          setTimeout(() => {
-            loadingScreen.remove();
-          }, 1000);
-        }, 1500);
-
-        // Also run page transition
+        // Run page transition
         smoothPageTransition();
+
+        // Initialize all functionality in correct order
+        console.log("Initializing all page functionality...");
+
+        // Add required styles first
+        addParticleFadeStyles();
+        addSparkleTrailStyles();
+
+        // Initialize DOM operations
+        initializeDOMOperations();
+
+        // Initialize scroll animations and events
+        initializeScrollAnimations();
+        initializeScrollEvents();
+
+        // Initialize event listeners
+        initializeSmoothScroll();
+        initializeKonamiCode();
+        initializeSparkleEffects();
+        initializeParticleTrail();
+
+        // Initialize cursor animations
+        initializeCursorAnimation();
+
+        // Create UI elements
+        createFloatingActionButton();
+
+        // Initialize UI effects
+        initProgressRings();
+        initTextReveal();
+        initCounters();
+
+        // Initialize interaction sounds
+        const projectCards = document.querySelectorAll(".project-card");
+        projectCards.forEach((card) => {
+          card.addEventListener("mouseenter", () =>
+            playInteractionSound("hover")
+          );
+          card.addEventListener("click", () => playInteractionSound("click"));
+        });
+
+        // Initialize terminal and game after basic setup
+        console.log("Starting terminal and game initialization...");
+        initializeTerminal();
+        initializeGame();
+        initializeIntervals();
+
+        // Initialize geometric trail effects
+        setTimeout(() => {
+          console.log("Initializing geometric trail effects...");
+          createGeometricTrail();
+        }, 500); // Give shapes time to load
+
+        console.log("Page initialization complete!");
       });
 
       // Add sound effect simulation for interactions
@@ -3197,76 +3509,71 @@
         }
       }
 
-      // Add interaction sounds to project cards
-      document.addEventListener("DOMContentLoaded", () => {
-        const projectCards = document.querySelectorAll(".project-card");
+      // Add interaction sounds to project cards - REMOVED TO AVOID CONFLICTS
+      // Moved to single load event listener
 
-        projectCards.forEach((card) => {
-          card.addEventListener("mouseenter", () =>
-            playInteractionSound("hover")
-          );
-          card.addEventListener("click", () => playInteractionSound("click"));
-        });
-      });
+      // Easter egg: Konami code - DEFERRED
+      function initializeKonamiCode() {
+        let konamiCode = [
+          "ArrowUp",
+          "ArrowUp",
+          "ArrowDown",
+          "ArrowDown",
+          "ArrowLeft",
+          "ArrowRight",
+          "ArrowLeft",
+          "ArrowRight",
+          "KeyB",
+          "KeyA",
+        ];
+        let konamiIndex = 0;
 
-      // Easter egg: Konami code
-      let konamiCode = [
-        "ArrowUp",
-        "ArrowUp",
-        "ArrowDown",
-        "ArrowDown",
-        "ArrowLeft",
-        "ArrowRight",
-        "ArrowLeft",
-        "ArrowRight",
-        "KeyB",
-        "KeyA",
-      ];
-      let konamiIndex = 0;
+        document.addEventListener("keydown", (e) => {
+          if (e.code === konamiCode[konamiIndex]) {
+            konamiIndex++;
+            if (konamiIndex === konamiCode.length) {
+              // Unlock secret mode
+              document.body.style.animation = "rainbow 2s linear infinite";
+              console.log("🎉 KONAMI CODE ACTIVATED! You found the secret! 🚀");
 
-      document.addEventListener("keydown", (e) => {
-        if (e.code === konamiCode[konamiIndex]) {
-          konamiIndex++;
-          if (konamiIndex === konamiCode.length) {
-            // Unlock secret mode
-            document.body.style.animation = "rainbow 2s linear infinite";
-            console.log("🎉 KONAMI CODE ACTIVATED! You found the secret! 🚀");
+              // Add rainbow animation
+              const style = document.createElement("style");
+              style.textContent = `
+              @keyframes rainbow {
+                0% { filter: hue-rotate(0deg); }
+                100% { filter: hue-rotate(360deg); }
+              }
+            `;
+              document.head.appendChild(style);
 
-            // Add rainbow animation
-            const style = document.createElement("style");
-            style.textContent = `
-            @keyframes rainbow {
-              0% { filter: hue-rotate(0deg); }
-              100% { filter: hue-rotate(360deg); }
+              konamiIndex = 0;
             }
-          `;
-            document.head.appendChild(style);
-
+          } else {
             konamiIndex = 0;
           }
-        } else {
-          konamiIndex = 0;
-        }
-      });
+        });
+      }
 
-      // Smooth scroll for anchor links
-      document.addEventListener("click", (e) => {
-        if (
-          e.target.tagName === "A" &&
-          e.target.getAttribute("href")?.startsWith("#")
-        ) {
-          e.preventDefault();
-          const targetId = e.target.getAttribute("href").slice(1);
-          const targetElement = document.getElementById(targetId);
+      // Smooth scroll for anchor links - DEFERRED
+      function initializeSmoothScroll() {
+        document.addEventListener("click", (e) => {
+          if (
+            e.target.tagName === "A" &&
+            e.target.getAttribute("href")?.startsWith("#")
+          ) {
+            e.preventDefault();
+            const targetId = e.target.getAttribute("href").slice(1);
+            const targetElement = document.getElementById(targetId);
 
-          if (targetElement) {
-            targetElement.scrollIntoView({
-              behavior: "smooth",
-              block: "start",
-            });
+            if (targetElement) {
+              targetElement.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+              });
+            }
           }
-        }
-      });
+        });
+      }
 
       // Performance optimization: Throttle scroll events
       function throttle(func, limit) {
@@ -3282,63 +3589,97 @@
         };
       }
 
-      // Apply throttling to scroll events
-      window.addEventListener("scroll", throttle(updateScrollProgress, 16)); // ~60fps
+      // Apply throttling to scroll events - DEFERRED
+      function initializeScrollEvents() {
+        window.addEventListener("scroll", throttle(updateScrollProgress, 16)); // ~60fps
+      }
 
-      // Sprite Trail Effects
-      function createSpriteTrail() {
-        const sprites = document.querySelectorAll(".sprite");
+      // Geometric Light Trail Effects
+      function createGeometricTrail(retryCount = 0) {
+        const geometricShapes = document.querySelectorAll(".geometric-shape");
 
-        // Only proceed if sprites exist
-        if (sprites.length === 0) {
-          console.log("No sprites found, retrying in 1 second...");
-          setTimeout(createSpriteTrail, 1000);
+        // Only proceed if geometric shapes exist, with max 3 retries
+        if (geometricShapes.length === 0 && retryCount < 3) {
+          console.log(
+            `No geometric shapes found, retrying in 1 second... (attempt ${
+              retryCount + 1
+            }/3)`
+          );
+          setTimeout(() => createGeometricTrail(retryCount + 1), 1000);
+          return;
+        } else if (geometricShapes.length === 0) {
+          console.log("Max retries reached, skipping geometric trail effects");
           return;
         }
 
-        sprites.forEach((sprite, index) => {
-          sprite.addEventListener("animationiteration", () => {
-            // Create sparkle trail effect
-            if (Math.random() < 0.3) {
-              const sparkle = document.createElement("div");
-              sparkle.style.position = "fixed";
-              sparkle.style.left = sprite.getBoundingClientRect().left + "px";
-              sparkle.style.top = sprite.getBoundingClientRect().top + "px";
-              sparkle.style.width = "4px";
-              sparkle.style.height = "4px";
-              sparkle.style.background = "#00ffcc";
-              sparkle.style.borderRadius = "50%";
-              sparkle.style.boxShadow = "0 0 6px #00ffcc";
-              sparkle.style.zIndex = "-1";
-              sparkle.style.pointerEvents = "none";
-              sparkle.style.animation = "sparkleTrail 1s ease-out forwards";
+        geometricShapes.forEach((shape, index) => {
+          shape.addEventListener("animationiteration", () => {
+            // Create glowing trail effect
+            if (Math.random() < 0.4) {
+              const trail = document.createElement("div");
+              const rect = shape.getBoundingClientRect();
+              trail.style.position = "fixed";
+              trail.style.left = rect.left + rect.width / 2 + "px";
+              trail.style.top = rect.top + rect.height / 2 + "px";
+              trail.style.width = "6px";
+              trail.style.height = "6px";
 
-              document.body.appendChild(sparkle);
+              // Random bright colors for trail
+              const colors = [
+                "#ff6b6b",
+                "#4ecdc4",
+                "#45b7d1",
+                "#f9ca24",
+                "#00ffcc",
+                "#ff4081",
+              ];
+              const randomColor =
+                colors[Math.floor(Math.random() * colors.length)];
 
-              setTimeout(() => sparkle.remove(), 1000);
+              trail.style.background = randomColor;
+              trail.style.borderRadius = "50%";
+              trail.style.boxShadow = `0 0 12px ${randomColor}`;
+              trail.style.zIndex = "-1";
+              trail.style.pointerEvents = "none";
+              trail.style.animation = "geometricTrail 1.5s ease-out forwards";
+
+              document.body.appendChild(trail);
+
+              setTimeout(() => trail.remove(), 1500);
             }
           });
         });
 
         console.log(
-          `Sprite trail effects initialized for ${sprites.length} sprites`
+          `Geometric trail effects initialized for ${geometricShapes.length} shapes`
         );
       }
 
-      // Add sparkle trail animation
-      const style = document.createElement("style");
-      style.textContent += `
-      @keyframes sparkleTrail {
-        0% { opacity: 1; transform: scale(1); }
-        100% { opacity: 0; transform: scale(0) translateY(-20px); }
+      // Add sparkle trail animation - DEFERRED
+      function addSparkleTrailStyles() {
+        const style = document.createElement("style");
+        style.textContent += `
+        @keyframes sparkleTrail {
+          0% { opacity: 1; transform: scale(1); }
+          100% { opacity: 0; transform: scale(0) translateY(-20px); }
+        }
+        @keyframes geometricTrail {
+          0% { 
+            opacity: 1; 
+            transform: scale(1) rotate(0deg); 
+          }
+          50% {
+            opacity: 0.8;
+            transform: scale(1.5) rotate(180deg);
+          }
+          100% { 
+            opacity: 0; 
+            transform: scale(0) rotate(360deg) translateY(-30px); 
+          }
+        }
+      `;
+        document.head.appendChild(style);
       }
-    `;
-      document.head.appendChild(style);
-
-      // Initialize Sprite effects when page is ready
-      window.addEventListener("load", () => {
-        setTimeout(createSpriteTrail, 2000); // Wait for loading screen to finish
-      });
 
       // Add some console art because why not? 🎨
       console.log(`

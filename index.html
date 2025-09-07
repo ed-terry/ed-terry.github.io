@@ -2053,9 +2053,12 @@
   <body>
     <!-- Loading Screen -->
     <div class="loading-screen" id="loadingScreen">
-      <div class="loading-text">Loading Digital Empire...</div>
+      <div class="loading-text" id="loadingText">Loading Digital Empire...</div>
       <div class="loading-spinner"></div>
-      <div style="color: #666; margin-top: 1rem; font-size: 0.9rem">
+      <div
+        id="loadingSubtext"
+        style="color: #666; margin-top: 1rem; font-size: 0.9rem"
+      >
         Initializing awesomeness...
       </div>
     </div>
@@ -2385,7 +2388,7 @@
                 style="color: #00ffcc"
                 >Book Gangilonga Homes</a
               ><br />
-              <em>Your home away from home in beautiful Dar es Salaam! �</em>
+              <em>Your home away from home in beautiful Iringa Tanzania! �</em>
             </div>
           </div>
 
@@ -3429,69 +3432,116 @@
       window.addEventListener("load", () => {
         console.log("Page load event fired!");
 
-        // Handle loading screen
+        // Handle loading screen with dynamic text updates
         const loadingScreen = document.getElementById("loadingScreen");
+        const loadingText = document.getElementById("loadingText");
+        const loadingSubtext = document.getElementById("loadingSubtext");
+
         if (loadingScreen) {
-          console.log("Removing loading screen...");
-          loadingScreen.style.display = "none";
+          console.log("Starting loading screen sequence...");
+
+          // Update loading text dynamically
+          const loadingMessages = [
+            {
+              main: "Loading Digital Empire...",
+              sub: "Initializing awesomeness...",
+            },
+            {
+              main: "Setting up animations...",
+              sub: "Preparing geometric light show...",
+            },
+            { main: "Starting AI systems...", sub: "Booting up snake AI..." },
+            { main: "Almost ready...", sub: "Final touches..." },
+          ];
+
+          let messageIndex = 0;
+          const updateInterval = setInterval(() => {
+            if (
+              messageIndex < loadingMessages.length &&
+              loadingText &&
+              loadingSubtext
+            ) {
+              loadingText.textContent = loadingMessages[messageIndex].main;
+              loadingSubtext.textContent = loadingMessages[messageIndex].sub;
+              messageIndex++;
+            }
+          }, 400);
+
+          // Show loading screen for at least 1.5 seconds for better UX
+          setTimeout(() => {
+            clearInterval(updateInterval);
+
+            // Add fade-out class for smooth transition
+            loadingScreen.classList.add("fade-out");
+
+            // Remove the loading screen after fade animation completes
+            setTimeout(() => {
+              if (loadingScreen && loadingScreen.parentNode) {
+                loadingScreen.parentNode.removeChild(loadingScreen);
+                console.log("Loading screen removed successfully!");
+              }
+            }, 1000); // Match the CSS transition duration
+          }, 1600); // Show loading screen for 1.6 seconds
         }
 
         // Run page transition
         smoothPageTransition();
 
-        // Initialize all functionality in correct order
-        console.log("Initializing all page functionality...");
-
-        // Add required styles first
-        addParticleFadeStyles();
-        addSparkleTrailStyles();
-
-        // Initialize DOM operations
-        initializeDOMOperations();
-
-        // Initialize scroll animations and events
-        initializeScrollAnimations();
-        initializeScrollEvents();
-
-        // Initialize event listeners
-        initializeSmoothScroll();
-        initializeKonamiCode();
-        initializeSparkleEffects();
-        initializeParticleTrail();
-
-        // Initialize cursor animations
-        initializeCursorAnimation();
-
-        // Create UI elements
-        createFloatingActionButton();
-
-        // Initialize UI effects
-        initProgressRings();
-        initTextReveal();
-        initCounters();
-
-        // Initialize interaction sounds
-        const projectCards = document.querySelectorAll(".project-card");
-        projectCards.forEach((card) => {
-          card.addEventListener("mouseenter", () =>
-            playInteractionSound("hover")
-          );
-          card.addEventListener("click", () => playInteractionSound("click"));
-        });
-
-        // Initialize terminal and game after basic setup
-        console.log("Starting terminal and game initialization...");
-        initializeTerminal();
-        initializeGame();
-        initializeIntervals();
-
-        // Initialize geometric trail effects
+        // Initialize all functionality in correct order (delayed slightly)
         setTimeout(() => {
-          console.log("Initializing geometric trail effects...");
-          createGeometricTrail();
-        }, 500); // Give shapes time to load
+          console.log("Initializing all page functionality...");
 
-        console.log("Page initialization complete!");
+          // Add required styles first
+          addParticleFadeStyles();
+          addSparkleTrailStyles();
+
+          // Initialize DOM operations
+          initializeDOMOperations();
+
+          // Initialize scroll animations and events
+          initializeScrollAnimations();
+          initializeScrollEvents();
+
+          // Initialize event listeners
+          initializeSmoothScroll();
+          initializeKonamiCode();
+          initializeSparkleEffects();
+          initializeParticleTrail();
+
+          // Initialize cursor animations
+          initializeCursorAnimation();
+
+          // Create UI elements
+          createFloatingActionButton();
+
+          // Initialize UI effects
+          initProgressRings();
+          initTextReveal();
+          initCounters();
+
+          // Initialize interaction sounds
+          const projectCards = document.querySelectorAll(".project-card");
+          projectCards.forEach((card) => {
+            card.addEventListener("mouseenter", () =>
+              playInteractionSound("hover")
+            );
+            card.addEventListener("click", () => playInteractionSound("click"));
+          });
+
+          // Initialize terminal and game after basic setup
+          console.log("Starting terminal and game initialization...");
+          initializeTerminal();
+          initializeGame();
+          initializeIntervals();
+
+          // Initialize geometric trail effects
+          setTimeout(() => {
+            console.log("Initializing geometric trail effects...");
+            createGeometricTrail();
+          }, 500); // Give shapes time to load
+
+          console.log("Page initialization complete!");
+        }, 200); // Small delay to let loading screen show
       });
 
       // Add sound effect simulation for interactions

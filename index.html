@@ -1588,6 +1588,224 @@
         }
       }
 
+      /* Floating Code Syntax Elements - Showcasing Programming Passion */
+      .code-syntax-float {
+        position: fixed;
+        font-family: "Courier New", monospace;
+        font-weight: bold;
+        font-size: 1.2rem;
+        color: #00ffcc;
+        z-index: -1;
+        pointer-events: none;
+        opacity: 0.7;
+        text-shadow: 0 0 10px rgba(0, 255, 204, 0.5);
+        animation: floatCode 8s ease-in-out infinite;
+      }
+
+      .syntax-symbol {
+        font-size: 1.5rem;
+        filter: drop-shadow(0 0 8px rgba(0, 255, 204, 0.6));
+      }
+
+      .code-keyword {
+        color: #ff6b9d;
+        text-shadow: 0 0 10px rgba(255, 107, 157, 0.5);
+      }
+
+      .code-function {
+        color: #45b7d1;
+        text-shadow: 0 0 10px rgba(69, 183, 209, 0.5);
+      }
+
+      .code-variable {
+        color: #96f7d2;
+        text-shadow: 0 0 10px rgba(150, 247, 210, 0.5);
+      }
+
+      .code-comment {
+        color: #6b7280;
+        font-style: italic;
+        text-shadow: 0 0 5px rgba(107, 114, 128, 0.5);
+      }
+
+      @keyframes floatCode {
+        0%,
+        100% {
+          transform: translateY(0px) translateX(0px) rotate(0deg);
+          opacity: 0.7;
+        }
+        25% {
+          transform: translateY(-20px) translateX(10px) rotate(2deg);
+          opacity: 0.9;
+        }
+        50% {
+          transform: translateY(-10px) translateX(-5px) rotate(-1deg);
+          opacity: 0.8;
+        }
+        75% {
+          transform: translateY(-30px) translateX(15px) rotate(3deg);
+          opacity: 0.6;
+        }
+      }
+
+      /* Code Rain Effect - Like Matrix but with actual code */
+      .code-rain {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: -2;
+        opacity: 0.1;
+      }
+
+      .code-char {
+        position: absolute;
+        font-family: "Courier New", monospace;
+        font-size: 14px;
+        animation: codeRainFall linear infinite;
+        color: #00ff41;
+        text-shadow: 0 0 5px currentColor;
+        transition: all 0.3s ease;
+      }
+
+      .code-char.keyword {
+        color: #ff6b9d;
+        text-shadow: 0 0 8px #ff6b9d;
+        font-weight: bold;
+      }
+      .code-char.function {
+        color: #45b7d1;
+        text-shadow: 0 0 8px #45b7d1;
+      }
+      .code-char.variable {
+        color: #96f7d2;
+        text-shadow: 0 0 6px #96f7d2;
+      }
+      .code-char.operator {
+        color: #fbbf24;
+        text-shadow: 0 0 10px #fbbf24;
+        font-weight: bold;
+      }
+
+      @keyframes codeRainFall {
+        0% {
+          transform: translateY(-100vh);
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(100vh);
+          opacity: 0;
+        }
+      }
+
+      /* Typing Code Animation */
+      .code-typing {
+        font-family: "Courier New", monospace;
+        background: rgba(0, 0, 0, 0.8);
+        border: 2px solid #00ffcc;
+        border-radius: 10px;
+        padding: 1rem;
+        margin: 2rem auto;
+        max-width: 600px;
+        font-size: 0.9rem;
+        line-height: 1.4;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .code-typing::before {
+        content: "💻 Edward's Code";
+        position: absolute;
+        top: -2px;
+        left: 10px;
+        background: #1a1a2e;
+        padding: 0 10px;
+        color: #00ffcc;
+        font-size: 0.8rem;
+        font-weight: bold;
+      }
+
+      .code-line {
+        opacity: 0;
+        animation: typeIn 0.5s ease-out forwards;
+        margin: 0.2rem 0;
+      }
+
+      @keyframes typeIn {
+        from {
+          opacity: 0;
+          transform: translateX(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes codePulse {
+        0%,
+        100% {
+          opacity: 0.8;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 1;
+          transform: scale(1.05);
+        }
+      }
+
+      .code-typing .code-line {
+        transition: all 0.5s ease;
+      }
+
+      .code-typing .code-line.active {
+        animation: codePulse 1s ease-in-out;
+      }
+
+      .syntax-highlight .keyword {
+        color: #ff6b9d;
+      }
+      .syntax-highlight .function {
+        color: #45b7d1;
+      }
+      .syntax-highlight .string {
+        color: #a9dc76;
+      }
+      .syntax-highlight .comment {
+        color: #6b7280;
+        font-style: italic;
+      }
+      .syntax-highlight .variable {
+        color: #96f7d2;
+      }
+      .syntax-highlight .operator {
+        color: #fbbf24;
+      }
+      .syntax-highlight .number {
+        color: #ff9f43;
+      }
+
+      /* Code Cursor Blink */
+      .code-cursor {
+        background: #00ffcc;
+        color: #000;
+        animation: blink 1s infinite;
+        padding: 0 2px;
+      }
+
+      @keyframes blink {
+        0%,
+        50% {
+          opacity: 1;
+        }
+        51%,
+        100% {
+          opacity: 0;
+        }
+      }
+
       /* Enhanced Project Stats */
       .project-stats {
         display: flex;
@@ -2126,6 +2344,71 @@
     <!-- Matrix Rain Background -->
     <div class="matrix-rain" id="matrixRain"></div>
 
+    <!-- Floating Code Syntax Elements - Programming Passion Display -->
+    <div
+      class="code-syntax-float"
+      style="top: 10%; left: 5%; animation-delay: 0s"
+    >
+      <span class="syntax-symbol code-keyword">const</span>
+    </div>
+    <div
+      class="code-syntax-float"
+      style="top: 25%; right: 10%; animation-delay: 1s"
+    >
+      <span class="syntax-symbol code-function">function()</span>
+    </div>
+    <div
+      class="code-syntax-float"
+      style="top: 40%; left: 15%; animation-delay: 2s"
+    >
+      <span class="syntax-symbol">{}</span>
+    </div>
+    <div
+      class="code-syntax-float"
+      style="top: 55%; right: 20%; animation-delay: 3s"
+    >
+      <span class="syntax-symbol code-variable">let innovation</span>
+    </div>
+    <div
+      class="code-syntax-float"
+      style="top: 70%; left: 25%; animation-delay: 4s"
+    >
+      <span class="syntax-symbol code-keyword">class</span>
+    </div>
+    <div
+      class="code-syntax-float"
+      style="top: 85%; right: 15%; animation-delay: 5s"
+    >
+      <span class="syntax-symbol">=></span>
+    </div>
+    <div
+      class="code-syntax-float"
+      style="top: 15%; left: 80%; animation-delay: 1.5s"
+    >
+      <span class="syntax-symbol">&lt;/&gt;</span>
+    </div>
+    <div
+      class="code-syntax-float"
+      style="top: 35%; right: 5%; animation-delay: 2.5s"
+    >
+      <span class="syntax-symbol code-comment">// Dream. Code. Repeat.</span>
+    </div>
+    <div
+      class="code-syntax-float"
+      style="top: 60%; left: 70%; animation-delay: 3.5s"
+    >
+      <span class="syntax-symbol code-function">async</span>
+    </div>
+    <div
+      class="code-syntax-float"
+      style="top: 80%; right: 30%; animation-delay: 4.5s"
+    >
+      <span class="syntax-symbol">&&</span>
+    </div>
+
+    <!-- Code Rain Background -->
+    <div class="code-rain" id="codeRain"></div>
+
     <div class="container">
       <section class="hero">
         <h1
@@ -2160,6 +2443,41 @@
           <span class="highlight">work</span> <span>in</span>
           <span>real-world</span> <span>conditions.</span>
         </p>
+
+        <!-- Live Code Typing Animation - Showcasing Programming Passion -->
+        <div class="code-typing" id="liveCode">
+          <div class="code-line syntax-highlight" style="animation-delay: 0.5s">
+            <span class="keyword">const</span>
+            <span class="variable">passion</span>
+            <span class="operator">=</span> <span class="string">"coding"</span
+            ><span class="operator">;</span>
+          </div>
+          <div class="code-line syntax-highlight" style="animation-delay: 1s">
+            <span class="keyword">function</span>
+            <span class="function">buildAmazingThings</span
+            ><span class="operator">()</span> <span class="operator">{</span>
+          </div>
+          <div class="code-line syntax-highlight" style="animation-delay: 1.5s">
+            &nbsp;&nbsp;<span class="keyword">return</span>
+            <span class="variable">creativity</span>
+            <span class="operator">+</span> <span class="variable">code</span>
+            <span class="operator">+</span> <span class="variable">coffee</span
+            ><span class="operator">;</span>
+          </div>
+          <div class="code-line syntax-highlight" style="animation-delay: 2s">
+            <span class="operator">}</span>
+          </div>
+          <div class="code-line syntax-highlight" style="animation-delay: 2.5s">
+            <span class="comment"
+              >// Life motto: Dream in code, build in reality</span
+            >
+          </div>
+          <div class="code-line syntax-highlight" style="animation-delay: 3s">
+            <span class="function">buildAmazingThings</span
+            ><span class="operator">();</span>
+            <span class="code-cursor">█</span>
+          </div>
+        </div>
       </section>
 
       <section class="skills-grid">
@@ -2880,6 +3198,145 @@
 
       // Matrix rain will be initialized after page loads
 
+      // Code Rain Effect - Showcasing Programming Languages & Syntax
+      function createCodeRain() {
+        const codeContainer = document.getElementById("codeRain");
+
+        if (!codeContainer) {
+          console.error("Code rain container not found");
+          return;
+        }
+
+        // Programming keywords, functions, and syntax from various languages
+        const codeElements = [
+          // JavaScript/TypeScript
+          { text: "const", class: "keyword" },
+          { text: "function", class: "keyword" },
+          { text: "async", class: "keyword" },
+          { text: "await", class: "keyword" },
+          { text: "=>", class: "operator" },
+          { text: "useState", class: "function" },
+          { text: "useEffect", class: "function" },
+          { text: "console.log", class: "function" },
+
+          // Python
+          { text: "def", class: "keyword" },
+          { text: "class", class: "keyword" },
+          { text: "import", class: "keyword" },
+          { text: "lambda", class: "keyword" },
+          { text: "print()", class: "function" },
+
+          // Flutter/Dart
+          { text: "Widget", class: "keyword" },
+          { text: "StatefulWidget", class: "keyword" },
+          { text: "build()", class: "function" },
+          { text: "setState", class: "function" },
+
+          // C++
+          { text: "#include", class: "keyword" },
+          { text: "iostream", class: "variable" },
+          { text: "std::", class: "variable" },
+          { text: "cout", class: "function" },
+
+          // General Programming
+          { text: "{}", class: "operator" },
+          { text: "[]", class: "operator" },
+          { text: "()", class: "operator" },
+          { text: "&&", class: "operator" },
+          { text: "||", class: "operator" },
+          { text: "!=", class: "operator" },
+          { text: "===", class: "operator" },
+          { text: "</>", class: "operator" },
+
+          // Comments
+          { text: "// TODO:", class: "keyword" },
+          { text: "/* */", class: "operator" },
+          { text: "# Fix bug", class: "keyword" },
+        ];
+
+        for (let i = 0; i < 30; i++) {
+          const randomElement =
+            codeElements[Math.floor(Math.random() * codeElements.length)];
+          const codeChar = document.createElement("div");
+          codeChar.className = `code-char ${randomElement.class}`;
+          codeChar.textContent = randomElement.text;
+          codeChar.style.left = Math.random() * 100 + "vw";
+          codeChar.style.animationDuration = Math.random() * 4 + 3 + "s";
+          codeChar.style.animationDelay = Math.random() * 3 + "s";
+          codeChar.style.fontSize = Math.random() * 6 + 10 + "px";
+          codeContainer.appendChild(codeChar);
+
+          // Remove after animation
+          setTimeout(() => {
+            if (codeChar.parentNode) codeChar.parentNode.removeChild(codeChar);
+          }, 10000);
+        }
+      }
+
+      // Programming Passion Showcase - Animated Code Typing
+      function startLiveCodeTyping() {
+        const codeLines = document.querySelectorAll("#liveCode .code-line");
+
+        codeLines.forEach((line, index) => {
+          setTimeout(() => {
+            line.style.opacity = "1";
+            line.style.animation = "typeIn 0.5s ease-out forwards";
+          }, index * 500);
+        });
+
+        // Restart the animation after it completes
+        setTimeout(() => {
+          codeLines.forEach((line) => {
+            line.style.opacity = "0";
+          });
+          setTimeout(startLiveCodeTyping, 1000);
+        }, codeLines.length * 500 + 3000);
+      }
+
+      // Enhanced Code Passion Features
+      function addRandomCodeSymbol() {
+        const symbols = [
+          { text: "++", class: "operator" },
+          { text: "=>", class: "operator" },
+          { text: "null", class: "keyword" },
+          { text: "true", class: "keyword" },
+          { text: "false", class: "keyword" },
+          { text: "void", class: "keyword" },
+          { text: "return", class: "keyword" },
+          { text: "if", class: "keyword" },
+          { text: "else", class: "keyword" },
+          { text: "for", class: "keyword" },
+          { text: "while", class: "keyword" },
+          { text: "switch", class: "keyword" },
+          { text: ".map()", class: "function" },
+          { text: ".filter()", class: "function" },
+          { text: ".reduce()", class: "function" },
+          { text: "API", class: "variable" },
+          { text: "JSON", class: "variable" },
+          { text: "HTTP", class: "variable" },
+        ];
+
+        const randomSymbol =
+          symbols[Math.floor(Math.random() * symbols.length)];
+        const element = document.createElement("div");
+        element.className = `code-syntax-float ${randomSymbol.class}`;
+        element.innerHTML = `<span class="syntax-symbol">${randomSymbol.text}</span>`;
+
+        // Random position
+        element.style.top = Math.random() * 80 + 10 + "%";
+        element.style.left = Math.random() * 80 + 10 + "%";
+        element.style.animationDelay = "0s";
+
+        document.body.appendChild(element);
+
+        // Remove after animation cycle
+        setTimeout(() => {
+          if (element.parentNode) {
+            element.parentNode.removeChild(element);
+          }
+        }, 8000);
+      }
+
       // Dynamic system stats updates
       function updateSystemStats() {
         const coffeeLevel = document.getElementById("coffeeLevel");
@@ -3533,6 +3990,25 @@
           initializeTerminal();
           initializeGame();
           initializeIntervals();
+
+          // Initialize Programming Passion Features
+          console.log("Initializing programming passion showcase...");
+
+          // Start code rain effect
+          if (document.getElementById("codeRain")) {
+            setInterval(createCodeRain, 3000); // Code rain every 3 seconds
+            console.log("Code rain effect initialized");
+          }
+
+          // Start live code typing animation
+          if (document.getElementById("liveCode")) {
+            setTimeout(startLiveCodeTyping, 1000); // Start typing animation
+            console.log("Live code typing animation initialized");
+          }
+
+          // Add floating code symbols periodically
+          setInterval(addRandomCodeSymbol, 2000);
+          console.log("Floating code symbols initialized");
 
           // Initialize geometric trail effects
           setTimeout(() => {

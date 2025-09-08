@@ -1063,10 +1063,10 @@
       }
       .games-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
         gap: var(--space-xl);
         margin: var(--space-2xl) auto;
-        max-width: 1400px;
+        max-width: 1600px;
         justify-items: center;
         padding: 0 var(--space-md);
       }
@@ -1082,8 +1082,8 @@
         transition: var(--transition-bounce);
         box-shadow: var(--shadow-md);
         width: 100%;
-        max-width: 350px;
-        min-height: 420px;
+        max-width: 420px;
+        min-height: 520px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -1248,13 +1248,13 @@
       .tic-tac-toe-board {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: 6px;
-        width: 200px;
-        height: 200px;
+        gap: 8px;
+        width: 280px;
+        height: 280px;
         margin: var(--space-md) auto;
         background: var(--neutral-100);
         border-radius: var(--radius-md);
-        padding: var(--space-sm);
+        padding: var(--space-md);
         box-shadow: var(--shadow-sm);
         border: 2px solid var(--neutral-200);
       }
@@ -1337,6 +1337,9 @@
         transition: var(--transition-base);
         max-width: 100%;
         height: auto;
+        image-rendering: pixelated;
+        image-rendering: -moz-crisp-edges;
+        image-rendering: crisp-edges;
       }
 
       .game-canvas:hover,
@@ -1350,23 +1353,23 @@
 
       /* Standardize canvas sizes for better card layout */
       .game-canvas {
-        width: 260px;
-        height: 260px;
+        width: 320px;
+        height: 320px;
       }
 
       .pong-canvas {
-        width: 260px;
-        height: 180px;
+        width: 320px;
+        height: 240px;
       }
 
       .tetris-canvas {
-        width: 200px;
-        height: 260px;
+        width: 240px;
+        height: 320px;
       }
 
       .breakout-canvas {
-        width: 260px;
-        height: 200px;
+        width: 320px;
+        height: 240px;
       }
 
       /* Floating Elements */
@@ -1591,12 +1594,41 @@
         }
 
         .games-grid {
-          grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+          grid-template-columns: 1fr;
+          gap: var(--space-xl);
+          max-width: 100%;
         }
 
         .game-card {
-          height: auto;
-          min-height: 280px;
+          max-width: 100%;
+          min-height: 480px;
+          padding: var(--space-md);
+        }
+
+        /* Responsive canvas sizes for tablets */
+        .game-canvas {
+          width: 280px;
+          height: 280px;
+        }
+
+        .pong-canvas {
+          width: 280px;
+          height: 210px;
+        }
+
+        .tetris-canvas {
+          width: 210px;
+          height: 280px;
+        }
+
+        .breakout-canvas {
+          width: 280px;
+          height: 210px;
+        }
+
+        .tic-tac-toe-board {
+          width: 240px;
+          height: 240px;
         }
 
         .terminal {
@@ -1631,6 +1663,125 @@
         .skill-card,
         .project-card {
           padding: var(--space-lg) var(--space-md);
+        }
+
+        .game-card {
+          min-height: 420px;
+          padding: var(--space-sm);
+        }
+
+        /* Mobile optimized canvas sizes */
+        .game-canvas {
+          width: 240px;
+          height: 240px;
+        }
+
+        .pong-canvas {
+          width: 240px;
+          height: 180px;
+        }
+
+        .tetris-canvas {
+          width: 180px;
+          height: 240px;
+        }
+
+        .breakout-canvas {
+          width: 240px;
+          height: 180px;
+        }
+
+        .tic-tac-toe-board {
+          width: 200px;
+          height: 200px;
+          padding: var(--space-sm);
+          gap: 6px;
+        }
+
+        .tic-tac-toe-cell {
+          font-size: 1.5rem;
+        }
+
+        .games-grid {
+          gap: var(--space-lg);
+          padding: 0 var(--space-xs);
+        }
+      }
+
+      /* Extra small screens (phones in portrait) */
+      @media (max-width: 320px) {
+        .game-card {
+          min-height: 380px;
+          padding: var(--space-xs);
+        }
+
+        .game-canvas {
+          width: 200px;
+          height: 200px;
+        }
+
+        .pong-canvas {
+          width: 200px;
+          height: 150px;
+        }
+
+        .tetris-canvas {
+          width: 150px;
+          height: 200px;
+        }
+
+        .breakout-canvas {
+          width: 200px;
+          height: 150px;
+        }
+
+        .tic-tac-toe-board {
+          width: 180px;
+          height: 180px;
+        }
+      }
+
+      /* Large screens optimization */
+      @media (min-width: 1400px) {
+        .games-grid {
+          grid-template-columns: repeat(3, 1fr);
+          max-width: 1800px;
+        }
+
+        .game-card {
+          max-width: 480px;
+          min-height: 580px;
+        }
+
+        /* Large screen canvas sizes */
+        .game-canvas {
+          width: 360px;
+          height: 360px;
+        }
+
+        .pong-canvas {
+          width: 360px;
+          height: 270px;
+        }
+
+        .tetris-canvas {
+          width: 270px;
+          height: 360px;
+        }
+
+        .breakout-canvas {
+          width: 360px;
+          height: 270px;
+        }
+
+        .tic-tac-toe-board {
+          width: 320px;
+          height: 320px;
+          gap: 12px;
+        }
+
+        .tic-tac-toe-cell {
+          font-size: 2.25rem;
         }
       }
 
@@ -1829,8 +1980,8 @@
               <canvas
                 id="snakeGame"
                 class="game-canvas"
-                width="260"
-                height="260"
+                width="320"
+                height="320"
               ></canvas>
             </div>
             <div class="game-footer">
@@ -1854,8 +2005,8 @@
               <canvas
                 id="pongGame"
                 class="pong-canvas"
-                width="260"
-                height="180"
+                width="320"
+                height="240"
               ></canvas>
             </div>
             <div class="game-footer">
@@ -1879,8 +2030,8 @@
               <canvas
                 id="tetrisGame"
                 class="tetris-canvas"
-                width="200"
-                height="260"
+                width="240"
+                height="320"
               ></canvas>
             </div>
             <div class="game-footer">
@@ -1903,8 +2054,8 @@
               <canvas
                 id="breakoutGame"
                 class="breakout-canvas"
-                width="260"
-                height="200"
+                width="320"
+                height="240"
               ></canvas>
             </div>
             <div class="game-footer">

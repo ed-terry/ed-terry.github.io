@@ -1385,6 +1385,103 @@
         height: 300px;
       }
 
+      /* Section headers for games */
+      .ai-demos-section,
+      .challenge-section {
+        margin: var(--space-2xl) 0;
+      }
+
+      .section-header {
+        text-align: center;
+        margin-bottom: var(--space-xl);
+      }
+
+      .section-header h3 {
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--neutral-800);
+        margin-bottom: var(--space-sm);
+        background: linear-gradient(
+          135deg,
+          var(--primary-600),
+          var(--accent-600)
+        );
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .section-description {
+        font-size: 1.1rem;
+        color: var(--neutral-600);
+        margin-bottom: var(--space-md);
+      }
+
+      /* Challenge notice styling */
+      .challenge-notice {
+        background: linear-gradient(135deg, #fef3c7, #fed7aa);
+        border: 2px solid #f59e0b;
+        border-radius: var(--radius-lg);
+        padding: var(--space-lg);
+        margin: var(--space-md) auto;
+        max-width: 600px;
+        display: flex;
+        align-items: center;
+        gap: var(--space-sm);
+        box-shadow: var(--shadow-md);
+        animation: challengePulse 3s ease-in-out infinite;
+      }
+
+      .challenge-icon {
+        font-size: 1.5rem;
+        animation: challengeBounce 2s ease-in-out infinite;
+      }
+
+      .challenge-link {
+        color: #d97706;
+        font-weight: 600;
+        text-decoration: underline;
+        transition: var(--transition-base);
+      }
+
+      .challenge-link:hover {
+        color: #92400e;
+        text-decoration-thickness: 2px;
+      }
+
+      @keyframes challengePulse {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.02);
+        }
+      }
+
+      @keyframes challengeBounce {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-3px);
+        }
+      }
+
+      /* Responsive adjustments for sections */
+      @media (max-width: 768px) {
+        .section-header h3 {
+          font-size: 1.5rem;
+        }
+
+        .challenge-notice {
+          flex-direction: column;
+          text-align: center;
+          padding: var(--space-md);
+        }
+      }
+
       /* Floating Elements */
       .floating-elements {
         position: fixed;
@@ -2017,124 +2114,159 @@
           </div>
         </div>
 
-        <div class="games-grid">
-          <!-- Snake Game -->
-          <div class="game-card snake">
-            <div class="game-header">
-              <div class="game-icon">🐍</div>
-              <h3 class="game-title">Snake Master AI</h3>
-              <p class="game-description">
-                Watch the AI navigate and grow, featuring nom nom sound effects!
-              </p>
+        <!-- AI Demonstrations Section -->
+        <div class="ai-demos-section">
+          <div class="section-header">
+            <h3>🤖 AI Demonstrations</h3>
+            <p class="section-description">
+              Watch intelligent agents master classic games
+            </p>
+          </div>
+
+          <div class="games-grid ai-games">
+            <!-- Snake Game -->
+            <div class="game-card snake">
+              <div class="game-header">
+                <div class="game-icon">🐍</div>
+                <h3 class="game-title">Snake Master AI</h3>
+                <p class="game-description">
+                  Watch the AI navigate and grow, featuring nom nom sound
+                  effects!
+                </p>
+              </div>
+              <div class="game-content">
+                <canvas
+                  id="snakeGame"
+                  class="game-canvas"
+                  width="400"
+                  height="320"
+                ></canvas>
+              </div>
+              <div class="game-footer">
+                <div class="game-score">
+                  Score: <span id="snakeScore">0</span> |
+                  <span id="snakeStatus">Hunting...</span>
+                </div>
+              </div>
             </div>
-            <div class="game-content">
-              <canvas
-                id="snakeGame"
-                class="game-canvas"
-                width="400"
-                height="320"
-              ></canvas>
+
+            <!-- Pong Game -->
+            <div class="game-card pong">
+              <div class="game-header">
+                <div class="game-icon">🏓</div>
+                <h3 class="game-title">AI Pong Battle</h3>
+                <p class="game-description">
+                  Two intelligent paddles compete in eternal digital tennis!
+                </p>
+              </div>
+              <div class="game-content">
+                <canvas
+                  id="pongGame"
+                  class="pong-canvas"
+                  width="400"
+                  height="260"
+                ></canvas>
+              </div>
+              <div class="game-footer">
+                <div class="game-score">
+                  AI Battle: <span id="pongScore">0 - 0</span>
+                </div>
+              </div>
             </div>
-            <div class="game-footer">
-              <div class="game-score">
-                Score: <span id="snakeScore">0</span> |
-                <span id="snakeStatus">Hunting...</span>
+
+            <!-- Tetris Game -->
+            <div class="game-card tetris">
+              <div class="game-header">
+                <div class="game-icon">🧩</div>
+                <h3 class="game-title">Tetris Intelligence</h3>
+                <p class="game-description">
+                  AI strategically places blocks for maximum line clearing
+                  efficiency!
+                </p>
+              </div>
+              <div class="game-content">
+                <canvas
+                  id="tetrisGame"
+                  class="tetris-canvas"
+                  width="300"
+                  height="400"
+                ></canvas>
+              </div>
+              <div class="game-footer">
+                <div class="game-score">
+                  Lines Cleared: <span id="tetrisScore">0</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Breakout Game -->
+            <div class="game-card breakout">
+              <div class="game-header">
+                <div class="game-icon">🎯</div>
+                <h3 class="game-title">Breakout Pro</h3>
+                <p class="game-description">
+                  Precision AI paddle demolishes blocks with calculated
+                  movements!
+                </p>
+              </div>
+              <div class="game-content">
+                <canvas
+                  id="breakoutGame"
+                  class="breakout-canvas"
+                  width="400"
+                  height="300"
+                ></canvas>
+              </div>
+              <div class="game-footer">
+                <div class="game-score">
+                  Blocks Destroyed: <span id="breakoutScore">0</span>
+                </div>
               </div>
             </div>
           </div>
+        </div>
 
-          <!-- Pong Game -->
-          <div class="game-card pong">
-            <div class="game-header">
-              <div class="game-icon">🏓</div>
-              <h3 class="game-title">AI Pong Battle</h3>
-              <p class="game-description">
-                Two intelligent paddles compete in eternal digital tennis!
-              </p>
-            </div>
-            <div class="game-content">
-              <canvas
-                id="pongGame"
-                class="pong-canvas"
-                width="400"
-                height="260"
-              ></canvas>
-            </div>
-            <div class="game-footer">
-              <div class="game-score">
-                AI Battle: <span id="pongScore">0 - 0</span>
-              </div>
+        <!-- Interactive Challenge Section -->
+        <div class="challenge-section">
+          <div class="section-header">
+            <h3>🏆 Interactive Challenge</h3>
+            <p class="section-description">
+              Think you can outsmart my AI? Prove it!
+            </p>
+            <div class="challenge-notice">
+              <span class="challenge-icon">💪</span>
+              <strong>Beat the AI Challenge:</strong> If you can defeat my
+              Tic-Tac-Toe AI,
+              <a
+                href="mailto:terry.edwardx@gmail.com?subject=I Beat Your AI!&body=I successfully beat your Tic-Tac-Toe AI! Here's proof: [Screenshot or description of your victory]"
+                class="challenge-link"
+                >send me a message</a
+              >
+              with proof and earn bragging rights!
             </div>
           </div>
 
-          <!-- Tetris Game -->
-          <div class="game-card tetris">
-            <div class="game-header">
-              <div class="game-icon">🧩</div>
-              <h3 class="game-title">Tetris Intelligence</h3>
-              <p class="game-description">
-                AI strategically places blocks for maximum line clearing
-                efficiency!
-              </p>
-            </div>
-            <div class="game-content">
-              <canvas
-                id="tetrisGame"
-                class="tetris-canvas"
-                width="300"
-                height="400"
-              ></canvas>
-            </div>
-            <div class="game-footer">
-              <div class="game-score">
-                Lines Cleared: <span id="tetrisScore">0</span>
+          <div class="games-grid playable-games">
+            <!-- Playable Tic-Tac-Toe -->
+            <div class="game-card playable">
+              <div class="game-header">
+                <div class="game-icon">⭕</div>
+                <h3 class="game-title">Tic-Tac-Toe Challenge</h3>
+                <p class="game-description">
+                  Test your strategy against an nearly impossible AI opponent!
+                </p>
               </div>
-            </div>
-          </div>
-
-          <!-- Breakout Game -->
-          <div class="game-card breakout">
-            <div class="game-header">
-              <div class="game-icon">🎯</div>
-              <h3 class="game-title">Breakout Pro</h3>
-              <p class="game-description">
-                Precision AI paddle demolishes blocks with calculated movements!
-              </p>
-            </div>
-            <div class="game-content">
-              <canvas
-                id="breakoutGame"
-                class="breakout-canvas"
-                width="400"
-                height="300"
-              ></canvas>
-            </div>
-            <div class="game-footer">
-              <div class="game-score">
-                Blocks Destroyed: <span id="breakoutScore">0</span>
+              <div class="game-content">
+                <div id="ticTacToeGame" class="tic-tac-toe-board"></div>
               </div>
-            </div>
-          </div>
-
-          <!-- Playable Tic-Tac-Toe -->
-          <div class="game-card playable">
-            <div class="game-header">
-              <div class="game-icon">⭕</div>
-              <h3 class="game-title">Tic-Tac-Toe Challenge</h3>
-              <p class="game-description">
-                Test your strategy against an intelligent AI opponent!
-              </p>
-            </div>
-            <div class="game-content">
-              <div id="ticTacToeGame" class="tic-tac-toe-board"></div>
-            </div>
-            <div class="game-footer">
-              <div class="game-score">
-                You vs AI | <span id="ticTacToeStatus">Click to start!</span>
+              <div class="game-footer">
+                <div class="game-score">
+                  You vs AI | <span id="ticTacToeStatus">Click to start!</span>
+                </div>
+                <button id="resetTicTacToe" class="play-button">
+                  Reset Game
+                </button>
               </div>
-              <button id="resetTicTacToe" class="play-button">
-                Reset Game
-              </button>
             </div>
           </div>
         </div>

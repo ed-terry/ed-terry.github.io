@@ -1063,7 +1063,7 @@
       }
       .games-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
         gap: var(--space-xl);
         margin: var(--space-2xl) auto;
         max-width: 1600px;
@@ -1082,7 +1082,7 @@
         transition: var(--transition-bounce);
         box-shadow: var(--shadow-md);
         width: 100%;
-        max-width: 420px;
+        max-width: 450px;
         min-height: 520px;
         display: flex;
         flex-direction: column;
@@ -1248,41 +1248,57 @@
       .tic-tac-toe-board {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: 8px;
-        width: 280px;
-        height: 280px;
+        gap: 6px;
+        width: 200px;
+        height: 200px;
         margin: var(--space-md) auto;
         background: var(--neutral-100);
         border-radius: var(--radius-md);
-        padding: var(--space-md);
+        padding: var(--space-sm);
         box-shadow: var(--shadow-sm);
         border: 2px solid var(--neutral-200);
       }
 
       .tic-tac-toe-cell {
-        background: #ffffff;
-        border: 2px solid var(--neutral-200);
-        border-radius: var(--radius-sm);
+        background: #0a0a0f;
+        border: 2px solid #1a1a2e;
+        border-radius: 8px;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 1.75rem;
+        font-size: 2rem;
         font-weight: bold;
         cursor: pointer;
-        transition: var(--transition-base);
+        transition: all 0.3s ease;
         user-select: none;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        position: relative;
+        overflow: hidden;
       }
 
       .tic-tac-toe-cell:hover {
-        background: var(--primary-50);
-        border-color: var(--primary-300);
+        background: #1a1a2e;
+        border-color: #00ff88;
         transform: scale(1.05);
+        box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
       }
 
       .tic-tac-toe-cell.winning {
-        background: #dcfce7;
-        border-color: #10b981;
-        animation: winPulse 0.6s ease-in-out;
+        background: #1a1a2e;
+        border-color: #ff4757;
+        animation: winPulse 0.6s ease-in-out infinite alternate;
+        box-shadow: 0 0 30px rgba(255, 71, 87, 0.5);
+      }
+
+      @keyframes winPulse {
+        0% {
+          box-shadow: 0 0 30px rgba(255, 71, 87, 0.5);
+          transform: scale(1);
+        }
+        100% {
+          box-shadow: 0 0 40px rgba(255, 71, 87, 0.8);
+          transform: scale(1.02);
+        }
       }
 
       .play-button {
@@ -1337,9 +1353,6 @@
         transition: var(--transition-base);
         max-width: 100%;
         height: auto;
-        image-rendering: pixelated;
-        image-rendering: -moz-crisp-edges;
-        image-rendering: crisp-edges;
       }
 
       .game-canvas:hover,
@@ -1353,23 +1366,23 @@
 
       /* Standardize canvas sizes for better card layout */
       .game-canvas {
-        width: 320px;
+        width: 400px;
         height: 320px;
       }
 
       .pong-canvas {
-        width: 320px;
-        height: 240px;
+        width: 400px;
+        height: 260px;
       }
 
       .tetris-canvas {
-        width: 240px;
-        height: 320px;
+        width: 300px;
+        height: 400px;
       }
 
       .breakout-canvas {
-        width: 320px;
-        height: 240px;
+        width: 400px;
+        height: 300px;
       }
 
       /* Floating Elements */
@@ -1448,7 +1461,7 @@
         color: #1a1a1a;
       }
 
-      /* Responsive */
+      /* Enhanced Responsive Design */
       @media (max-width: 768px) {
         .section {
           padding: 1rem;
@@ -1457,16 +1470,30 @@
         .nav {
           top: 1rem;
           right: 1rem;
+          flex-direction: column;
+          gap: 0.5rem;
+        }
+
+        .nav-link {
+          padding: 0.5rem 0.75rem;
+          font-size: 0.875rem;
         }
 
         .section-number {
           top: 1rem;
           left: 1rem;
+          font-size: 0.875rem;
         }
 
         .skills-grid,
         .projects-grid {
           grid-template-columns: 1fr;
+          gap: 1rem;
+        }
+
+        .games-grid {
+          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+          gap: 1rem;
         }
 
         .profile-photo {
@@ -1476,6 +1503,57 @@
 
         .project-links {
           flex-direction: column;
+          gap: 0.5rem;
+        }
+
+        .game-card {
+          min-height: 420px;
+          padding: 1rem;
+          max-width: 400px;
+        }
+
+        .game-canvas {
+          max-width: 100%;
+          height: auto;
+        }
+
+        .snake-canvas,
+        .breakout-canvas,
+        .pong-canvas,
+        .tetris-canvas,
+        .tic-tac-toe-canvas {
+          width: 100% !important;
+          max-width: 350px;
+          height: auto;
+        }
+
+        .game-info {
+          padding: 0.75rem;
+          font-size: 0.875rem;
+        }
+
+        .tic-tac-toe-board {
+          max-width: 250px;
+          margin: 0 auto;
+        }
+
+        .tic-tac-toe-cell {
+          font-size: 1.5rem;
+          min-height: 60px;
+        }
+
+        .terminal {
+          margin: 1rem 0;
+          padding: 1rem;
+        }
+
+        .terminal-header {
+          padding: 0.5rem 1rem;
+        }
+
+        .terminal-body {
+          padding: 1rem;
+          font-size: 0.875rem;
         }
       }
 
@@ -1594,41 +1672,12 @@
         }
 
         .games-grid {
-          grid-template-columns: 1fr;
-          gap: var(--space-xl);
-          max-width: 100%;
+          grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
         }
 
         .game-card {
-          max-width: 100%;
-          min-height: 480px;
-          padding: var(--space-md);
-        }
-
-        /* Responsive canvas sizes for tablets */
-        .game-canvas {
-          width: 280px;
-          height: 280px;
-        }
-
-        .pong-canvas {
-          width: 280px;
-          height: 210px;
-        }
-
-        .tetris-canvas {
-          width: 210px;
-          height: 280px;
-        }
-
-        .breakout-canvas {
-          width: 280px;
-          height: 210px;
-        }
-
-        .tic-tac-toe-board {
-          width: 240px;
-          height: 240px;
+          height: auto;
+          min-height: 380px;
         }
 
         .terminal {
@@ -1648,140 +1697,142 @@
         }
 
         h1 {
-          font-size: clamp(2.5rem, 10vw, 4rem);
+          font-size: clamp(2rem, 8vw, 3rem);
         }
 
         h2 {
-          font-size: clamp(1.75rem, 8vw, 2.5rem);
+          font-size: clamp(1.5rem, 6vw, 2rem);
         }
 
         .profile-photo {
-          width: 200px;
-          height: 200px;
+          width: 120px;
+          height: 120px;
         }
 
         .skill-card,
         .project-card {
-          padding: var(--space-lg) var(--space-md);
-        }
-
-        .game-card {
-          min-height: 420px;
-          padding: var(--space-sm);
-        }
-
-        /* Mobile optimized canvas sizes */
-        .game-canvas {
-          width: 240px;
-          height: 240px;
-        }
-
-        .pong-canvas {
-          width: 240px;
-          height: 180px;
-        }
-
-        .tetris-canvas {
-          width: 180px;
-          height: 240px;
-        }
-
-        .breakout-canvas {
-          width: 240px;
-          height: 180px;
-        }
-
-        .tic-tac-toe-board {
-          width: 200px;
-          height: 200px;
-          padding: var(--space-sm);
-          gap: 6px;
-        }
-
-        .tic-tac-toe-cell {
-          font-size: 1.5rem;
+          padding: var(--space-md) var(--space-sm);
         }
 
         .games-grid {
-          gap: var(--space-lg);
-          padding: 0 var(--space-xs);
+          grid-template-columns: 1fr;
+          gap: 1rem;
         }
-      }
 
-      /* Extra small screens (phones in portrait) */
-      @media (max-width: 320px) {
         .game-card {
-          min-height: 380px;
-          padding: var(--space-xs);
+          min-height: 350px;
+          padding: 0.75rem;
         }
 
-        .game-canvas {
-          width: 200px;
-          height: 200px;
-        }
-
-        .pong-canvas {
-          width: 200px;
-          height: 150px;
-        }
-
+        .snake-canvas,
+        .breakout-canvas,
+        .pong-canvas,
         .tetris-canvas {
-          width: 150px;
-          height: 200px;
-        }
-
-        .breakout-canvas {
-          width: 200px;
-          height: 150px;
+          width: 100% !important;
+          max-width: 320px;
+          height: auto;
         }
 
         .tic-tac-toe-board {
-          width: 180px;
-          height: 180px;
-        }
-      }
-
-      /* Large screens optimization */
-      @media (min-width: 1400px) {
-        .games-grid {
+          max-width: 200px;
           grid-template-columns: repeat(3, 1fr);
-          max-width: 1800px;
-        }
-
-        .game-card {
-          max-width: 480px;
-          min-height: 580px;
-        }
-
-        /* Large screen canvas sizes */
-        .game-canvas {
-          width: 360px;
-          height: 360px;
-        }
-
-        .pong-canvas {
-          width: 360px;
-          height: 270px;
-        }
-
-        .tetris-canvas {
-          width: 270px;
-          height: 360px;
-        }
-
-        .breakout-canvas {
-          width: 360px;
-          height: 270px;
-        }
-
-        .tic-tac-toe-board {
-          width: 320px;
-          height: 320px;
-          gap: 12px;
+          gap: 0.5rem;
         }
 
         .tic-tac-toe-cell {
-          font-size: 2.25rem;
+          font-size: 1.25rem;
+          min-height: 50px;
+        }
+
+        .game-info {
+          padding: 0.5rem;
+          font-size: 0.75rem;
+        }
+
+        .game-title {
+          font-size: 1rem;
+        }
+
+        .nav {
+          position: relative;
+          top: auto;
+          right: auto;
+          justify-content: center;
+          margin: 1rem 0;
+          flex-wrap: wrap;
+        }
+
+        .terminal {
+          margin: 0.75rem 0;
+          padding: 0.75rem;
+        }
+
+        .terminal-body {
+          font-size: 0.75rem;
+          line-height: 1.4;
+        }
+
+        .floating-shapes {
+          display: none; /* Hide decorative elements on small screens */
+        }
+      }
+
+      /* Extra small devices */
+      @media (max-width: 360px) {
+        .section {
+          padding: 1rem 0.5rem;
+        }
+
+        .game-card {
+          padding: 0.5rem;
+          min-height: 260px;
+        }
+
+        .snake-canvas,
+        .breakout-canvas,
+        .pong-canvas,
+        .tetris-canvas {
+          max-width: 250px;
+        }
+
+        .tic-tac-toe-board {
+          max-width: 180px;
+        }
+
+        .tic-tac-toe-cell {
+          font-size: 1rem;
+          min-height: 45px;
+        }
+
+        h1 {
+          font-size: clamp(1.75rem, 10vw, 2.5rem);
+        }
+      }
+
+      /* Landscape mobile orientation */
+      @media (max-height: 500px) and (orientation: landscape) {
+        .section {
+          padding: 0.5rem;
+        }
+
+        .game-card {
+          min-height: 200px;
+        }
+
+        .snake-canvas,
+        .breakout-canvas,
+        .pong-canvas,
+        .tetris-canvas {
+          max-height: 150px;
+        }
+
+        .tic-tac-toe-board {
+          max-width: 150px;
+        }
+
+        .profile-photo {
+          width: 100px;
+          height: 100px;
         }
       }
 
@@ -1980,7 +2031,7 @@
               <canvas
                 id="snakeGame"
                 class="game-canvas"
-                width="320"
+                width="400"
                 height="320"
               ></canvas>
             </div>
@@ -2005,8 +2056,8 @@
               <canvas
                 id="pongGame"
                 class="pong-canvas"
-                width="320"
-                height="240"
+                width="400"
+                height="260"
               ></canvas>
             </div>
             <div class="game-footer">
@@ -2030,8 +2081,8 @@
               <canvas
                 id="tetrisGame"
                 class="tetris-canvas"
-                width="240"
-                height="320"
+                width="300"
+                height="400"
               ></canvas>
             </div>
             <div class="game-footer">
@@ -2054,8 +2105,8 @@
               <canvas
                 id="breakoutGame"
                 class="breakout-canvas"
-                width="320"
-                height="240"
+                width="400"
+                height="300"
               ></canvas>
             </div>
             <div class="game-footer">
@@ -2297,13 +2348,13 @@
         }
       }
 
-      // Auto-Playing Snake Game
+      // Enhanced Auto-Playing Snake Game with Modern Graphics
       class SnakeGame {
         constructor(canvas) {
           this.canvas = canvas;
           this.ctx = canvas.getContext("2d");
-          this.gridSize = 15;
-          this.snake = [{ x: 150, y: 150 }];
+          this.gridSize = 16;
+          this.snake = [{ x: 160, y: 160 }];
           this.direction = { x: this.gridSize, y: 0 };
           this.food = this.generateFood();
           this.score = 0;
@@ -2320,38 +2371,66 @@
           this.currentNomMessage = "";
           this.nomTimer = 0;
           this.status = "Hunting...";
+          this.foodParticles = [];
+          this.snakeTrail = [];
 
           this.colors = {
-            snake: "#667eea",
-            food: "#f093fb",
-            background: "#1a1a1a",
+            snake: "#00ff88",
+            snakeHead: "#00ff44",
+            food: "#ff4466",
+            background: "#0a0a0f",
+            grid: "#1a1a2e",
+            trail: "rgba(0, 255, 136, 0.3)",
           };
 
           this.autoPlay();
         }
 
         generateFood() {
-          return {
-            x:
-              Math.floor(Math.random() * (this.canvas.width / this.gridSize)) *
-              this.gridSize,
-            y:
-              Math.floor(Math.random() * (this.canvas.height / this.gridSize)) *
-              this.gridSize,
-          };
+          let newFood;
+          do {
+            newFood = {
+              x:
+                Math.floor(
+                  Math.random() * (this.canvas.width / this.gridSize)
+                ) * this.gridSize,
+              y:
+                Math.floor(
+                  Math.random() * (this.canvas.height / this.gridSize)
+                ) * this.gridSize,
+              pulse: 0,
+              glow: 0,
+            };
+          } while (
+            this.snake.some(
+              (segment) => segment.x === newFood.x && segment.y === newFood.y
+            )
+          );
+          return newFood;
+        }
+
+        createFoodParticles(x, y) {
+          for (let i = 0; i < 8; i++) {
+            this.foodParticles.push({
+              x: x + this.gridSize / 2,
+              y: y + this.gridSize / 2,
+              vx: (Math.random() - 0.5) * 4,
+              vy: (Math.random() - 0.5) * 4,
+              life: 1.0,
+              size: Math.random() * 4 + 2,
+            });
+          }
         }
 
         autoPlay() {
-          // Simple AI: move towards food
           const head = this.snake[0];
           const possibleMoves = [
-            { x: this.gridSize, y: 0 }, // right
-            { x: -this.gridSize, y: 0 }, // left
-            { x: 0, y: this.gridSize }, // down
-            { x: 0, y: -this.gridSize }, // up
+            { x: this.gridSize, y: 0 },
+            { x: -this.gridSize, y: 0 },
+            { x: 0, y: this.gridSize },
+            { x: 0, y: -this.gridSize },
           ];
 
-          // Calculate distances to food for each possible move
           const distances = possibleMoves.map((move) => {
             const newX = head.x + move.x;
             const newY = head.y + move.y;
@@ -2363,13 +2442,10 @@
             };
           });
 
-          // Choose the move that gets closest to food and is valid
           const validMoves = distances.filter((d) => d.valid);
           if (validMoves.length > 0) {
             validMoves.sort((a, b) => a.distance - b.distance);
             this.direction = validMoves[0].move;
-          } else {
-            // If no valid moves, just continue in current direction
           }
         }
 
@@ -2395,21 +2471,32 @@
 
           this.autoPlay();
 
+          // Add trail effect
           const head = { ...this.snake[0] };
+          this.snakeTrail.push({ ...head, life: 1.0 });
+          if (this.snakeTrail.length > 15) this.snakeTrail.shift();
+
           head.x += this.direction.x;
           head.y += this.direction.y;
 
-          // Check boundaries and self collision
+          // Check wall collision
           if (
             head.x < 0 ||
             head.x >= this.canvas.width ||
             head.y < 0 ||
-            head.y >= this.canvas.height ||
+            head.y >= this.canvas.height
+          ) {
+            this.resetGame();
+            return;
+          }
+
+          // Check self collision
+          if (
             this.snake.some(
               (segment) => segment.x === head.x && segment.y === head.y
             )
           ) {
-            this.reset();
+            this.resetGame();
             return;
           }
 
@@ -2417,136 +2504,162 @@
 
           // Check food collision
           if (head.x === this.food.x && head.y === this.food.y) {
-            this.score += 10;
-            document.getElementById("snakeScore").textContent = this.score;
-            this.food = this.generateFood();
-
-            // Nom nom effect!
+            this.score++;
+            this.createFoodParticles(this.food.x, this.food.y);
             this.currentNomMessage =
               this.nomMessages[
                 Math.floor(Math.random() * this.nomMessages.length)
               ];
-            this.nomTimer = 60; // Show for 60 frames
-            this.status = "NOM NOM NOM!";
-
-            // Reset to hunting after a delay
-            setTimeout(() => {
-              this.status = "Hunting...";
-            }, 1500);
+            this.nomTimer = 30;
+            this.status = this.currentNomMessage;
+            this.food = this.generateFood();
           } else {
             this.snake.pop();
           }
 
-          // Decrease nom timer
+          // Update particles
+          this.foodParticles = this.foodParticles.filter((particle) => {
+            particle.x += particle.vx;
+            particle.y += particle.vy;
+            particle.life -= 0.02;
+            particle.vy += 0.1;
+            return particle.life > 0;
+          });
+
+          // Update trail
+          this.snakeTrail.forEach((trail) => (trail.life -= 0.05));
+          this.snakeTrail = this.snakeTrail.filter((trail) => trail.life > 0);
+
           if (this.nomTimer > 0) {
             this.nomTimer--;
+            if (this.nomTimer === 0) {
+              this.status = "Hunting...";
+            }
           }
+
+          this.food.pulse += 0.1;
+          this.food.glow = Math.sin(this.food.pulse) * 0.5 + 0.5;
+
+          document.getElementById("snakeScore").textContent = this.score;
+          document.getElementById("snakeStatus").textContent = this.status;
+        }
+
+        resetGame() {
+          this.snake = [{ x: 160, y: 160 }];
+          this.direction = { x: this.gridSize, y: 0 };
+          this.score = 0;
+          this.food = this.generateFood();
+          this.foodParticles = [];
+          this.snakeTrail = [];
+          this.status = "Restarting...";
         }
 
         draw() {
-          // Clear canvas with gradient background
-          const gradient = this.ctx.createLinearGradient(
-            0,
-            0,
-            this.canvas.width,
-            this.canvas.height
-          );
-          gradient.addColorStop(0, "#1a1a1a");
-          gradient.addColorStop(1, "#2d2d2d");
-          this.ctx.fillStyle = gradient;
+          // Clear with dark background
+          this.ctx.fillStyle = this.bgColor;
           this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
 
-          // Draw snake with gradient
-          this.snake.forEach((segment, index) => {
-            const gradient = this.ctx.createRadialGradient(
-              segment.x + this.gridSize / 2,
-              segment.y + this.gridSize / 2,
-              0,
-              segment.x + this.gridSize / 2,
-              segment.y + this.gridSize / 2,
-              this.gridSize / 2
-            );
-            gradient.addColorStop(0, index === 0 ? "#764ba2" : "#667eea");
-            gradient.addColorStop(1, index === 0 ? "#667eea" : "#4c51bf");
+          // Add grid pattern
+          this.ctx.strokeStyle = "#1a1a2e";
+          this.ctx.lineWidth = 0.5;
+          for (let x = 0; x < this.canvas.width; x += this.gridSize) {
+            this.ctx.beginPath();
+            this.ctx.moveTo(x, 0);
+            this.ctx.lineTo(x, this.canvas.height);
+            this.ctx.stroke();
+          }
+          for (let y = 0; y < this.canvas.height; y += this.gridSize) {
+            this.ctx.beginPath();
+            this.ctx.moveTo(0, y);
+            this.ctx.lineTo(this.canvas.width, y);
+            this.ctx.stroke();
+          }
 
-            this.ctx.fillStyle = gradient;
+          // Draw snake trail
+          this.snakeTrail.forEach((trail, index) => {
+            this.ctx.fillStyle = `rgba(0, 255, 136, ${trail.life * 0.3})`;
+            this.ctx.fillRect(trail.x, trail.y, this.gridSize, this.gridSize);
+          });
+
+          // Draw snake with enhanced glow
+          this.snake.forEach((segment, index) => {
+            const alpha = index === 0 ? 1 : 0.8 - index * 0.02;
+
+            // Glow effect
+            this.ctx.shadowColor = this.snakeColor;
+            this.ctx.shadowBlur = 15;
+            this.ctx.fillStyle = this.snakeColor;
             this.ctx.fillRect(
               segment.x,
               segment.y,
               this.gridSize,
               this.gridSize
             );
-            this.ctx.strokeStyle = "#fff";
-            this.ctx.lineWidth = 1;
-            this.ctx.strokeRect(
-              segment.x,
-              segment.y,
-              this.gridSize,
-              this.gridSize
+
+            // Inner highlight
+            this.ctx.shadowBlur = 0;
+            this.ctx.fillStyle = index === 0 ? "#66ffaa" : "#44ff88";
+            this.ctx.fillRect(
+              segment.x + 2,
+              segment.y + 2,
+              this.gridSize - 4,
+              this.gridSize - 4
             );
+
+            // Head details
+            if (index === 0) {
+              this.ctx.fillStyle = "#ffffff";
+              this.ctx.fillRect(segment.x + 4, segment.y + 4, 2, 2);
+              this.ctx.fillRect(segment.x + 8, segment.y + 4, 2, 2);
+            }
           });
 
-          // Draw food with pulsing effect
-          const time = Date.now() * 0.005;
-          const pulseSize = this.gridSize + Math.sin(time) * 2;
-          const offsetX = (this.gridSize - pulseSize) / 2;
-          const offsetY = (this.gridSize - pulseSize) / 2;
-
-          const foodGradient = this.ctx.createRadialGradient(
-            this.food.x + this.gridSize / 2,
-            this.food.y + this.gridSize / 2,
-            0,
-            this.food.x + this.gridSize / 2,
-            this.food.y + this.gridSize / 2,
-            pulseSize / 2
-          );
-          foodGradient.addColorStop(0, "#f093fb");
-          foodGradient.addColorStop(1, "#f5576c");
-
-          this.ctx.fillStyle = foodGradient;
+          // Draw food with pulsing glow
+          const glowIntensity = 10 + this.food.glow * 10;
+          this.ctx.shadowColor = this.foodColor;
+          this.ctx.shadowBlur = glowIntensity;
+          this.ctx.fillStyle = this.foodColor;
           this.ctx.fillRect(
-            this.food.x + offsetX,
-            this.food.y + offsetY,
-            pulseSize,
-            pulseSize
+            this.food.x,
+            this.food.y,
+            this.gridSize,
+            this.gridSize
           );
 
-          // Draw nom nom message
-          if (this.nomTimer > 0) {
-            this.ctx.save();
-            this.ctx.font = "bold 20px 'Courier New', monospace";
-            this.ctx.fillStyle = "#f093fb";
-            this.ctx.strokeStyle = "#ffffff";
-            this.ctx.lineWidth = 2;
-            this.ctx.textAlign = "center";
+          // Food inner glow
+          this.ctx.shadowBlur = 0;
+          this.ctx.fillStyle = "#ff8899";
+          this.ctx.fillRect(
+            this.food.x + 2,
+            this.food.y + 2,
+            this.gridSize - 4,
+            this.gridSize - 4
+          );
 
-            // Add bounce effect
-            const bounce = Math.sin(this.nomTimer * 0.3) * 5;
-            this.ctx.strokeText(
-              this.currentNomMessage,
-              this.canvas.width / 2,
-              40 + bounce
-            );
+          // Draw food particles
+          this.foodParticles.forEach((particle) => {
+            this.ctx.shadowColor = particle.color;
+            this.ctx.shadowBlur = 5;
+            this.ctx.fillStyle = particle.color;
+            this.ctx.globalAlpha = particle.life;
+            this.ctx.fillRect(particle.x, particle.y, 3, 3);
+            this.ctx.globalAlpha = 1;
+          });
+
+          // Reset shadow
+          this.ctx.shadowBlur = 0;
+
+          // Status overlay
+          if (this.nomTimer > 0) {
+            this.ctx.fillStyle = "rgba(255, 68, 102, 0.8)";
+            this.ctx.font = "bold 24px Arial";
+            this.ctx.textAlign = "center";
             this.ctx.fillText(
               this.currentNomMessage,
               this.canvas.width / 2,
-              40 + bounce
+              50
             );
-            this.ctx.restore();
           }
-
-          // Draw status
-          this.ctx.save();
-          this.ctx.font = "12px 'Courier New', monospace";
-          this.ctx.fillStyle =
-            this.status === "NOM NOM NOM!" ? "#f093fb" : "#667eea";
-          this.ctx.textAlign = "left";
-          this.ctx.fillText(
-            `Status: ${this.status}`,
-            10,
-            this.canvas.height - 10
-          );
-          this.ctx.restore();
         }
 
         reset() {
@@ -2572,14 +2685,55 @@
         constructor(canvas) {
           this.canvas = canvas;
           this.ctx = canvas.getContext("2d");
-          this.ball = { x: 150, y: 100, dx: 3, dy: 2, radius: 8 };
-          this.leftPaddle = { x: 10, y: 80, width: 8, height: 40, speed: 2 };
-          this.rightPaddle = { x: 282, y: 80, width: 8, height: 40, speed: 2 };
+          this.ball = {
+            x: 150,
+            y: 100,
+            dx: 4,
+            dy: 3,
+            radius: 8,
+            trail: [],
+          };
+          this.leftPaddle = {
+            x: 10,
+            y: 80,
+            width: 8,
+            height: 40,
+            speed: 3.5,
+            difficulty: "EXPERT",
+            color: "#00ff88",
+          };
+          this.rightPaddle = {
+            x: 282,
+            y: 80,
+            width: 8,
+            height: 40,
+            speed: 3.2,
+            difficulty: "MASTER",
+            color: "#ff4757",
+          };
           this.score = { left: 0, right: 0 };
+          this.particles = [];
           this.gameLoop();
         }
 
+        createParticles(x, y, color) {
+          for (let i = 0; i < 5; i++) {
+            this.particles.push({
+              x: x,
+              y: y,
+              vx: (Math.random() - 0.5) * 8,
+              vy: (Math.random() - 0.5) * 8,
+              life: 1.0,
+              color: color,
+            });
+          }
+        }
+
         update() {
+          // Add ball trail
+          this.ball.trail.push({ x: this.ball.x, y: this.ball.y, life: 1.0 });
+          if (this.ball.trail.length > 8) this.ball.trail.shift();
+
           // Move ball
           this.ball.x += this.ball.dx;
           this.ball.y += this.ball.dy;
@@ -2590,23 +2744,53 @@
             this.ball.y >= this.canvas.height - this.ball.radius
           ) {
             this.ball.dy = -this.ball.dy;
+            this.createParticles(this.ball.x, this.ball.y, "#ffffff");
           }
 
-          // AI for left paddle
+          // Enhanced AI for left paddle (EXPERT level)
           const leftPaddleCenter =
             this.leftPaddle.y + this.leftPaddle.height / 2;
-          if (leftPaddleCenter < this.ball.y - 20)
-            this.leftPaddle.y += this.leftPaddle.speed;
-          else if (leftPaddleCenter > this.ball.y + 20)
-            this.leftPaddle.y -= this.leftPaddle.speed;
+          const predictedY = this.ball.y + this.ball.dy * 15; // Predict ball position
 
-          // AI for right paddle
+          if (this.ball.dx < 0) {
+            // Ball moving toward left paddle
+            if (leftPaddleCenter < predictedY - 5) {
+              this.leftPaddle.y += this.leftPaddle.speed;
+            } else if (leftPaddleCenter > predictedY + 5) {
+              this.leftPaddle.y -= this.leftPaddle.speed;
+            }
+          } else {
+            // Slight drift toward center when ball is moving away
+            const centerY = this.canvas.height / 2;
+            if (leftPaddleCenter < centerY - 10) {
+              this.leftPaddle.y += this.leftPaddle.speed * 0.3;
+            } else if (leftPaddleCenter > centerY + 10) {
+              this.leftPaddle.y -= this.leftPaddle.speed * 0.3;
+            }
+          }
+
+          // Enhanced AI for right paddle (MASTER level)
           const rightPaddleCenter =
             this.rightPaddle.y + this.rightPaddle.height / 2;
-          if (rightPaddleCenter < this.ball.y - 20)
-            this.rightPaddle.y += this.rightPaddle.speed;
-          else if (rightPaddleCenter > this.ball.y + 20)
-            this.rightPaddle.y -= this.rightPaddle.speed;
+          const rightPredictedY = this.ball.y + this.ball.dy * 18; // Better prediction
+
+          if (this.ball.dx > 0) {
+            // Ball moving toward right paddle
+            if (rightPaddleCenter < rightPredictedY - 3) {
+              this.rightPaddle.y += this.rightPaddle.speed;
+            } else if (rightPaddleCenter > rightPredictedY + 3) {
+              this.rightPaddle.y -= this.rightPaddle.speed;
+            }
+          } else {
+            // Strategic positioning
+            const strategicY =
+              this.canvas.height / 2 + Math.sin(Date.now() * 0.001) * 20;
+            if (rightPaddleCenter < strategicY - 5) {
+              this.rightPaddle.y += this.rightPaddle.speed * 0.4;
+            } else if (rightPaddleCenter > strategicY + 5) {
+              this.rightPaddle.y -= this.rightPaddle.speed * 0.4;
+            }
+          }
 
           // Keep paddles in bounds
           this.leftPaddle.y = Math.max(
@@ -2624,34 +2808,93 @@
             )
           );
 
-          // Ball collision with paddles
+          // Enhanced ball collision with paddles
           if (
-            this.ball.x <= this.leftPaddle.x + this.leftPaddle.width &&
+            this.ball.x - this.ball.radius <=
+              this.leftPaddle.x + this.leftPaddle.width &&
             this.ball.y >= this.leftPaddle.y &&
-            this.ball.y <= this.leftPaddle.y + this.leftPaddle.height
+            this.ball.y <= this.leftPaddle.y + this.leftPaddle.height &&
+            this.ball.dx < 0
           ) {
-            this.ball.dx = -this.ball.dx;
+            const hitPos =
+              (this.ball.y - this.leftPaddle.y) / this.leftPaddle.height;
+            const angle = ((hitPos - 0.5) * Math.PI) / 4; // Max 45 degrees
+            const speed =
+              Math.sqrt(
+                this.ball.dx * this.ball.dx + this.ball.dy * this.ball.dy
+              ) * 1.05;
+
+            this.ball.dx = Math.abs(Math.cos(angle) * speed);
+            this.ball.dy = Math.sin(angle) * speed;
+            this.ball.x =
+              this.leftPaddle.x + this.leftPaddle.width + this.ball.radius;
+            this.createParticles(
+              this.ball.x,
+              this.ball.y,
+              this.leftPaddle.color
+            );
           }
+
           if (
-            this.ball.x >= this.rightPaddle.x - this.ball.radius &&
+            this.ball.x + this.ball.radius >= this.rightPaddle.x &&
             this.ball.y >= this.rightPaddle.y &&
-            this.ball.y <= this.rightPaddle.y + this.rightPaddle.height
+            this.ball.y <= this.rightPaddle.y + this.rightPaddle.height &&
+            this.ball.dx > 0
           ) {
-            this.ball.dx = -this.ball.dx;
+            const hitPos =
+              (this.ball.y - this.rightPaddle.y) / this.rightPaddle.height;
+            const angle = ((hitPos - 0.5) * Math.PI) / 4;
+            const speed =
+              Math.sqrt(
+                this.ball.dx * this.ball.dx + this.ball.dy * this.ball.dy
+              ) * 1.05;
+
+            this.ball.dx = -Math.abs(Math.cos(angle) * speed);
+            this.ball.dy = Math.sin(angle) * speed;
+            this.ball.x = this.rightPaddle.x - this.ball.radius;
+            this.createParticles(
+              this.ball.x,
+              this.ball.y,
+              this.rightPaddle.color
+            );
           }
 
           // Score
           if (this.ball.x < 0) {
             this.score.right++;
             this.resetBall();
+            this.createParticles(
+              this.canvas.width / 2,
+              this.canvas.height / 2,
+              this.rightPaddle.color
+            );
           } else if (this.ball.x > this.canvas.width) {
             this.score.left++;
             this.resetBall();
+            this.createParticles(
+              this.canvas.width / 2,
+              this.canvas.height / 2,
+              this.leftPaddle.color
+            );
           }
+
+          // Update particles
+          this.particles = this.particles.filter((particle) => {
+            particle.x += particle.vx;
+            particle.y += particle.vy;
+            particle.life -= 0.02;
+            particle.vx *= 0.98;
+            particle.vy *= 0.98;
+            return particle.life > 0;
+          });
+
+          // Update trail
+          this.ball.trail.forEach((trail) => (trail.life -= 0.15));
+          this.ball.trail = this.ball.trail.filter((trail) => trail.life > 0);
 
           document.getElementById(
             "pongScore"
-          ).textContent = `${this.score.left} - ${this.score.right}`;
+          ).textContent = `${this.leftPaddle.difficulty}: ${this.score.left} - ${this.score.right} :${this.rightPaddle.difficulty}`;
         }
 
         resetBall() {
@@ -2661,27 +2904,38 @@
         }
 
         draw() {
-          this.ctx.fillStyle = "#1a1a1a";
+          // Dark background
+          this.ctx.fillStyle = "#0a0a0f";
           this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
 
-          // Draw center line
-          this.ctx.strokeStyle = "#333";
-          this.ctx.setLineDash([5, 5]);
+          // Draw ball trail
+          this.ball.trail.forEach((trail, index) => {
+            this.ctx.fillStyle = `rgba(255, 255, 255, ${trail.life * 0.3})`;
+            this.ctx.beginPath();
+            this.ctx.arc(
+              trail.x,
+              trail.y,
+              this.ball.radius * trail.life,
+              0,
+              Math.PI * 2
+            );
+            this.ctx.fill();
+          });
+
+          // Draw center line with glow
+          this.ctx.strokeStyle = "#1a1a2e";
+          this.ctx.lineWidth = 2;
+          this.ctx.setLineDash([8, 8]);
           this.ctx.beginPath();
           this.ctx.moveTo(this.canvas.width / 2, 0);
           this.ctx.lineTo(this.canvas.width / 2, this.canvas.height);
           this.ctx.stroke();
+          this.ctx.setLineDash([]);
 
-          // Draw paddles
-          const gradient1 = this.ctx.createLinearGradient(
-            0,
-            0,
-            0,
-            this.leftPaddle.height
-          );
-          gradient1.addColorStop(0, "#f093fb");
-          gradient1.addColorStop(1, "#f5576c");
-          this.ctx.fillStyle = gradient1;
+          // Draw left paddle (EXPERT) with glow
+          this.ctx.shadowColor = this.leftPaddle.color;
+          this.ctx.shadowBlur = 15;
+          this.ctx.fillStyle = this.leftPaddle.color;
           this.ctx.fillRect(
             this.leftPaddle.x,
             this.leftPaddle.y,
@@ -2689,15 +2943,20 @@
             this.leftPaddle.height
           );
 
-          const gradient2 = this.ctx.createLinearGradient(
-            0,
-            0,
-            0,
-            this.rightPaddle.height
+          // Left paddle highlight
+          this.ctx.shadowBlur = 0;
+          this.ctx.fillStyle = "#66ffaa";
+          this.ctx.fillRect(
+            this.leftPaddle.x + 1,
+            this.leftPaddle.y + 2,
+            this.leftPaddle.width - 2,
+            this.leftPaddle.height - 4
           );
-          gradient2.addColorStop(0, "#f093fb");
-          gradient2.addColorStop(1, "#f5576c");
-          this.ctx.fillStyle = gradient2;
+
+          // Draw right paddle (MASTER) with glow
+          this.ctx.shadowColor = this.rightPaddle.color;
+          this.ctx.shadowBlur = 15;
+          this.ctx.fillStyle = this.rightPaddle.color;
           this.ctx.fillRect(
             this.rightPaddle.x,
             this.rightPaddle.y,
@@ -2705,18 +2964,20 @@
             this.rightPaddle.height
           );
 
-          // Draw ball
-          const ballGradient = this.ctx.createRadialGradient(
-            this.ball.x,
-            this.ball.y,
-            0,
-            this.ball.x,
-            this.ball.y,
-            this.ball.radius
+          // Right paddle highlight
+          this.ctx.shadowBlur = 0;
+          this.ctx.fillStyle = "#ff8899";
+          this.ctx.fillRect(
+            this.rightPaddle.x + 1,
+            this.rightPaddle.y + 2,
+            this.rightPaddle.width - 2,
+            this.rightPaddle.height - 4
           );
-          ballGradient.addColorStop(0, "#fff");
-          ballGradient.addColorStop(1, "#ddd");
-          this.ctx.fillStyle = ballGradient;
+
+          // Draw ball with intense glow
+          this.ctx.shadowColor = "#ffffff";
+          this.ctx.shadowBlur = 20;
+          this.ctx.fillStyle = "#ffffff";
           this.ctx.beginPath();
           this.ctx.arc(
             this.ball.x,
@@ -2726,6 +2987,42 @@
             Math.PI * 2
           );
           this.ctx.fill();
+
+          // Ball core
+          this.ctx.shadowBlur = 0;
+          this.ctx.fillStyle = "#ccffff";
+          this.ctx.beginPath();
+          this.ctx.arc(
+            this.ball.x,
+            this.ball.y,
+            this.ball.radius - 2,
+            0,
+            Math.PI * 2
+          );
+          this.ctx.fill();
+
+          // Draw particles
+          this.particles.forEach((particle) => {
+            this.ctx.shadowColor = particle.color;
+            this.ctx.shadowBlur = 5;
+            this.ctx.fillStyle = particle.color;
+            this.ctx.globalAlpha = particle.life;
+            this.ctx.fillRect(particle.x, particle.y, 3, 3);
+            this.ctx.globalAlpha = 1;
+          });
+
+          // Draw AI indicators
+          this.ctx.shadowBlur = 0;
+          this.ctx.fillStyle = this.leftPaddle.color;
+          this.ctx.font = "bold 10px Arial";
+          this.ctx.textAlign = "center";
+          this.ctx.fillText("EXPERT", 30, 15);
+
+          this.ctx.fillStyle = this.rightPaddle.color;
+          this.ctx.fillText("MASTER", this.canvas.width - 30, 15);
+
+          // Reset shadow
+          this.ctx.shadowBlur = 0;
         }
 
         gameLoop() {
@@ -2735,7 +3032,7 @@
         }
       }
 
-      // Auto-Playing Tetris Game (Simplified)
+      // Auto-Playing Tetris Game (Enhanced)
       class TetrisGame {
         constructor(canvas) {
           this.canvas = canvas;
@@ -2747,48 +3044,95 @@
             .fill()
             .map(() => Array(this.cols).fill(0));
           this.lines = 0;
+          this.score = 0;
+          this.level = 1;
+          this.dropTime = 0;
+          this.dropInterval = 600; // Start slower
+          this.lastTime = Date.now();
           this.currentPiece = this.getRandomPiece();
           this.currentX = Math.floor(this.cols / 2);
           this.currentY = 0;
-          this.dropCounter = 0;
+          this.nextPiece = this.getRandomPiece();
+          this.colors = [
+            "#ff4757",
+            "#ff6b7a",
+            "#ffa8a8",
+            "#3742fa",
+            "#70a1ff",
+            "#5352ed",
+            "#2f3542",
+          ];
+          this.particles = [];
           this.gameLoop();
         }
 
         getRandomPiece() {
           const pieces = [
-            [[1, 1, 1, 1]], // I
-            [
-              [1, 1],
-              [1, 1],
-            ], // O
-            [
-              [0, 1, 0],
-              [1, 1, 1],
-            ], // T
-            [
-              [1, 0, 0],
-              [1, 1, 1],
-            ], // L
-            [
-              [0, 0, 1],
-              [1, 1, 1],
-            ], // J
-            [
-              [0, 1, 1],
-              [1, 1, 0],
-            ], // S
-            [
-              [1, 1, 0],
-              [0, 1, 1],
-            ], // Z
+            { shape: [[1, 1, 1, 1]], color: "#ff4757" }, // I
+            {
+              shape: [
+                [1, 1],
+                [1, 1],
+              ],
+              color: "#ff6b7a",
+            }, // O
+            {
+              shape: [
+                [0, 1, 0],
+                [1, 1, 1],
+              ],
+              color: "#ffa8a8",
+            }, // T
+            {
+              shape: [
+                [1, 0, 0],
+                [1, 1, 1],
+              ],
+              color: "#3742fa",
+            }, // L
+            {
+              shape: [
+                [0, 0, 1],
+                [1, 1, 1],
+              ],
+              color: "#70a1ff",
+            }, // J
+            {
+              shape: [
+                [0, 1, 1],
+                [1, 1, 0],
+              ],
+              color: "#5352ed",
+            }, // S
+            {
+              shape: [
+                [1, 1, 0],
+                [0, 1, 1],
+              ],
+              color: "#2f3542",
+            }, // Z
           ];
           return pieces[Math.floor(Math.random() * pieces.length)];
         }
 
+        createParticles(x, y) {
+          for (let i = 0; i < 10; i++) {
+            this.particles.push({
+              x: x * this.blockSize + this.blockSize / 2,
+              y: y * this.blockSize + this.blockSize / 2,
+              vx: (Math.random() - 0.5) * 8,
+              vy: (Math.random() - 0.5) * 8,
+              life: 1.0,
+              color:
+                this.colors[Math.floor(Math.random() * this.colors.length)],
+            });
+          }
+        }
+
         canMove(piece, x, y) {
-          for (let row = 0; row < piece.length; row++) {
-            for (let col = 0; col < piece[row].length; col++) {
-              if (piece[row][col]) {
+          for (let row = 0; row < piece.shape.length; row++) {
+            for (let col = 0; col < piece.shape[row].length; col++) {
+              if (piece.shape[row][col]) {
                 const newX = x + col;
                 const newY = y + row;
                 if (
@@ -2806,37 +3150,72 @@
         }
 
         placePiece() {
-          for (let row = 0; row < this.currentPiece.length; row++) {
-            for (let col = 0; col < this.currentPiece[row].length; col++) {
-              if (this.currentPiece[row][col]) {
+          for (let row = 0; row < this.currentPiece.shape.length; row++) {
+            for (
+              let col = 0;
+              col < this.currentPiece.shape[row].length;
+              col++
+            ) {
+              if (this.currentPiece.shape[row][col]) {
                 const y = this.currentY + row;
                 const x = this.currentX + col;
-                if (y >= 0) this.board[y][x] = 1;
+                if (y >= 0) {
+                  this.board[y][x] = this.currentPiece.color;
+                  this.createParticles(x, y);
+                }
               }
             }
           }
           this.clearLines();
-          this.currentPiece = this.getRandomPiece();
+          this.currentPiece = this.nextPiece;
+          this.nextPiece = this.getRandomPiece();
           this.currentX = Math.floor(this.cols / 2);
           this.currentY = 0;
+
+          // Check for game over
+          if (!this.canMove(this.currentPiece, this.currentX, this.currentY)) {
+            // Reset the game instead of stopping
+            this.board = Array(this.rows)
+              .fill()
+              .map(() => Array(this.cols).fill(0));
+            this.lines = 0;
+            this.score = 0;
+            this.level = 1;
+          }
         }
 
         clearLines() {
+          let linesCleared = 0;
           for (let row = this.rows - 1; row >= 0; row--) {
-            if (this.board[row].every((cell) => cell === 1)) {
+            if (this.board[row].every((cell) => cell !== 0)) {
+              // Create particles for cleared line
+              for (let col = 0; col < this.cols; col++) {
+                this.createParticles(col, row);
+              }
               this.board.splice(row, 1);
               this.board.unshift(Array(this.cols).fill(0));
               this.lines++;
+              linesCleared++;
               row++; // Check the same row again
             }
           }
-          document.getElementById("tetrisScore").textContent = this.lines;
+
+          // Update score based on lines cleared
+          if (linesCleared > 0) {
+            this.score += linesCleared * 100 * this.level;
+            this.level = Math.floor(this.lines / 10) + 1;
+            this.dropInterval = Math.max(100, 600 - this.level * 50);
+          }
+
+          document.getElementById(
+            "tetrisScore"
+          ).textContent = `Lines: ${this.lines} | Level: ${this.level}`;
         }
 
-        update() {
-          this.dropCounter++;
-          if (this.dropCounter > 30) {
-            // Drop every 30 frames
+        update(deltaTime) {
+          this.dropTime += deltaTime;
+
+          if (this.dropTime > this.dropInterval) {
             if (
               this.canMove(this.currentPiece, this.currentX, this.currentY + 1)
             ) {
@@ -2844,21 +3223,94 @@
             } else {
               this.placePiece();
             }
-            this.dropCounter = 0;
+            this.dropTime = 0;
           }
 
-          // Simple AI: try to move left or right occasionally
-          if (Math.random() < 0.1) {
-            const direction = Math.random() < 0.5 ? -1 : 1;
-            if (
-              this.canMove(
-                this.currentPiece,
-                this.currentX + direction,
-                this.currentY
-              )
-            ) {
-              this.currentX += direction;
+          // Enhanced AI: Strategic piece placement
+          if (Math.random() < 0.15) {
+            // Find best position for current piece
+            const bestMove = this.findBestMove();
+            if (bestMove) {
+              this.currentX = bestMove.x;
+              if (bestMove.rotate && Math.random() < 0.3) {
+                this.rotatePiece();
+              }
             }
+          }
+
+          // Update particles
+          this.particles = this.particles.filter((particle) => {
+            particle.x += particle.vx;
+            particle.y += particle.vy;
+            particle.vy += 0.3;
+            particle.life -= 0.02;
+            particle.vx *= 0.98;
+            return particle.life > 0;
+          });
+        }
+
+        findBestMove() {
+          let bestScore = -Infinity;
+          let bestMove = null;
+
+          for (let x = -2; x < this.cols + 2; x++) {
+            if (this.canMove(this.currentPiece, x, this.currentY)) {
+              const score = this.evaluatePosition(x);
+              if (score > bestScore) {
+                bestScore = score;
+                bestMove = { x: x, rotate: false };
+              }
+            }
+          }
+          return bestMove;
+        }
+
+        evaluatePosition(x) {
+          let score = 0;
+
+          // Prefer center positions slightly
+          const centerDistance = Math.abs(x - this.cols / 2);
+          score -= centerDistance * 0.1;
+
+          // Check for potential line clears
+          let tempBoard = this.board.map((row) => [...row]);
+          for (let row = 0; row < this.currentPiece.shape.length; row++) {
+            for (
+              let col = 0;
+              col < this.currentPiece.shape[row].length;
+              col++
+            ) {
+              if (this.currentPiece.shape[row][col]) {
+                const y = this.currentY + row;
+                const newX = x + col;
+                if (y >= 0 && y < this.rows && newX >= 0 && newX < this.cols) {
+                  tempBoard[y][newX] = 1;
+                }
+              }
+            }
+          }
+
+          // Check for complete lines
+          for (let row = 0; row < this.rows; row++) {
+            if (tempBoard[row].every((cell) => cell !== 0)) {
+              score += 100; // Reward line clearing
+            }
+          }
+
+          return score;
+        }
+
+        rotatePiece() {
+          // Simple 90-degree rotation
+          const rotated = {
+            shape: this.currentPiece.shape[0].map((_, i) =>
+              this.currentPiece.shape.map((row) => row[i]).reverse()
+            ),
+            color: this.currentPiece.color,
+          };
+
+          if (this.canMove(rotated, this.currentX, this.currentY)) {
+            this.currentPiece = rotated;
           }
         }
 
@@ -2899,9 +3351,13 @@
           }
 
           // Draw current piece
-          for (let row = 0; row < this.currentPiece.length; row++) {
-            for (let col = 0; col < this.currentPiece[row].length; col++) {
-              if (this.currentPiece[row][col]) {
+          for (let row = 0; row < this.currentPiece.shape.length; row++) {
+            for (
+              let col = 0;
+              col < this.currentPiece.shape[row].length;
+              col++
+            ) {
+              if (this.currentPiece.shape[row][col]) {
                 const x = (this.currentX + col) * this.blockSize;
                 const y = (this.currentY + row) * this.blockSize;
                 const gradient = this.ctx.createLinearGradient(
@@ -2910,19 +3366,31 @@
                   x + this.blockSize,
                   y + this.blockSize
                 );
-                gradient.addColorStop(0, "#fed6e3");
+                gradient.addColorStop(0, this.currentPiece.color);
                 gradient.addColorStop(1, "#a8edea");
                 this.ctx.fillStyle = gradient;
                 this.ctx.fillRect(x, y, this.blockSize - 1, this.blockSize - 1);
               }
             }
           }
+
+          // Draw particles
+          this.particles.forEach((particle) => {
+            this.ctx.globalAlpha = particle.life;
+            this.ctx.fillStyle = particle.color;
+            this.ctx.fillRect(particle.x, particle.y, 3, 3);
+          });
+          this.ctx.globalAlpha = 1;
         }
 
         gameLoop() {
-          this.update();
+          const now = Date.now();
+          const deltaTime = now - this.lastTime;
+          this.lastTime = now;
+
+          this.update(deltaTime);
           this.draw();
-          setTimeout(() => this.gameLoop(), 100);
+          requestAnimationFrame(() => this.gameLoop());
         }
       }
 
@@ -2931,15 +3399,45 @@
         constructor(canvas) {
           this.canvas = canvas;
           this.ctx = canvas.getContext("2d");
-          this.ball = { x: 150, y: 250, dx: 3, dy: -3, radius: 8 };
-          this.paddle = { x: 120, y: 280, width: 60, height: 10, speed: 5 };
+          this.ball = {
+            x: 150,
+            y: 250,
+            dx: 4,
+            dy: -4,
+            radius: 8,
+            trail: [],
+          };
+          this.paddle = {
+            x: 120,
+            y: 280,
+            width: 60,
+            height: 10,
+            speed: 6,
+          };
+          this.bottomCatcher = {
+            x: 0,
+            y: this.canvas.height - 8,
+            width: this.canvas.width,
+            height: 8,
+            speed: 4,
+          };
           this.bricks = [];
+          this.particles = [];
           this.score = 0;
+          this.combo = 0;
           this.initBricks();
           this.gameLoop();
         }
 
         initBricks() {
+          this.bricks = [];
+          const colors = [
+            "#ff4757",
+            "#ff6b7a",
+            "#ff8c94",
+            "#ffa8a8",
+            "#ffb3ba",
+          ];
           for (let row = 0; row < 5; row++) {
             for (let col = 0; col < 8; col++) {
               this.bricks.push({
@@ -2948,33 +3446,62 @@
                 width: 35,
                 height: 18,
                 visible: true,
+                color: colors[row],
+                hp: 1,
               });
             }
           }
         }
 
+        createParticles(x, y, color) {
+          for (let i = 0; i < 8; i++) {
+            this.particles.push({
+              x: x,
+              y: y,
+              vx: (Math.random() - 0.5) * 6,
+              vy: (Math.random() - 0.5) * 6,
+              life: 1.0,
+              color: color,
+            });
+          }
+        }
+
         update() {
+          // Add ball trail
+          this.ball.trail.push({ x: this.ball.x, y: this.ball.y, life: 1.0 });
+          if (this.ball.trail.length > 10) this.ball.trail.shift();
+
           // Move ball
           this.ball.x += this.ball.dx;
           this.ball.y += this.ball.dy;
 
           // Ball collision with walls
           if (
-            this.ball.x <= this.ball.radius ||
-            this.ball.x >= this.canvas.width - this.ball.radius
+            this.ball.x - this.ball.radius <= 0 ||
+            this.ball.x + this.ball.radius >= this.canvas.width
           ) {
             this.ball.dx = -this.ball.dx;
+            this.ball.x = Math.max(
+              this.ball.radius,
+              Math.min(this.canvas.width - this.ball.radius, this.ball.x)
+            );
           }
-          if (this.ball.y <= this.ball.radius) {
+          if (this.ball.y - this.ball.radius <= 0) {
             this.ball.dy = -this.ball.dy;
+            this.ball.y = this.ball.radius;
           }
 
-          // AI paddle movement
+          // AI paddle movement with prediction
+          const predictedX = this.ball.x + this.ball.dx * 10;
           const paddleCenter = this.paddle.x + this.paddle.width / 2;
-          if (paddleCenter < this.ball.x - 10) {
-            this.paddle.x += this.paddle.speed;
-          } else if (paddleCenter > this.ball.x + 10) {
-            this.paddle.x -= this.paddle.speed;
+
+          if (this.ball.dy > 0) {
+            // Ball moving toward paddle
+            if (paddleCenter < predictedX - 5) {
+              this.paddle.x += this.paddle.speed;
+            } else if (paddleCenter > predictedX + 5) {
+              this.paddle.x -= this.paddle.speed;
+            }
           }
 
           // Keep paddle in bounds
@@ -2983,88 +3510,187 @@
             Math.min(this.canvas.width - this.paddle.width, this.paddle.x)
           );
 
-          // Ball collision with paddle
+          // Ball collision with paddle (improved)
           if (
             this.ball.y + this.ball.radius >= this.paddle.y &&
-            this.ball.x >= this.paddle.x &&
-            this.ball.x <= this.paddle.x + this.paddle.width
+            this.ball.y - this.ball.radius <=
+              this.paddle.y + this.paddle.height &&
+            this.ball.x + this.ball.radius >= this.paddle.x &&
+            this.ball.x - this.ball.radius <=
+              this.paddle.x + this.paddle.width &&
+            this.ball.dy > 0
           ) {
-            this.ball.dy = -this.ball.dy;
+            // Calculate angle based on where ball hits paddle
+            const hitPos = (this.ball.x - this.paddle.x) / this.paddle.width;
+            const angle = ((hitPos - 0.5) * Math.PI) / 3; // Max 60 degrees
+            const speed = Math.sqrt(
+              this.ball.dx * this.ball.dx + this.ball.dy * this.ball.dy
+            );
+
+            this.ball.dx = Math.sin(angle) * speed;
+            this.ball.dy = -Math.abs(Math.cos(angle) * speed);
+            this.ball.y = this.paddle.y - this.ball.radius;
           }
 
-          // Ball collision with bricks
-          this.bricks.forEach((brick) => {
-            if (
-              brick.visible &&
-              this.ball.x >= brick.x &&
-              this.ball.x <= brick.x + brick.width &&
-              this.ball.y >= brick.y &&
-              this.ball.y <= brick.y + brick.height
-            ) {
+          // Bottom catcher AI movement
+          const catcherCenter =
+            this.bottomCatcher.x + this.bottomCatcher.width / 2;
+          const ballPredictedX = this.ball.x + this.ball.dx * 5;
+
+          if (this.ball.dy > 0 && this.ball.y > this.canvas.height - 100) {
+            // Move catcher toward predicted ball position
+            if (catcherCenter < ballPredictedX - 20) {
+              this.bottomCatcher.x = Math.min(
+                this.bottomCatcher.x + this.bottomCatcher.speed,
+                0
+              );
+            } else if (catcherCenter > ballPredictedX + 20) {
+              this.bottomCatcher.x = Math.max(
+                this.bottomCatcher.x - this.bottomCatcher.speed,
+                -(this.bottomCatcher.width * 0.7)
+              );
+            }
+          }
+
+          // Ball collision with bottom catcher
+          if (
+            this.ball.y + this.ball.radius >= this.bottomCatcher.y &&
+            this.ball.x + this.ball.radius >= this.bottomCatcher.x &&
+            this.ball.x - this.ball.radius <=
+              this.bottomCatcher.x + this.bottomCatcher.width &&
+            this.ball.dy > 0
+          ) {
+            const hitPos =
+              (this.ball.x - this.bottomCatcher.x) / this.bottomCatcher.width;
+            const angle = ((hitPos - 0.5) * Math.PI) / 4; // Max 45 degrees
+            const speed = Math.sqrt(
+              this.ball.dx * this.ball.dx + this.ball.dy * this.ball.dy
+            );
+
+            this.ball.dx = Math.sin(angle) * speed;
+            this.ball.dy = -Math.abs(Math.cos(angle) * speed);
+            this.ball.y = this.bottomCatcher.y - this.ball.radius;
+            this.createParticles(this.ball.x, this.ball.y, "#00ff88");
+          }
+
+          // Ball collision with bricks (improved)
+          this.bricks.forEach((brick, index) => {
+            if (!brick.visible) return;
+
+            // Check if ball intersects brick
+            const closestX = Math.max(
+              brick.x,
+              Math.min(this.ball.x, brick.x + brick.width)
+            );
+            const closestY = Math.max(
+              brick.y,
+              Math.min(this.ball.y, brick.y + brick.height)
+            );
+            const distance = Math.sqrt(
+              (this.ball.x - closestX) ** 2 + (this.ball.y - closestY) ** 2
+            );
+
+            if (distance < this.ball.radius) {
               brick.visible = false;
-              this.ball.dy = -this.ball.dy;
-              this.score++;
+              this.score += 10;
+              this.combo++;
+
+              // Create particles
+              this.createParticles(
+                brick.x + brick.width / 2,
+                brick.y + brick.height / 2,
+                brick.color
+              );
+
+              // Determine bounce direction
+              const overlapX =
+                this.ball.radius - Math.abs(this.ball.x - closestX);
+              const overlapY =
+                this.ball.radius - Math.abs(this.ball.y - closestY);
+
+              if (overlapX < overlapY) {
+                this.ball.dx = -this.ball.dx;
+              } else {
+                this.ball.dy = -this.ball.dy;
+              }
             }
           });
 
           // Reset ball if it goes off screen
-          if (this.ball.y > this.canvas.height) {
+          if (this.ball.y > this.canvas.height + 50) {
             this.ball.x = 150;
             this.ball.y = 250;
-            this.ball.dy = -Math.abs(this.ball.dy);
+            this.ball.dx = 4;
+            this.ball.dy = -4;
+            this.combo = 0;
           }
 
-          // Reset game if all bricks are destroyed
+          // Check win condition
           if (this.bricks.every((brick) => !brick.visible)) {
-            this.initBricks();
-            this.score = 0;
+            setTimeout(() => {
+              this.initBricks();
+              this.ball.x = 150;
+              this.ball.y = 250;
+              this.ball.dx = 4;
+              this.ball.dy = -4;
+            }, 1000);
           }
 
-          document.getElementById("breakoutScore").textContent =
-            this.bricks.filter((b) => !b.visible).length;
+          // Update particles
+          this.particles = this.particles.filter((particle) => {
+            particle.x += particle.vx;
+            particle.y += particle.vy;
+            particle.vy += 0.2;
+            particle.life -= 0.02;
+            return particle.life > 0;
+          });
+
+          // Update trail
+          this.ball.trail.forEach((trail) => (trail.life -= 0.1));
+          this.ball.trail = this.ball.trail.filter((trail) => trail.life > 0);
+
+          document.getElementById("breakoutScore").textContent = this.score;
         }
 
         draw() {
-          // Clear canvas
-          const gradient = this.ctx.createLinearGradient(
-            0,
-            0,
-            this.canvas.width,
-            this.canvas.height
-          );
-          gradient.addColorStop(0, "#1e1e2e");
-          gradient.addColorStop(1, "#2a2a3a");
-          this.ctx.fillStyle = gradient;
+          // Clear canvas with dark background
+          this.ctx.fillStyle = "#0a0a0f";
           this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
 
-          // Draw bricks
+          // Draw ball trail
+          this.ball.trail.forEach((trail, index) => {
+            this.ctx.fillStyle = `rgba(100, 255, 255, ${trail.life * 0.4})`;
+            this.ctx.beginPath();
+            this.ctx.arc(
+              trail.x,
+              trail.y,
+              this.ball.radius * trail.life,
+              0,
+              Math.PI * 2
+            );
+            this.ctx.fill();
+          });
+
+          // Draw bricks with neon effect
           this.bricks.forEach((brick) => {
             if (brick.visible) {
-              const gradient = this.ctx.createLinearGradient(
-                brick.x,
-                brick.y,
-                brick.x + brick.width,
-                brick.y + brick.height
-              );
-              gradient.addColorStop(0, "#ff9a9e");
-              gradient.addColorStop(1, "#fecfef");
-              this.ctx.fillStyle = gradient;
+              // Glow effect
+              this.ctx.shadowColor = brick.color;
+              this.ctx.shadowBlur = 10;
+              this.ctx.fillStyle = brick.color;
               this.ctx.fillRect(brick.x, brick.y, brick.width, brick.height);
-              this.ctx.strokeStyle = "#fff";
-              this.ctx.strokeRect(brick.x, brick.y, brick.width, brick.height);
+
+              // Inner highlight
+              this.ctx.shadowBlur = 0;
+              this.ctx.fillStyle = "#ffffff";
+              this.ctx.fillRect(brick.x + 2, brick.y + 2, brick.width - 4, 3);
             }
           });
 
-          // Draw paddle
-          const paddleGradient = this.ctx.createLinearGradient(
-            this.paddle.x,
-            this.paddle.y,
-            this.paddle.x + this.paddle.width,
-            this.paddle.y + this.paddle.height
-          );
-          paddleGradient.addColorStop(0, "#667eea");
-          paddleGradient.addColorStop(1, "#764ba2");
-          this.ctx.fillStyle = paddleGradient;
+          // Draw paddle with neon glow
+          this.ctx.shadowColor = "#00ff88";
+          this.ctx.shadowBlur = 15;
+          this.ctx.fillStyle = "#00ff88";
           this.ctx.fillRect(
             this.paddle.x,
             this.paddle.y,
@@ -3072,18 +3698,41 @@
             this.paddle.height
           );
 
-          // Draw ball
-          const ballGradient = this.ctx.createRadialGradient(
-            this.ball.x,
-            this.ball.y,
-            0,
-            this.ball.x,
-            this.ball.y,
-            this.ball.radius
+          // Paddle highlight
+          this.ctx.shadowBlur = 0;
+          this.ctx.fillStyle = "#66ffaa";
+          this.ctx.fillRect(
+            this.paddle.x + 2,
+            this.paddle.y + 2,
+            this.paddle.width - 4,
+            this.paddle.height - 4
           );
-          ballGradient.addColorStop(0, "#fff");
-          ballGradient.addColorStop(1, "#ddd");
-          this.ctx.fillStyle = ballGradient;
+
+          // Draw bottom catcher with glow
+          this.ctx.shadowColor = "#00ff88";
+          this.ctx.shadowBlur = 10;
+          this.ctx.fillStyle = "#00ff88";
+          this.ctx.fillRect(
+            this.bottomCatcher.x,
+            this.bottomCatcher.y,
+            this.bottomCatcher.width,
+            this.bottomCatcher.height
+          );
+
+          // Catcher highlight
+          this.ctx.shadowBlur = 0;
+          this.ctx.fillStyle = "#44ff77";
+          this.ctx.fillRect(
+            this.bottomCatcher.x,
+            this.bottomCatcher.y,
+            this.bottomCatcher.width,
+            3
+          );
+
+          // Draw ball with intense glow
+          this.ctx.shadowColor = "#ffffff";
+          this.ctx.shadowBlur = 20;
+          this.ctx.fillStyle = "#ffffff";
           this.ctx.beginPath();
           this.ctx.arc(
             this.ball.x,
@@ -3093,6 +3742,44 @@
             Math.PI * 2
           );
           this.ctx.fill();
+
+          // Ball core
+          this.ctx.shadowBlur = 0;
+          this.ctx.fillStyle = "#ccffff";
+          this.ctx.beginPath();
+          this.ctx.arc(
+            this.ball.x,
+            this.ball.y,
+            this.ball.radius - 2,
+            0,
+            Math.PI * 2
+          );
+          this.ctx.fill();
+
+          // Draw particles
+          this.particles.forEach((particle) => {
+            this.ctx.shadowColor = particle.color;
+            this.ctx.shadowBlur = 5;
+            this.ctx.fillStyle = particle.color;
+            this.ctx.globalAlpha = particle.life;
+            this.ctx.fillRect(particle.x, particle.y, 3, 3);
+            this.ctx.globalAlpha = 1;
+          });
+
+          // Reset shadow
+          this.ctx.shadowBlur = 0;
+
+          // Draw combo indicator
+          if (this.combo > 1) {
+            this.ctx.fillStyle = "#ff4757";
+            this.ctx.font = "bold 16px Arial";
+            this.ctx.textAlign = "center";
+            this.ctx.fillText(
+              `COMBO x${this.combo}!`,
+              this.canvas.width / 2,
+              25
+            );
+          }
         }
 
         gameLoop() {
@@ -3157,7 +3844,16 @@
           this.board[index] = symbol;
           const cell = this.boardElement.children[index];
           cell.textContent = symbol;
-          cell.style.color = symbol === "X" ? "#06b6d4" : "#ef4444";
+
+          if (symbol === "X") {
+            cell.style.color = "#00ff88";
+            cell.style.textShadow =
+              "0 0 10px #00ff88, 0 0 20px #00ff88, 0 0 30px #00ff88";
+          } else {
+            cell.style.color = "#ff4757";
+            cell.style.textShadow =
+              "0 0 10px #ff4757, 0 0 20px #ff4757, 0 0 30px #ff4757";
+          }
 
           if (this.checkWin(symbol)) {
             this.gameActive = false;
@@ -3178,39 +3874,152 @@
         aiMove() {
           if (!this.gameActive) return;
 
-          const bestMove = this.minimax(this.board, this.aiSymbol);
-          this.makeMove(bestMove.index, this.aiSymbol);
+          // Enhanced AI with strategic priority
+          const bestMove = this.getBestMove();
+          this.makeMove(bestMove, this.aiSymbol);
         }
 
-        minimax(board, player) {
+        getBestMove() {
+          // Priority 1: Win if possible
+          for (let i = 0; i < 9; i++) {
+            if (this.board[i] === "") {
+              this.board[i] = this.aiSymbol;
+              if (this.checkWin(this.aiSymbol)) {
+                this.board[i] = "";
+                return i;
+              }
+              this.board[i] = "";
+            }
+          }
+
+          // Priority 2: Block player from winning
+          for (let i = 0; i < 9; i++) {
+            if (this.board[i] === "") {
+              this.board[i] = this.playerSymbol;
+              if (this.checkWin(this.playerSymbol)) {
+                this.board[i] = "";
+                return i;
+              }
+              this.board[i] = "";
+            }
+          }
+
+          // Priority 3: Use enhanced minimax with alpha-beta pruning
+          const result = this.minimaxAlphaBeta(
+            this.board,
+            0,
+            true,
+            -Infinity,
+            Infinity
+          );
+          return result.index;
+        }
+
+        minimaxAlphaBeta(board, depth, isMaximizing, alpha, beta) {
+          const result = this.evaluateBoard(board);
+
+          if (result !== null) {
+            return { score: result - depth }; // Prefer faster wins/blocks
+          }
+
           const availableMoves = board
             .map((cell, index) => (cell === "" ? index : null))
             .filter((val) => val !== null);
 
-          if (this.checkWin(this.playerSymbol)) return { score: -10 };
-          if (this.checkWin(this.aiSymbol)) return { score: 10 };
-          if (availableMoves.length === 0) return { score: 0 };
-
-          const moves = [];
-          for (let move of availableMoves) {
-            const newBoard = [...board];
-            newBoard[move] = player;
-
-            const result =
-              player === this.aiSymbol
-                ? this.minimax(newBoard, this.playerSymbol)
-                : this.minimax(newBoard, this.aiSymbol);
-
-            moves.push({ index: move, score: result.score });
+          if (availableMoves.length === 0) {
+            return { score: 0 };
           }
 
-          return player === this.aiSymbol
-            ? moves.reduce((best, move) =>
-                move.score > best.score ? move : best
-              )
-            : moves.reduce((best, move) =>
-                move.score < best.score ? move : best
+          // Strategic move ordering - prioritize center, corners, then edges
+          const moveOrder = this.getStrategicMoveOrder(availableMoves);
+
+          if (isMaximizing) {
+            let maxEval = { score: -Infinity, index: -1 };
+
+            for (let move of moveOrder) {
+              const newBoard = [...board];
+              newBoard[move] = this.aiSymbol;
+
+              const evaluation = this.minimaxAlphaBeta(
+                newBoard,
+                depth + 1,
+                false,
+                alpha,
+                beta
               );
+
+              if (evaluation.score > maxEval.score) {
+                maxEval = { score: evaluation.score, index: move };
+              }
+
+              alpha = Math.max(alpha, evaluation.score);
+              if (beta <= alpha) break; // Alpha-beta pruning
+            }
+
+            return maxEval;
+          } else {
+            let minEval = { score: Infinity, index: -1 };
+
+            for (let move of moveOrder) {
+              const newBoard = [...board];
+              newBoard[move] = this.playerSymbol;
+
+              const evaluation = this.minimaxAlphaBeta(
+                newBoard,
+                depth + 1,
+                true,
+                alpha,
+                beta
+              );
+
+              if (evaluation.score < minEval.score) {
+                minEval = { score: evaluation.score, index: move };
+              }
+
+              beta = Math.min(beta, evaluation.score);
+              if (beta <= alpha) break; // Alpha-beta pruning
+            }
+
+            return minEval;
+          }
+        }
+
+        evaluateBoard(board) {
+          if (this.checkWinOnBoard(board, this.aiSymbol)) return 10;
+          if (this.checkWinOnBoard(board, this.playerSymbol)) return -10;
+          return null;
+        }
+
+        checkWinOnBoard(board, symbol) {
+          return this.winPatterns.some((pattern) =>
+            pattern.every((index) => board[index] === symbol)
+          );
+        }
+
+        getStrategicMoveOrder(availableMoves) {
+          // Strategic positioning: center > corners > edges
+          const center = [4];
+          const corners = [0, 2, 6, 8];
+          const edges = [1, 3, 5, 7];
+
+          const ordered = [];
+
+          // Add center if available
+          center.forEach((pos) => {
+            if (availableMoves.includes(pos)) ordered.push(pos);
+          });
+
+          // Add corners if available
+          corners.forEach((pos) => {
+            if (availableMoves.includes(pos)) ordered.push(pos);
+          });
+
+          // Add edges if available
+          edges.forEach((pos) => {
+            if (availableMoves.includes(pos)) ordered.push(pos);
+          });
+
+          return ordered;
         }
 
         checkWin(symbol) {
@@ -3262,12 +4071,62 @@
     💻 This portfolio represents passion, precision, and purpose
     🌍 Creating digital experiences that matter to the world
     🐍 Watch the snake play itself while you explore!
+    🎮 All games now enhanced with modern graphics and responsive design!
     `);
+
+      // Responsive Canvas Management
+      function makeCanvasResponsive(canvas, maxWidth = 400, maxHeight = 320) {
+        function resizeCanvas() {
+          const container = canvas.parentElement;
+          const containerWidth = container.clientWidth - 40; // Account for padding
+
+          let newWidth = Math.min(maxWidth, containerWidth);
+          let newHeight = Math.min(
+            maxHeight,
+            (newWidth * maxHeight) / maxWidth
+          );
+
+          // Ensure minimum size for mobile
+          if (window.innerWidth <= 480) {
+            newWidth = Math.max(newWidth, 300);
+            newHeight = Math.max(newHeight, 200);
+          } else {
+            newWidth = Math.max(newWidth, 350);
+            newHeight = Math.max(newHeight, 220);
+          }
+
+          canvas.style.width = newWidth + "px";
+          canvas.style.height = newHeight + "px";
+        }
+
+        resizeCanvas();
+        window.addEventListener("resize", resizeCanvas);
+        window.addEventListener("orientationchange", () =>
+          setTimeout(resizeCanvas, 100)
+        );
+        return resizeCanvas;
+      }
 
       // Initialize everything when DOM is loaded
       document.addEventListener("DOMContentLoaded", () => {
         updateActiveNav();
         createFloatingElements();
+
+        // Make all game canvases responsive with larger sizes
+        const gameCanvases = {
+          snake: { maxWidth: 400, maxHeight: 320 },
+          pong: { maxWidth: 400, maxHeight: 260 },
+          tetris: { maxWidth: 300, maxHeight: 400 },
+          breakout: { maxWidth: 400, maxHeight: 300 },
+        };
+
+        Object.keys(gameCanvases).forEach((gameType) => {
+          const canvas = document.getElementById(gameType + "Game");
+          if (canvas) {
+            const { maxWidth, maxHeight } = gameCanvases[gameType];
+            makeCanvasResponsive(canvas, maxWidth, maxHeight);
+          }
+        });
 
         // Initialize all games
         const snakeCanvas = document.getElementById("snakeGame");

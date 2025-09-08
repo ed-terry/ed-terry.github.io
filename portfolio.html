@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edward Terry — Digital Creator & Entrepreneur</title>
+
+    <!-- Heart Favicon - Made with Love -->
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>❤️</text></svg>"
+    />
+
+    <style>
+      /* Minimal Portfolio - Edward Terry */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-snap-type: y mandatory;
+        scroll-behavior: smooth;
+        overflow-x: hidden;
+      }
+
+      body {
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+        background: #ffffff;
+        color: #1a1a1a;
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      /* Section Snap Layout */
+      .section {
+        width: 100vw;
+        height: 100vh;
+        scroll-snap-align: start;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        padding: 2rem;
+      }
+
+      .container {
+        max-width: 1200px;
+        width: 100%;
+        text-align: center;
+      }
+
+      /* Typography */
+      h1 {
+        font-size: clamp(3rem, 8vw, 6rem);
+        font-weight: 200;
+        margin-bottom: 1rem;
+        letter-spacing: -0.02em;
+      }
+
+      h2 {
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        font-weight: 300;
+        margin-bottom: 2rem;
+        letter-spacing: -0.01em;
+      }
+
+      h3 {
+        font-size: clamp(1.5rem, 3vw, 2rem);
+        font-weight: 400;
+        margin-bottom: 1rem;
+      }
+
+      p {
+        font-size: clamp(1rem, 2vw, 1.2rem);
+        color: #666;
+        max-width: 600px;
+        margin: 0 auto 2rem;
+        font-weight: 300;
+      }
+
+      /* Navigation */
+      .nav {
+        position: fixed;
+        top: 2rem;
+        right: 2rem;
+        z-index: 1000;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .nav-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: #ddd;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .nav-dot.active {
+        background: #1a1a1a;
+        transform: scale(1.2);
+      }
+
+      /* Section Numbers */
+      .section-number {
+        position: absolute;
+        top: 2rem;
+        left: 2rem;
+        font-size: 1rem;
+        color: #ccc;
+        font-weight: 300;
+      }
+
+      /* Profile Photo */
+      .profile-photo {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin: 0 auto 2rem;
+        display: block;
+        border: 3px solid #f0f0f0;
+      }
+
+      /* Buttons */
+      .btn {
+        display: inline-block;
+        padding: 1rem 2rem;
+        background: transparent;
+        border: 2px solid #1a1a1a;
+        color: #1a1a1a;
+        text-decoration: none;
+        border-radius: 50px;
+        font-weight: 400;
+        transition: all 0.3s ease;
+        margin: 0.5rem;
+      }
+
+      .btn:hover {
+        background: #1a1a1a;
+        color: #ffffff;
+      }
+
+      .btn-primary {
+        background: #1a1a1a;
+        color: #ffffff;
+      }
+
+      .btn-primary:hover {
+        background: transparent;
+        color: #1a1a1a;
+      }
+
+      /* Skills Grid */
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        margin: 3rem 0;
+      }
+
+      .skill-card {
+        padding: 2rem;
+        background: #fafafa;
+        border-radius: 12px;
+        border: 1px solid #f0f0f0;
+        transition: all 0.3s ease;
+      }
+
+      .skill-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      }
+
+      .skill-icon {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+      }
+
+      /* Projects Grid */
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 2rem;
+        margin: 3rem 0;
+      }
+
+      .project-card {
+        background: #fafafa;
+        border-radius: 16px;
+        border: 1px solid #f0f0f0;
+        overflow: hidden;
+        transition: all 0.3s ease;
+      }
+
+      .project-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+      }
+
+      .project-content {
+        padding: 2rem;
+      }
+
+      .project-number {
+        color: #999;
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .project-title {
+        font-size: 1.4rem;
+        font-weight: 500;
+        margin-bottom: 1rem;
+        color: #1a1a1a;
+      }
+
+      .project-description {
+        color: #666;
+        margin-bottom: 1.5rem;
+        font-size: 1rem;
+      }
+
+      .project-links {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .project-link {
+        padding: 0.8rem 1.5rem;
+        background: transparent;
+        border: 1px solid #ddd;
+        color: #666;
+        text-decoration: none;
+        border-radius: 25px;
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+      }
+
+      .project-link:hover {
+        border-color: #1a1a1a;
+        color: #1a1a1a;
+      }
+
+      /* About Code Section */
+      .code-block {
+        background: #1a1a1a;
+        color: #ffffff;
+        padding: 2rem;
+        border-radius: 12px;
+        font-family: "Fira Code", monospace;
+        text-align: left;
+        max-width: 600px;
+        margin: 2rem auto;
+        font-size: 0.9rem;
+        line-height: 1.8;
+      }
+
+      .code-comment {
+        color: #888;
+      }
+      .code-keyword {
+        color: #ff6b9d;
+      }
+      .code-string {
+        color: #a9dc76;
+      }
+      .code-function {
+        color: #78dce8;
+      }
+
+      /* Contact Section */
+      .contact-info {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
+        margin: 2rem 0;
+      }
+
+      .contact-link {
+        color: #1a1a1a;
+        text-decoration: none;
+        font-size: 1.2rem;
+        transition: color 0.3s ease;
+      }
+
+      .contact-link:hover {
+        color: #666;
+      }
+
+      .social-links {
+        display: flex;
+        gap: 2rem;
+        margin: 2rem 0;
+        justify-content: center;
+      }
+
+      .social-link {
+        color: #999;
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: color 0.3s ease;
+      }
+
+      .social-link:hover {
+        color: #1a1a1a;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .section {
+          padding: 1rem;
+        }
+
+        .nav {
+          top: 1rem;
+          right: 1rem;
+        }
+
+        .section-number {
+          top: 1rem;
+          left: 1rem;
+        }
+
+        .skills-grid,
+        .projects-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .profile-photo {
+          width: 150px;
+          height: 150px;
+        }
+
+        .project-links {
+          flex-direction: column;
+        }
+      }
+
+      /* Scroll Indicator */
+      .scroll-indicator {
+        position: absolute;
+        bottom: 2rem;
+        left: 50%;
+        transform: translateX(-50%);
+        color: #ccc;
+        font-size: 0.9rem;
+        animation: bounce 2s infinite;
+      }
+
+      @keyframes bounce {
+        0%,
+        20%,
+        50%,
+        80%,
+        100% {
+          transform: translateX(-50%) translateY(0);
+        }
+        40% {
+          transform: translateX(-50%) translateY(-10px);
+        }
+        60% {
+          transform: translateX(-50%) translateY(-5px);
+        }
+      }
+
+      /* Hide scrollbar but keep functionality */
+      ::-webkit-scrollbar {
+        display: none;
+      }
+
+      html {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation Dots -->
+    <nav class="nav" id="nav">
+      <div class="nav-dot active" data-section="0"></div>
+      <div class="nav-dot" data-section="1"></div>
+      <div class="nav-dot" data-section="2"></div>
+      <div class="nav-dot" data-section="3"></div>
+      <div class="nav-dot" data-section="4"></div>
+      <div class="nav-dot" data-section="5"></div>
+    </nav>
+
+    <!-- Section 01: Hero -->
+    <section class="section" id="section-0">
+      <div class="section-number">01</div>
+      <div class="container">
+        <img
+          src="3F20678F-2399-4CE0-B3C1-F57B84689541.JPEG"
+          alt="Edward Terry"
+          class="profile-photo"
+        />
+        <h1>Edward Terry</h1>
+        <p>
+          Digital creator and entrepreneur from Tanzania. I design and develop
+          experiences that matter.
+        </p>
+        <div>
+          <a href="#section-4" class="btn btn-primary">Get in touch</a>
+          <a href="#section-3" class="btn">View work</a>
+        </div>
+      </div>
+      <div class="scroll-indicator">↓ Scroll to explore</div>
+    </section>
+
+    <!-- Section 02: Skills -->
+    <section class="section" id="section-1">
+      <div class="section-number">02</div>
+      <div class="container">
+        <h2>What I do</h2>
+        <p>
+          I specialize in creating digital solutions that solve real problems
+          and deliver exceptional user experiences.
+        </p>
+
+        <div class="skills-grid">
+          <div class="skill-card">
+            <div class="skill-icon">📱</div>
+            <h3>Mobile Development</h3>
+            <p>
+              Flutter & React Native apps that work seamlessly across platforms.
+            </p>
+          </div>
+
+          <div class="skill-card">
+            <div class="skill-icon">🌐</div>
+            <h3>Web Applications</h3>
+            <p>
+              Modern web apps built with React, Vue.js, and cutting-edge
+              technologies.
+            </p>
+          </div>
+
+          <div class="skill-card">
+            <div class="skill-icon">🏗️</div>
+            <h3>System Architecture</h3>
+            <p>
+              Scalable backend systems and cloud infrastructure that grows with
+              your business.
+            </p>
+          </div>
+
+          <div class="skill-card">
+            <div class="skill-icon">🎯</div>
+            <h3>Business Strategy</h3>
+            <p>
+              From concept to launch - I help turn ideas into profitable digital
+              ventures.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 03: About -->
+    <section class="section" id="section-2">
+      <div class="section-number">03</div>
+      <div class="container">
+        <h2>About me</h2>
+        <p>Here's a bit about who I am and what drives me every day.</p>
+
+        <div class="code-block">
+          <span class="code-comment"
+            >// Edward Terry - Full Stack Developer</span
+          >
+          <span class="code-keyword">class</span>
+          <span class="code-function">EdwardTerry</span> {
+          <span class="code-keyword">constructor</span>() {
+          <span class="code-keyword">this</span>.name =
+          <span class="code-string">'Edward Terry'</span>;
+          <span class="code-keyword">this</span>.location =
+          <span class="code-string">'Dar es Salaam, Tanzania'</span>;
+          <span class="code-keyword">this</span>.email =
+          <span class="code-string">'terry.edwardx@gmail.com'</span>;
+          <span class="code-keyword">this</span>.passion =
+          <span class="code-string">'Building solutions that matter'</span>; }
+
+          <span class="code-function">getSkills</span>() {
+          <span class="code-keyword">return</span> [
+          <span class="code-string">'Flutter/Dart'</span>,
+          <span class="code-string">'React/JavaScript'</span>,
+          <span class="code-string">'Python'</span>,
+          <span class="code-string">'Firebase'</span>,
+          <span class="code-string">'Node.js'</span>,
+          <span class="code-string">'System Design'</span>
+          ]; }
+
+          <span class="code-function">getCurrentFocus</span>() {
+          <span class="code-keyword">return</span>
+          <span class="code-string"
+            >'Building digital experiences for African markets'</span
+          >; } }
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 04: Projects -->
+    <section class="section" id="section-3">
+      <div class="section-number">04</div>
+      <div class="container">
+        <h2>Selected work</h2>
+        <p>
+          A showcase of projects that demonstrate my approach to solving complex
+          problems.
+        </p>
+
+        <div class="projects-grid">
+          <div class="project-card">
+            <div class="project-content">
+              <div class="project-number">.01</div>
+              <h3 class="project-title">Tanzania Premiere Yacht Company</h3>
+              <p class="project-description">
+                Luxury yacht booking platform serving Tanzania's premium
+                maritime market. Built with Flutter for seamless cross-platform
+                experience.
+              </p>
+              <div class="project-links">
+                <a
+                  href="https://tpyctz.com"
+                  target="_blank"
+                  class="project-link"
+                  >Visit site</a
+                >
+                <a href="#" class="project-link">Case study</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-content">
+              <div class="project-number">.02</div>
+              <h3 class="project-title">Oxpecker Safaris</h3>
+              <p class="project-description">
+                Safari booking and management platform connecting travelers with
+                authentic Tanzanian wildlife experiences.
+              </p>
+              <div class="project-links">
+                <a href="#" class="project-link">Coming soon</a>
+                <a href="mailto:terry.edwardx@gmail.com" class="project-link"
+                  >Inquire</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-content">
+              <div class="project-number">.03</div>
+              <h3 class="project-title">Gangilonga Homes</h3>
+              <p class="project-description">
+                Real estate platform revolutionizing property discovery and
+                transactions in East Africa's growing markets.
+              </p>
+              <div class="project-links">
+                <a href="#" class="project-link">In development</a>
+                <a href="mailto:terry.edwardx@gmail.com" class="project-link"
+                  >Learn more</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-content">
+              <div class="project-number">.04</div>
+              <h3 class="project-title">Swaheels Health</h3>
+              <p class="project-description">
+                Healthcare technology platform improving medical service
+                accessibility across Tanzania's communities.
+              </p>
+              <div class="project-links">
+                <a href="#" class="project-link">Private beta</a>
+                <a href="mailto:terry.edwardx@gmail.com" class="project-link"
+                  >Contact</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 05: Contact -->
+    <section class="section" id="section-4">
+      <div class="section-number">05</div>
+      <div class="container">
+        <h2>Let's work together</h2>
+        <p>
+          Have a project in mind? I'd love to hear about it and explore how we
+          can bring your vision to life.
+        </p>
+
+        <div class="contact-info">
+          <a href="mailto:terry.edwardx@gmail.com" class="contact-link"
+            >terry.edwardx@gmail.com</a
+          >
+          <a href="tel:+255763815413" class="contact-link"
+            >(+255) 763 815 413</a
+          >
+        </div>
+
+        <div class="social-links">
+          <a
+            href="https://github.com/ed-terry"
+            target="_blank"
+            class="social-link"
+            >GitHub</a
+          >
+          <a
+            href="https://instagram.com/m.r_terry"
+            target="_blank"
+            class="social-link"
+            >Instagram</a
+          >
+          <a
+            href="https://linkedin.com/in/edwardterry"
+            target="_blank"
+            class="social-link"
+            >LinkedIn</a
+          >
+        </div>
+
+        <a href="mailto:terry.edwardx@gmail.com" class="btn btn-primary"
+          >Start a project</a
+        >
+      </div>
+    </section>
+
+    <!-- Section 06: Footer -->
+    <section class="section" id="section-5">
+      <div class="section-number">06</div>
+      <div class="container">
+        <h2>Edward Terry</h2>
+        <p>Digital creator based in Dar es Salaam, Tanzania</p>
+        <p style="color: #999; font-size: 0.9rem; margin-top: 2rem">
+          © 2025 Made with ❤️ from Tanzania
+        </p>
+      </div>
+    </section>
+
+    <script>
+      // Smooth scroll snap navigation
+      const navDots = document.querySelectorAll(".nav-dot");
+      const sections = document.querySelectorAll(".section");
+
+      // Navigation dot click handler
+      navDots.forEach((dot, index) => {
+        dot.addEventListener("click", () => {
+          document.getElementById(`section-${index}`).scrollIntoView({
+            behavior: "smooth",
+          });
+        });
+      });
+
+      // Update active nav dot on scroll
+      function updateActiveNav() {
+        const scrollPosition = window.scrollY;
+        const windowHeight = window.innerHeight;
+        const activeSection = Math.round(scrollPosition / windowHeight);
+
+        navDots.forEach((dot, index) => {
+          dot.classList.toggle("active", index === activeSection);
+        });
+      }
+
+      // Throttled scroll listener
+      let ticking = false;
+      window.addEventListener("scroll", () => {
+        if (!ticking) {
+          requestAnimationFrame(() => {
+            updateActiveNav();
+            ticking = false;
+          });
+          ticking = true;
+        }
+      });
+
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+            });
+          }
+        });
+      });
+
+      // Initialize
+      updateActiveNav();
+    </script>
+  </body>
+</html>

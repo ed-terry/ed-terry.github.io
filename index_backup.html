@@ -1,0 +1,4528 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edward Terry — Digital Creator & Entrepreneur</title>
+    
+    <!-- Heart Favicon - Made with Love -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>❤️</text></svg>" />
+    
+    <style>
+      /* Minimal Portfolio - Edward Terry */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-snap-type: y mandatory;
+        scroll-behavior: smooth;
+        overflow-x: hidden;
+      }
+
+      body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        background: #ffffff;
+        color: #1a1a1a;
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      /* Section Snap Layout */
+      .section {
+        width: 100vw;
+        height: 100vh;
+        scroll-snap-align: start;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        padding: 2rem;
+      }
+
+      .container {
+        max-width: 1200px;
+        width: 100%;
+        text-align: center;
+      }
+
+      /* Typography */
+      h1 {
+        font-size: clamp(3rem, 8vw, 6rem);
+        font-weight: 200;
+        margin-bottom: 1rem;
+        letter-spacing: -0.02em;
+      }
+
+      h2 {
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        font-weight: 300;
+        margin-bottom: 2rem;
+        letter-spacing: -0.01em;
+      }
+
+      h3 {
+        font-size: clamp(1.5rem, 3vw, 2rem);
+        font-weight: 400;
+        margin-bottom: 1rem;
+      }
+
+      p {
+        font-size: clamp(1rem, 2vw, 1.2rem);
+        color: #666;
+        max-width: 600px;
+        margin: 0 auto 2rem;
+        font-weight: 300;
+      }
+
+      /* Navigation */
+      .nav {
+        position: fixed;
+        top: 2rem;
+        right: 2rem;
+        z-index: 1000;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .nav-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: #ddd;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .nav-dot.active {
+        background: #1a1a1a;
+        transform: scale(1.2);
+      }
+
+      /* Section Numbers */
+      .section-number {
+        position: absolute;
+        top: 2rem;
+        left: 2rem;
+        font-size: 1rem;
+        color: #ccc;
+        font-weight: 300;
+      }
+
+      /* Profile Photo */
+      .profile-photo {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin: 0 auto 2rem;
+        display: block;
+        border: 3px solid #f0f0f0;
+      }
+
+      /* Buttons */
+      .btn {
+        display: inline-block;
+        padding: 1rem 2rem;
+        background: transparent;
+        border: 2px solid #1a1a1a;
+        color: #1a1a1a;
+        text-decoration: none;
+        border-radius: 50px;
+        font-weight: 400;
+        transition: all 0.3s ease;
+        margin: 0.5rem;
+      }
+
+      .btn:hover {
+        background: #1a1a1a;
+        color: #ffffff;
+      }
+
+      .btn-primary {
+        background: #1a1a1a;
+        color: #ffffff;
+      }
+
+      .btn-primary:hover {
+        background: transparent;
+        color: #1a1a1a;
+      }
+
+      /* Skills Grid */
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        margin: 3rem 0;
+      }
+
+      .skill-card {
+        padding: 2rem;
+        background: #fafafa;
+        border-radius: 12px;
+        border: 1px solid #f0f0f0;
+        transition: all 0.3s ease;
+      }
+
+      .skill-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+      }
+
+      .skill-icon {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+      }
+
+      /* Projects Grid */
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 2rem;
+        margin: 3rem 0;
+      }
+
+      .project-card {
+        background: #fafafa;
+        border-radius: 16px;
+        border: 1px solid #f0f0f0;
+        overflow: hidden;
+        transition: all 0.3s ease;
+      }
+
+      .project-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+      }
+
+      .project-content {
+        padding: 2rem;
+      }
+
+      .project-number {
+        color: #999;
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .project-title {
+        font-size: 1.4rem;
+        font-weight: 500;
+        margin-bottom: 1rem;
+        color: #1a1a1a;
+      }
+
+      .project-description {
+        color: #666;
+        margin-bottom: 1.5rem;
+        font-size: 1rem;
+      }
+
+      .project-links {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .project-link {
+        padding: 0.8rem 1.5rem;
+        background: transparent;
+        border: 1px solid #ddd;
+        color: #666;
+        text-decoration: none;
+        border-radius: 25px;
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+      }
+
+      .project-link:hover {
+        border-color: #1a1a1a;
+        color: #1a1a1a;
+      }
+
+      /* About Code Section */
+      .code-block {
+        background: #1a1a1a;
+        color: #ffffff;
+        padding: 2rem;
+        border-radius: 12px;
+        font-family: 'Fira Code', monospace;
+        text-align: left;
+        max-width: 600px;
+        margin: 2rem auto;
+        font-size: 0.9rem;
+        line-height: 1.8;
+      }
+
+      .code-comment { color: #888; }
+      .code-keyword { color: #ff6b9d; }
+      .code-string { color: #a9dc76; }
+      .code-function { color: #78dce8; }
+
+      /* Contact Section */
+      .contact-info {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
+        margin: 2rem 0;
+      }
+
+      .contact-link {
+        color: #1a1a1a;
+        text-decoration: none;
+        font-size: 1.2rem;
+        transition: color 0.3s ease;
+      }
+
+      .contact-link:hover {
+        color: #666;
+      }
+
+      .social-links {
+        display: flex;
+        gap: 2rem;
+        margin: 2rem 0;
+        justify-content: center;
+      }
+
+      .social-link {
+        color: #999;
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: color 0.3s ease;
+      }
+
+      .social-link:hover {
+        color: #1a1a1a;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .section {
+          padding: 1rem;
+        }
+        
+        .nav {
+          top: 1rem;
+          right: 1rem;
+        }
+        
+        .section-number {
+          top: 1rem;
+          left: 1rem;
+        }
+        
+        .skills-grid,
+        .projects-grid {
+          grid-template-columns: 1fr;
+        }
+        
+        .profile-photo {
+          width: 150px;
+          height: 150px;
+        }
+      }
+
+      /* Scroll Indicator */
+      .scroll-indicator {
+        position: absolute;
+        bottom: 2rem;
+        left: 50%;
+        transform: translateX(-50%);
+        color: #ccc;
+        font-size: 0.9rem;
+        animation: bounce 2s infinite;
+      }
+
+      @keyframes bounce {
+        0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+        40% { transform: translateX(-50%) translateY(-10px); }
+        60% { transform: translateX(-50%) translateY(-5px); }
+      }
+
+      /* Hide scrollbar but keep functionality */
+      ::-webkit-scrollbar {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+        position: relative;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(
+          circle at 50% 50%,
+          rgba(0, 255, 204, 0.1) 0%,
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+
+      h1 {
+        font-size: clamp(2.5rem, 5vw, 4rem);
+        background: linear-gradient(45deg, #00ffcc, #ff4081, #00ffcc);
+        background-size: 200% 200%;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation: gradient 3s ease infinite;
+        margin-bottom: 1rem;
+        text-shadow: 0 0 30px rgba(0, 255, 204, 0.5);
+      }
+
+      @keyframes gradient {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      .tagline {
+        font-size: 1.3rem;
+        margin-bottom: 2rem;
+        opacity: 0.9;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 1.6;
+      }
+
+      .highlight {
+        color: #ff4081;
+        font-weight: bold;
+      }
+
+      a {
+        color: #ff4081;
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.3s ease;
+        min-height: 24px;
+        display: inline-flex;
+        align-items: center;
+      }
+
+      a:hover,
+      a:focus {
+        color: #00ffcc;
+        text-shadow: 0 0 5px rgba(0, 255, 204, 0.5);
+        outline: 2px solid rgba(0, 255, 204, 0.3);
+        outline-offset: 2px;
+      }
+
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+        margin: 3rem 0;
+      }
+
+      .skill-card {
+        background: rgba(34, 34, 34, 0.8);
+        border: 1px solid #444;
+        border-radius: 15px;
+        padding: 1.5rem;
+        text-align: center;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(10px);
+      }
+
+      .skill-card:hover {
+        transform: translateY(-10px);
+        border-color: #00ffcc;
+        box-shadow: 0 10px 30px rgba(0, 255, 204, 0.3);
+      }
+
+      .skill-icon {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .projects {
+        margin: 4rem 0;
+      }
+
+      .section-title {
+        font-size: 2.5rem;
+        color: #00ffcc;
+        text-align: center;
+        margin-bottom: 2rem;
+        position: relative;
+      }
+
+      .section-title::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100px;
+        height: 3px;
+        background: linear-gradient(45deg, #ff4081, #00ffcc);
+      }
+
+      .project-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 3rem;
+        margin: 4rem 0;
+        max-width: 1400px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .project-card {
+        background: rgba(34, 34, 34, 0.95);
+        border-radius: 24px;
+        padding: 2.5rem;
+        border: 1px solid #444;
+        transition: all 0.4s ease;
+        height: fit-content;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .project-header {
+        margin-bottom: 1.5rem;
+      }
+
+      .project-title {
+        color: #00ffcc;
+        margin-bottom: 1rem;
+        font-size: 1.4rem;
+        font-weight: 600;
+      }
+
+      .project-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(0, 255, 204, 0.1),
+          transparent
+        );
+        transition: left 0.5s ease;
+      }
+
+      .project-card:hover::before {
+        left: 100%;
+      }
+
+      .project-card:hover {
+        transform: scale(1.05);
+        border-color: #00ffcc;
+        box-shadow: 0 15px 40px rgba(0, 255, 204, 0.2);
+      }
+
+      .project-title {
+        color: #ff4081;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .contact-section {
+        background: rgba(34, 34, 34, 0.5);
+        border-radius: 25px;
+        padding: 3rem;
+        margin: 4rem 0;
+        text-align: center;
+        border: 1px solid #444;
+      }
+
+      .contact-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+        margin-top: 2rem;
+      }
+
+      .contact-badge {
+        background: linear-gradient(45deg, #222, #333);
+        border: 2px solid #444;
+        padding: 1rem 1.5rem;
+        border-radius: 15px;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .contact-badge:hover {
+        border-color: #00ffcc;
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 255, 204, 0.3);
+      }
+
+      .contact-badge a {
+        color: #e0e0e0;
+        text-decoration: none;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+      }
+
+      .contact-badge:hover a {
+        color: #00ffcc;
+      }
+
+      .floating-elements {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: -1;
+      }
+
+      .floating-element {
+        position: absolute;
+        width: 6px;
+        height: 6px;
+        background: #00ffcc;
+        border-radius: 50%;
+        animation: float 6s ease-in-out infinite;
+        opacity: 0.7;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px) rotate(0deg);
+        }
+        50% {
+          transform: translateY(-20px) rotate(180deg);
+        }
+      }
+
+      .cta {
+        text-align: center;
+        margin: 4rem 0;
+        padding: 2rem;
+      }
+
+      .cta-button {
+        display: inline-block;
+        background: linear-gradient(45deg, #ff4081, #00ffcc);
+        color: #000;
+        padding: 1rem 2rem;
+        border-radius: 30px;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 15px rgba(255, 64, 129, 0.3);
+      }
+
+      .cta-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 25px rgba(255, 64, 129, 0.5);
+      }
+
+      .business-highlight {
+        background: linear-gradient(
+          45deg,
+          rgba(255, 64, 129, 0.1),
+          rgba(0, 255, 204, 0.1)
+        );
+        border-left: 4px solid #ff4081;
+        padding: 1rem;
+        margin: 1rem 0;
+        border-radius: 10px;
+      }
+
+      .tanzanian-flag {
+        animation: wave 2s ease-in-out infinite;
+        display: inline-block;
+      }
+
+      @keyframes wave {
+        0%,
+        100% {
+          transform: rotate(0deg);
+        }
+        25% {
+          transform: rotate(10deg);
+        }
+        75% {
+          transform: rotate(-10deg);
+        }
+      }
+
+      .sparkle {
+        position: fixed;
+        pointer-events: none;
+        z-index: 1000;
+        border-radius: 50%;
+        animation: sparkleAnimation 1s ease-out forwards;
+      }
+
+      @keyframes sparkleAnimation {
+        0% {
+          opacity: 1;
+          transform: scale(1) rotate(0deg);
+          background: #00ffcc;
+        }
+        50% {
+          opacity: 0.8;
+          transform: scale(1.5) rotate(180deg);
+          background: #ff4081;
+        }
+        100% {
+          opacity: 0;
+          transform: scale(0) rotate(360deg);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .container {
+          padding: 1rem;
+        }
+
+        .hero {
+          padding: 2rem 0;
+        }
+
+        h1,
+        .hero-title {
+          font-size: clamp(3rem, 10vw, 5rem) !important;
+          margin-bottom: 1rem;
+          color: #ffffff !important;
+          opacity: 1 !important;
+          text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc !important;
+        }
+
+        .tagline {
+          font-size: 1.1rem;
+          padding: 0 1rem;
+        }
+
+        .contact-grid {
+          grid-template-columns: 1fr;
+          gap: 1rem;
+        }
+
+        .skills-grid {
+          grid-template-columns: 1fr;
+          gap: 1rem;
+        }
+
+        .project-grid {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+          margin: 2rem 0;
+          padding: 0 1rem;
+        }
+
+        .project-card {
+          padding: 1.5rem;
+        }
+
+        .project-stats {
+          grid-template-columns: repeat(3, 1fr);
+          gap: 0.3rem;
+        }
+
+        .stat-item {
+          padding: 0.4rem;
+        }
+
+        .stat-number {
+          font-size: 1rem;
+        }
+
+        .section-title {
+          font-size: 2rem;
+        }
+
+        .contact-section {
+          padding: 2rem 1rem;
+        }
+
+        .terminal {
+          margin: 1rem auto;
+          max-width: 100%;
+        }
+
+        .terminal-body {
+          font-size: 0.8rem;
+          padding: 0.8rem;
+          min-height: 200px;
+        }
+
+        .game-container {
+          padding: 1rem;
+        }
+
+        .game-canvas {
+          height: 250px;
+        }
+
+        .cta {
+          padding: 1rem;
+        }
+
+        .cta-button {
+          padding: 0.8rem 1.5rem;
+          font-size: 1rem;
+        }
+
+        .business-highlight {
+          padding: 0.8rem;
+          font-size: 0.9rem;
+        }
+
+        .project-fun-fact {
+          padding: 0.6rem;
+          font-size: 0.85rem;
+        }
+
+        /* Yacht and car animations scaled for mobile */
+        .yacht-water {
+          height: 35px;
+        }
+
+        .yacht {
+          font-size: 1.5rem;
+        }
+
+        .safari-car {
+          height: 35px;
+        }
+
+        .car {
+          font-size: 1.5rem;
+        }
+
+        /* Scale down geometric shapes for mobile */
+        .geometric-shape {
+          transform: scale(0.7);
+        }
+
+        .triangle {
+          border-left-width: 18px;
+          border-right-width: 18px;
+          border-bottom-width: 32px;
+        }
+
+        .hexagon {
+          width: 28px;
+          height: 16px;
+        }
+
+        .diamond {
+          width: 25px;
+          height: 25px;
+        }
+
+        .octagon {
+          width: 28px;
+          height: 28px;
+        }
+      }
+
+      /* Tablet styles */
+      @media (min-width: 769px) and (max-width: 1024px) {
+        .container {
+          padding: 1.5rem;
+        }
+
+        .hero {
+          padding: 3rem 0;
+        }
+
+        h1 {
+          font-size: 3.5rem;
+        }
+
+        .skills-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 1.5rem;
+        }
+
+        .project-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 1.5rem;
+        }
+
+        .contact-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 1.2rem;
+        }
+
+        .project-stats {
+          grid-template-columns: repeat(3, 1fr);
+        }
+
+        .terminal {
+          max-width: 90%;
+        }
+
+        .game-canvas {
+          max-width: 350px;
+          height: 280px;
+        }
+      }
+
+      /* Large desktop styles */
+      @media (min-width: 1441px) {
+        .container {
+          max-width: 1400px;
+          padding: 3rem;
+        }
+
+        .hero {
+          padding: 5rem 0;
+        }
+
+        h1 {
+          font-size: 4.5rem;
+        }
+
+        .tagline {
+          font-size: 1.4rem;
+          max-width: 900px;
+        }
+
+        .section-title {
+          font-size: 3rem;
+        }
+
+        .skills-grid {
+          grid-template-columns: repeat(4, 1fr);
+        }
+
+        .project-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+
+        .contact-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      /* Small mobile devices */
+      @media (max-width: 480px) {
+        .container {
+          padding: 0.5rem;
+        }
+
+        .hero {
+          padding: 1.5rem 0;
+        }
+
+        h1 {
+          font-size: clamp(1.8rem, 10vw, 2.5rem);
+        }
+
+        .tagline {
+          font-size: 1rem;
+          line-height: 1.4;
+        }
+
+        .skill-card {
+          padding: 1rem;
+        }
+
+        .skill-icon {
+          font-size: 2rem;
+        }
+
+        .project-card {
+          padding: 1rem;
+        }
+
+        .project-title {
+          font-size: 1.3rem;
+        }
+
+        .project-stats {
+          grid-template-columns: 1fr 1fr;
+          gap: 0.5rem;
+        }
+
+        .contact-badge {
+          padding: 0.8rem 1rem;
+        }
+
+        .contact-badge a {
+          font-size: 0.9rem;
+        }
+
+        .terminal-body {
+          font-size: 0.75rem;
+          min-height: 150px;
+        }
+
+        .game-canvas {
+          height: 200px;
+        }
+
+        .cta-button {
+          padding: 0.7rem 1.2rem;
+          font-size: 0.9rem;
+        }
+
+        /* Even smaller animations for tiny screens */
+        .yacht-water {
+          height: 30px;
+        }
+
+        .yacht {
+          font-size: 1.2rem;
+        }
+
+        .safari-car {
+          height: 30px;
+        }
+
+        .car {
+          font-size: 1.2rem;
+        }
+
+        .floating-element {
+          width: 4px;
+          height: 4px;
+        }
+      }
+
+      /* Landscape orientation for mobile */
+      @media (max-width: 768px) and (orientation: landscape) {
+        .hero {
+          padding: 1rem 0;
+        }
+
+        .tagline {
+          font-size: 1rem;
+        }
+
+        .terminal-body {
+          min-height: 150px;
+        }
+
+        .game-canvas {
+          height: 200px;
+        }
+      }
+
+      /* High DPI displays */
+      @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+        .floating-element {
+          width: 8px;
+          height: 8px;
+        }
+
+        .sparkle {
+          width: 6px;
+          height: 6px;
+        }
+      }
+
+      /* Reduce motion for users who prefer it */
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+
+        .floating-element,
+        .yacht,
+        .car,
+        .geometric-shape,
+        .geometric-light {
+          animation: none;
+        }
+      }
+
+      /* Touch-friendly improvements */
+      @media (hover: none) and (pointer: coarse) {
+        .contact-badge,
+        .skill-card,
+        .project-card {
+          transform: none;
+        }
+
+        .contact-badge:hover,
+        .skill-card:hover,
+        .project-card:hover {
+          transform: none;
+        }
+
+        .cta-button:hover {
+          transform: none;
+        }
+
+        /* Make tap targets larger for touch */
+        .contact-badge a {
+          padding: 0.5rem;
+          min-height: 44px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+
+      .pulse {
+        animation: pulse 2s ease-in-out infinite;
+      }
+
+      @keyframes pulse {
+        0% {
+          box-shadow: 0 0 0 0 rgba(0, 255, 204, 0.7);
+        }
+        70% {
+          box-shadow: 0 0 0 10px rgba(0, 255, 204, 0);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(0, 255, 204, 0);
+        }
+      }
+
+      /* Terminal Styles - Because every dev needs a fake terminal */
+      .terminal-section {
+        margin: 4rem 0;
+        text-align: center;
+      }
+
+      .terminal {
+        background: #000;
+        border-radius: 10px;
+        border: 2px solid #333;
+        max-width: 800px;
+        margin: 2rem auto;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        overflow: hidden;
+        /* Edward's note: Yes, I know this isn't a real terminal. Sue me. */
+      }
+
+      .terminal-header {
+        background: #333;
+        padding: 0.5rem 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .terminal-dots {
+        display: flex;
+        gap: 0.3rem;
+      }
+
+      .terminal-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+      }
+
+      .terminal-dot.red {
+        background: #ff5f57;
+      }
+      .terminal-dot.yellow {
+        background: #ffbd2e;
+      }
+      .terminal-dot.green {
+        background: #28ca42;
+      }
+
+      .terminal-title {
+        color: #999;
+        font-size: 0.9rem;
+        margin-left: auto;
+      }
+
+      .terminal-body {
+        padding: 1rem;
+        font-family: "Courier New", monospace;
+        font-size: 0.9rem;
+        text-align: left;
+        min-height: 300px;
+        color: #00ff41;
+      }
+
+      .terminal-line {
+        margin: 0.3rem 0;
+        opacity: 0;
+        animation: typewriter 0.05s ease-out forwards;
+      }
+
+      .terminal-prompt {
+        color: #00ffcc;
+      }
+
+      .terminal-cursor {
+        background: #00ff41;
+        color: #000;
+        animation: blink 1s infinite;
+      }
+
+      @keyframes typewriter {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes blink {
+        0%,
+        50% {
+          opacity: 1;
+        }
+        51%,
+        100% {
+          opacity: 0;
+        }
+      }
+
+      /* Game Styles */
+      .game-section {
+        margin: 4rem 0;
+        text-align: center;
+      }
+
+      .game-container {
+        background: #111;
+        border: 2px solid #333;
+        border-radius: 15px;
+        padding: 2rem;
+        max-width: 600px;
+        margin: 2rem auto;
+        position: relative;
+      }
+
+      .game-canvas {
+        width: 100%;
+        max-width: 400px;
+        height: 300px;
+        background: #000;
+        border: 2px solid #00ffcc;
+        border-radius: 10px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .snake-segment {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background: #00ffcc;
+        border-radius: 3px;
+        transition: all 0.1s ease;
+      }
+
+      .food {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background: #ff4081;
+        border-radius: 50%;
+        box-shadow: 0 0 10px rgba(255, 64, 129, 0.5);
+      }
+
+      .game-score {
+        color: #00ffcc;
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+        font-family: "Courier New", monospace;
+      }
+
+      .game-status {
+        color: #ff4081;
+        margin-top: 1rem;
+        font-weight: bold;
+      }
+
+      /* Animated Safari Car - Vroom vroom! */
+      .safari-car {
+        position: relative;
+        margin: 1rem 0;
+        height: 40px;
+        overflow: hidden;
+        /* The car doesn't actually consume gas, I promise */
+      }
+
+      .car {
+        position: absolute;
+        font-size: 2rem;
+        animation: driveSafari 8s linear infinite;
+        transform: translateX(-100px);
+      }
+
+      @keyframes driveSafari {
+        0% {
+          transform: translateX(-100px);
+        }
+        50% {
+          transform: translateX(calc(100% + 50px));
+        }
+        51% {
+          transform: translateX(calc(100% + 50px)) scaleX(-1);
+        }
+        100% {
+          transform: translateX(-100px) scaleX(-1);
+        }
+      }
+
+      /* Matrix Rain Effect */
+      .matrix-rain {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: -2;
+        opacity: 0.1;
+      }
+
+      .matrix-char {
+        position: absolute;
+        color: #00ff41;
+        font-family: "Courier New", monospace;
+        font-size: 14px;
+        animation: matrixFall linear infinite;
+      }
+
+      @keyframes matrixFall {
+        0% {
+          transform: translateY(-100vh);
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(100vh);
+          opacity: 0;
+        }
+      }
+
+      /* Typing Effect */
+      .typing-text {
+        border-right: 2px solid #00ffcc;
+        animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
+      }
+
+      @keyframes typing {
+        from {
+          width: 0;
+        }
+        to {
+          width: 100%;
+        }
+      }
+
+      @keyframes blink-caret {
+        from,
+        to {
+          border-color: transparent;
+        }
+        50% {
+          border-color: #00ffcc;
+        }
+      }
+
+      /* Cool Glitch Effect */
+      .glitch {
+        position: relative;
+        animation: glitch 2s linear infinite;
+      }
+
+      @keyframes glitch {
+        2%,
+        64% {
+          transform: translate(2px, 0) skew(0deg);
+        }
+        4%,
+        60% {
+          transform: translate(-2px, 0) skew(0deg);
+        }
+        62% {
+          transform: translate(0, 0) skew(5deg);
+        }
+      }
+
+      .glitch::before,
+      .glitch::after {
+        content: attr(data-text);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      .glitch::before {
+        animation: glitch-before 3s linear infinite;
+        color: #ff0000;
+        z-index: -1;
+      }
+
+      .glitch::after {
+        animation: glitch-after 2s linear infinite;
+        color: #0000ff;
+        z-index: -2;
+      }
+
+      @keyframes glitch-before {
+        0%,
+        15%,
+        21%,
+        30%,
+        36%,
+        40%,
+        50%,
+        52%,
+        70%,
+        72%,
+        92%,
+        100% {
+          clip: rect(42px, 9999px, 44px, 0);
+        }
+        20% {
+          clip: rect(40px, 9999px, 66px, 0);
+        }
+        25% {
+          clip: rect(10px, 9999px, 15px, 0);
+        }
+      }
+
+      @keyframes glitch-after {
+        0%,
+        15%,
+        21%,
+        30%,
+        36%,
+        40%,
+        50%,
+        52%,
+        70%,
+        72%,
+        92%,
+        100% {
+          clip: rect(10px, 9999px, 12px, 0);
+        }
+        20% {
+          clip: rect(80px, 9999px, 99px, 0);
+        }
+        25% {
+          clip: rect(50px, 9999px, 60px, 0);
+        }
+      }
+
+      /* Neon Glow Button */
+      .neon-button {
+        position: relative;
+        display: inline-block;
+        padding: 15px 30px;
+        color: #00ffcc;
+        text-decoration: none;
+        text-transform: uppercase;
+        transition: 0.5s;
+        letter-spacing: 4px;
+        overflow: hidden;
+        margin-right: 50px;
+        border: 2px solid #00ffcc;
+        border-radius: 10px;
+      }
+
+      .neon-button:hover {
+        background: #00ffcc;
+        color: #000;
+        box-shadow: 0 0 5px #00ffcc, 0 0 25px #00ffcc, 0 0 50px #00ffcc,
+          0 0 200px #00ffcc;
+      }
+
+      /* Music Visualizer Bars */
+      .music-bars {
+        display: flex;
+        align-items: end;
+        gap: 3px;
+        height: 30px;
+        margin: 1rem 0;
+      }
+
+      .bar {
+        width: 4px;
+        background: linear-gradient(to top, #ff4081, #00ffcc);
+        animation: musicBars 1s ease-in-out infinite alternate;
+        border-radius: 2px;
+      }
+
+      .bar:nth-child(1) {
+        animation-delay: 0.1s;
+      }
+      .bar:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+      .bar:nth-child(3) {
+        animation-delay: 0.3s;
+      }
+      .bar:nth-child(4) {
+        animation-delay: 0.4s;
+      }
+      .bar:nth-child(5) {
+        animation-delay: 0.5s;
+      }
+
+      @keyframes musicBars {
+        0% {
+          height: 5px;
+        }
+        100% {
+          height: 25px;
+        }
+      }
+
+      /* CPU Usage Display */
+      .cpu-display {
+        background: rgba(0, 0, 0, 0.8);
+        border: 1px solid #333;
+        border-radius: 8px;
+        padding: 1rem;
+        margin: 1rem 0;
+        font-family: "Courier New", monospace;
+        font-size: 0.9rem;
+      }
+
+      .cpu-bar {
+        background: #333;
+        height: 10px;
+        border-radius: 5px;
+        overflow: hidden;
+        margin: 0.5rem 0;
+      }
+
+      .cpu-fill {
+        height: 100%;
+        background: linear-gradient(90deg, #00ff41, #ffff00, #ff4500);
+        border-radius: 5px;
+        animation: cpuUsage 3s ease-in-out infinite;
+      }
+
+      @keyframes cpuUsage {
+        0% {
+          width: 20%;
+        }
+        50% {
+          width: 85%;
+        }
+        100% {
+          width: 30%;
+        }
+      }
+
+      /* Parallax Scrolling Effect */
+      .parallax-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(
+            circle at 20% 80%,
+            rgba(120, 119, 198, 0.1) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 80% 20%,
+            rgba(255, 119, 198, 0.1) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 40% 40%,
+            rgba(120, 255, 198, 0.1) 0%,
+            transparent 50%
+          );
+        z-index: -3;
+        animation: parallaxMove 20s ease-in-out infinite;
+      }
+
+      @keyframes parallaxMove {
+        0%,
+        100% {
+          transform: translateX(0) translateY(0);
+        }
+        25% {
+          transform: translateX(2%) translateY(-1%);
+        }
+        50% {
+          transform: translateX(-1%) translateY(2%);
+        }
+        75% {
+          transform: translateX(1%) translateY(-1%);
+        }
+      }
+
+      /* Smooth Page Transitions */
+      .page-transition {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(45deg, #0f0f0f, #1a1a2e);
+        z-index: 10000;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.5s ease;
+      }
+
+      /* Advanced Card Hover Effects */
+      .project-card,
+      .skill-card {
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .project-card::before,
+      .skill-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(0, 255, 204, 0.1),
+          transparent
+        );
+        transition: left 0.5s ease;
+      }
+
+      .project-card:hover::before,
+      .skill-card:hover::before {
+        left: 100%;
+      }
+
+      /* Interactive Progress Rings */
+      .progress-ring {
+        width: 80px;
+        height: 80px;
+        transform: rotate(-90deg);
+        margin: 1rem auto;
+      }
+
+      .progress-ring-circle {
+        fill: none;
+        stroke: #333;
+        stroke-width: 4;
+      }
+
+      .progress-ring-progress {
+        fill: none;
+        stroke: #00ffcc;
+        stroke-width: 4;
+        stroke-linecap: round;
+        stroke-dasharray: 251.2;
+        stroke-dashoffset: 251.2;
+        transition: stroke-dashoffset 2s ease-in-out;
+      }
+
+      .skill-progress {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 1rem 0;
+      }
+
+      .skill-card:hover .progress-ring-progress {
+        stroke: #ff4081;
+      }
+
+      /* Morphing Background Shapes */
+      .morphing-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -4;
+        overflow: hidden;
+      }
+
+      .morph-shape {
+        position: absolute;
+        border-radius: 50%;
+        background: linear-gradient(
+          45deg,
+          rgba(0, 255, 204, 0.05),
+          rgba(255, 64, 129, 0.05)
+        );
+        animation: morphFloat 15s ease-in-out infinite;
+        filter: blur(40px);
+      }
+
+      .morph-shape:nth-child(1) {
+        width: 300px;
+        height: 300px;
+        top: 10%;
+        left: 10%;
+        animation-delay: 0s;
+      }
+
+      .morph-shape:nth-child(2) {
+        width: 200px;
+        height: 200px;
+        top: 60%;
+        right: 10%;
+        animation-delay: 5s;
+      }
+
+      .morph-shape:nth-child(3) {
+        width: 250px;
+        height: 250px;
+        bottom: 20%;
+        left: 50%;
+        animation-delay: 10s;
+      }
+
+      @keyframes morphFloat {
+        0%,
+        100% {
+          transform: translate(0, 0) scale(1);
+          border-radius: 50%;
+        }
+        25% {
+          transform: translate(30px, -50px) scale(1.1);
+          border-radius: 60% 40% 40% 60%;
+        }
+        50% {
+          transform: translate(-20px, 30px) scale(0.9);
+          border-radius: 40% 60% 60% 40%;
+        }
+        75% {
+          transform: translate(50px, 20px) scale(1.05);
+          border-radius: 70% 30% 50% 50%;
+        }
+      }
+
+      /* Advanced Text Animations */
+      .text-reveal {
+        overflow: hidden;
+      }
+
+      .text-reveal span {
+        display: inline-block;
+        opacity: 0;
+        transform: translateY(100%);
+        animation: textReveal 0.8s ease-out forwards;
+      }
+
+      @keyframes textReveal {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Floating Action Button */
+      .fab {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(45deg, #ff4081, #00ffcc);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 20px rgba(0, 255, 204, 0.3);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        z-index: 1000;
+        animation: fabPulse 3s ease-in-out infinite;
+      }
+
+      .fab:hover {
+        transform: scale(1.1);
+        box-shadow: 0 6px 30px rgba(0, 255, 204, 0.5);
+      }
+
+      @keyframes fabPulse {
+        0%,
+        100% {
+          box-shadow: 0 4px 20px rgba(0, 255, 204, 0.3);
+        }
+        50% {
+          box-shadow: 0 4px 30px rgba(0, 255, 204, 0.6);
+        }
+      }
+
+      /* Scroll Progress Indicator */
+      .scroll-progress {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 0%;
+        height: 3px;
+        background: linear-gradient(90deg, #ff4081, #00ffcc);
+        z-index: 1001;
+        transition: width 0.1s ease;
+      }
+
+      /* Interactive Tooltip */
+      .tooltip {
+        position: relative;
+        cursor: help;
+      }
+
+      .tooltip::after {
+        content: attr(data-tooltip);
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(0, 0, 0, 0.9);
+        color: #fff;
+        padding: 0.5rem 1rem;
+        border-radius: 8px;
+        font-size: 0.8rem;
+        white-space: nowrap;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+        z-index: 1000;
+      }
+
+      .tooltip:hover::after {
+        opacity: 1;
+      }
+
+      /* Particle System */
+      .particle {
+        position: fixed;
+        pointer-events: none;
+        z-index: -1;
+        border-radius: 50%;
+      }
+
+      /* Loading Screen */
+      .loading-screen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          135deg,
+          #0a0a0a 0%,
+          #1a1a2e 50%,
+          #16213e 100%
+        );
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 10000;
+        transition: opacity 1s ease-out;
+      }
+
+      .loading-screen.fade-out {
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .loading-text {
+        color: #00ffcc;
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+        animation: loadingPulse 2s ease-in-out infinite;
+      }
+
+      @keyframes loadingPulse {
+        0%,
+        100% {
+          opacity: 0.5;
+        }
+        50% {
+          opacity: 1;
+        }
+      }
+
+      /* Loading Animation */
+      .loading-spinner {
+        width: 40px;
+        height: 40px;
+        border: 4px solid #333;
+        border-top: 4px solid #00ffcc;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin: 1rem auto;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Floating Code Syntax Elements - Showcasing Programming Passion */
+      .code-syntax-float {
+        position: fixed;
+        font-family: "Courier New", monospace;
+        font-weight: bold;
+        font-size: 1.2rem;
+        color: #00ffcc;
+        z-index: -1;
+        pointer-events: none;
+        opacity: 0.7;
+        text-shadow: 0 0 10px rgba(0, 255, 204, 0.5);
+        animation: floatCode 8s ease-in-out infinite;
+      }
+
+      .syntax-symbol {
+        font-size: 1.5rem;
+        filter: drop-shadow(0 0 8px rgba(0, 255, 204, 0.6));
+      }
+
+      .code-keyword {
+        color: #ff6b9d;
+        text-shadow: 0 0 10px rgba(255, 107, 157, 0.5);
+      }
+
+      .code-function {
+        color: #45b7d1;
+        text-shadow: 0 0 10px rgba(69, 183, 209, 0.5);
+      }
+
+      .code-variable {
+        color: #96f7d2;
+        text-shadow: 0 0 10px rgba(150, 247, 210, 0.5);
+      }
+
+      .code-comment {
+        color: #6b7280;
+        font-style: italic;
+        text-shadow: 0 0 5px rgba(107, 114, 128, 0.5);
+      }
+
+      @keyframes floatCode {
+        0%,
+        100% {
+          transform: translateY(0px) translateX(0px) rotate(0deg);
+          opacity: 0.7;
+        }
+        25% {
+          transform: translateY(-20px) translateX(10px) rotate(2deg);
+          opacity: 0.9;
+        }
+        50% {
+          transform: translateY(-10px) translateX(-5px) rotate(-1deg);
+          opacity: 0.8;
+        }
+        75% {
+          transform: translateY(-30px) translateX(15px) rotate(3deg);
+          opacity: 0.6;
+        }
+      }
+
+      /* Code Rain Effect - Like Matrix but with actual code */
+      .code-rain {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: -2;
+        opacity: 0.1;
+      }
+
+      .code-char {
+        position: absolute;
+        font-family: "Courier New", monospace;
+        font-size: 14px;
+        animation: codeRainFall linear infinite;
+        color: #00ff41;
+        text-shadow: 0 0 5px currentColor;
+        transition: all 0.3s ease;
+      }
+
+      .code-char.keyword {
+        color: #ff6b9d;
+        text-shadow: 0 0 8px #ff6b9d;
+        font-weight: bold;
+      }
+      .code-char.function {
+        color: #45b7d1;
+        text-shadow: 0 0 8px #45b7d1;
+      }
+      .code-char.variable {
+        color: #96f7d2;
+        text-shadow: 0 0 6px #96f7d2;
+      }
+      .code-char.operator {
+        color: #fbbf24;
+        text-shadow: 0 0 10px #fbbf24;
+        font-weight: bold;
+      }
+
+      @keyframes codeRainFall {
+        0% {
+          transform: translateY(-100vh);
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(100vh);
+          opacity: 0;
+        }
+      }
+
+      /* Typing Code Animation */
+      .code-typing {
+        font-family: "Courier New", monospace;
+        background: rgba(0, 0, 0, 0.8);
+        border: 2px solid #00ffcc;
+        border-radius: 10px;
+        padding: 1rem;
+        margin: 2rem auto;
+        max-width: 600px;
+        font-size: 0.9rem;
+        line-height: 1.4;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .code-typing::before {
+        content: "💻 Edward's Code";
+        position: absolute;
+        top: -2px;
+        left: 10px;
+        background: #1a1a2e;
+        padding: 0 10px;
+        color: #00ffcc;
+        font-size: 0.8rem;
+        font-weight: bold;
+      }
+
+      .code-line {
+        opacity: 0;
+        animation: typeIn 0.5s ease-out forwards;
+        margin: 0.2rem 0;
+      }
+
+      @keyframes typeIn {
+        from {
+          opacity: 0;
+          transform: translateX(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes codePulse {
+        0%,
+        100% {
+          opacity: 0.8;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 1;
+          transform: scale(1.05);
+        }
+      }
+
+      .code-typing .code-line {
+        transition: all 0.5s ease;
+      }
+
+      .code-typing .code-line.active {
+        animation: codePulse 1s ease-in-out;
+      }
+
+      .syntax-highlight .keyword {
+        color: #ff6b9d;
+      }
+      .syntax-highlight .function {
+        color: #45b7d1;
+      }
+      .syntax-highlight .string {
+        color: #a9dc76;
+      }
+      .syntax-highlight .comment {
+        color: #6b7280;
+        font-style: italic;
+      }
+      .syntax-highlight .variable {
+        color: #96f7d2;
+      }
+      .syntax-highlight .operator {
+        color: #fbbf24;
+      }
+      .syntax-highlight .number {
+        color: #ff9f43;
+      }
+
+      /* Code Cursor Blink */
+      .code-cursor {
+        background: #00ffcc;
+        color: #000;
+        animation: blink 1s infinite;
+        padding: 0 2px;
+      }
+
+      @keyframes blink {
+        0%,
+        50% {
+          opacity: 1;
+        }
+        51%,
+        100% {
+          opacity: 0;
+        }
+      }
+
+      /* Enhanced Project Stats */
+      .project-stats {
+        display: flex;
+        justify-content: space-around;
+        margin: 1.5rem 0;
+        padding: 1rem;
+        background: rgba(0, 0, 0, 0.3);
+        border-radius: 12px;
+        backdrop-filter: blur(10px);
+      }
+
+      .stat-item {
+        text-align: center;
+        flex: 1;
+      }
+
+      .stat-number {
+        font-size: 2rem;
+        font-weight: bold;
+        color: #00ffcc;
+        text-shadow: 0 0 10px rgba(0, 255, 204, 0.5);
+        margin-bottom: 0.5rem;
+      }
+
+      .stat-label {
+        font-size: 0.9rem;
+        color: #ccc;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .project-card:hover .stat-number {
+        animation: numberGlow 0.5s ease-in-out;
+      }
+
+      @keyframes numberGlow {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.1);
+          color: #ff4081;
+        }
+      }
+
+      /* Hero title - Force visibility */
+      h1 {
+        font-size: 5rem !important;
+        color: #ffffff !important;
+        font-weight: bold !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        z-index: 1000 !important;
+        position: relative !important;
+        text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc, 0 0 30px #00ffcc !important;
+        -webkit-font-smoothing: antialiased !important;
+        -moz-osx-font-smoothing: grayscale !important;
+        filter: none !important;
+        backdrop-filter: none !important;
+      }
+
+      /* Floating Geometric Light Show - More visually stunning than running sprites */
+      .geometric-light {
+        position: fixed;
+        z-index: -2;
+        pointer-events: none;
+        opacity: 0.6;
+        filter: blur(1px);
+      }
+
+      .geometric-shape {
+        position: absolute;
+        background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #f9ca24);
+        background-size: 400% 400%;
+        animation: geometricFloat 8s ease-in-out infinite,
+          gradientShift 6s ease-in-out infinite;
+        filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.3));
+      }
+
+      .triangle {
+        width: 0;
+        height: 0;
+        border-left: 25px solid transparent;
+        border-right: 25px solid transparent;
+        border-bottom: 45px solid #00ffcc;
+        background: none;
+        filter: drop-shadow(0 0 15px rgba(0, 255, 204, 0.8));
+      }
+
+      .hexagon {
+        width: 40px;
+        height: 23px;
+        background: linear-gradient(45deg, #ff4081, #00ffcc);
+        position: relative;
+        margin: 11.5px 0;
+      }
+
+      .hexagon:before,
+      .hexagon:after {
+        content: "";
+        position: absolute;
+        width: 0;
+        border-left: 20px solid transparent;
+        border-right: 20px solid transparent;
+      }
+
+      .hexagon:before {
+        bottom: 100%;
+        border-bottom: 11.5px solid #ff4081;
+      }
+
+      .hexagon:after {
+        top: 100%;
+        border-top: 11.5px solid #00ffcc;
+      }
+
+      .diamond {
+        width: 35px;
+        height: 35px;
+        background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+        transform: rotate(45deg);
+        border-radius: 5px;
+      }
+
+      .octagon {
+        width: 40px;
+        height: 40px;
+        background: linear-gradient(45deg, #45b7d1, #f9ca24);
+        clip-path: polygon(
+          30% 0%,
+          70% 0%,
+          100% 30%,
+          100% 70%,
+          70% 100%,
+          30% 100%,
+          0% 70%,
+          0% 30%
+        );
+      }
+
+      .geometric-path-1 {
+        animation: floatPath1 15s linear infinite;
+        top: 15%;
+        left: -60px;
+      }
+
+      .geometric-path-2 {
+        animation: floatPath2 18s linear infinite;
+        top: 60%;
+        left: calc(100% + 60px);
+        animation-delay: 5s;
+      }
+
+      .geometric-path-3 {
+        animation: floatPath3 20s linear infinite;
+        top: 35%;
+        left: -60px;
+        animation-delay: 8s;
+      }
+
+      .geometric-path-4 {
+        animation: floatPath4 22s linear infinite;
+        top: 80%;
+        left: calc(100% + 60px);
+        animation-delay: 12s;
+      }
+
+      @keyframes geometricFloat {
+        0%,
+        100% {
+          transform: translateY(0px) rotate(0deg);
+        }
+        25% {
+          transform: translateY(-20px) rotate(90deg);
+        }
+        50% {
+          transform: translateY(-10px) rotate(180deg);
+        }
+        75% {
+          transform: translateY(-30px) rotate(270deg);
+        }
+      }
+
+      @keyframes gradientShift {
+        0% {
+          background-position: 0% 50%;
+          filter: drop-shadow(0 0 20px rgba(255, 107, 107, 0.6));
+        }
+        25% {
+          background-position: 100% 50%;
+          filter: drop-shadow(0 0 20px rgba(78, 205, 196, 0.6));
+        }
+        50% {
+          background-position: 0% 50%;
+          filter: drop-shadow(0 0 20px rgba(69, 183, 209, 0.6));
+        }
+        75% {
+          background-position: 100% 50%;
+          filter: drop-shadow(0 0 20px rgba(249, 202, 36, 0.6));
+        }
+        100% {
+          background-position: 0% 50%;
+          filter: drop-shadow(0 0 20px rgba(255, 107, 107, 0.6));
+        }
+      }
+
+      @keyframes floatPath1 {
+        0% {
+          left: -60px;
+          transform: translateY(0px) rotate(0deg);
+        }
+        20% {
+          left: 25%;
+          transform: translateY(-30px) rotate(72deg);
+        }
+        40% {
+          left: 50%;
+          transform: translateY(-10px) rotate(144deg);
+        }
+        60% {
+          left: 75%;
+          transform: translateY(-40px) rotate(216deg);
+        }
+        80% {
+          left: 90%;
+          transform: translateY(-20px) rotate(288deg);
+        }
+        100% {
+          left: calc(100% + 60px);
+          transform: translateY(0px) rotate(360deg);
+        }
+      }
+
+      @keyframes floatPath2 {
+        0% {
+          left: calc(100% + 60px);
+          transform: translateY(0px) rotate(0deg);
+        }
+        25% {
+          left: 75%;
+          transform: translateY(-25px) rotate(-90deg);
+        }
+        50% {
+          left: 50%;
+          transform: translateY(-15px) rotate(-180deg);
+        }
+        75% {
+          left: 25%;
+          transform: translateY(-35px) rotate(-270deg);
+        }
+        100% {
+          left: -60px;
+          transform: translateY(0px) rotate(-360deg);
+        }
+      }
+
+      @keyframes floatPath3 {
+        0% {
+          left: -60px;
+          top: 35%;
+          transform: scale(1) rotate(0deg);
+        }
+        15% {
+          left: 20%;
+          top: 20%;
+          transform: scale(1.2) rotate(54deg);
+        }
+        30% {
+          left: 40%;
+          top: 60%;
+          transform: scale(0.8) rotate(108deg);
+        }
+        45% {
+          left: 60%;
+          top: 15%;
+          transform: scale(1.3) rotate(162deg);
+        }
+        60% {
+          left: 80%;
+          top: 70%;
+          transform: scale(0.9) rotate(216deg);
+        }
+        75% {
+          left: 90%;
+          top: 40%;
+          transform: scale(1.1) rotate(270deg);
+        }
+        100% {
+          left: calc(100% + 60px);
+          top: 35%;
+          transform: scale(1) rotate(324deg);
+        }
+      }
+
+      @keyframes floatPath4 {
+        0% {
+          left: calc(100% + 60px);
+          top: 80%;
+          transform: translateY(0px) rotate(0deg) scale(1);
+        }
+        20% {
+          left: 80%;
+          top: 65%;
+          transform: translateY(-20px) rotate(-72deg) scale(1.1);
+        }
+        40% {
+          left: 60%;
+          top: 85%;
+          transform: translateY(-10px) rotate(-144deg) scale(0.9);
+        }
+        60% {
+          left: 40%;
+          top: 70%;
+          transform: translateY(-30px) rotate(-216deg) scale(1.2);
+        }
+        80% {
+          left: 20%;
+          top: 90%;
+          transform: translateY(-15px) rotate(-288deg) scale(0.8);
+        }
+        100% {
+          left: -60px;
+          top: 80%;
+          transform: translateY(0px) rotate(-360deg) scale(1);
+        }
+      }
+
+      /* Remove any blur effects from hero section */
+      .hero {
+        filter: none !important;
+        backdrop-filter: none !important;
+      }
+
+      /* Hero title animation */
+      .hero-title {
+        animation: heroGlow 3s ease-in-out infinite alternate;
+      }
+
+      @keyframes heroGlow {
+        0% {
+          text-shadow: 0 0 20px rgba(0, 255, 204, 0.5);
+          transform: scale(1);
+        }
+        100% {
+          text-shadow: 0 0 30px rgba(0, 255, 204, 0.8),
+            0 0 40px rgba(0, 255, 204, 0.3);
+          transform: scale(1.02);
+        }
+      }
+
+      /* Health pulse animation */
+      @keyframes heartBeat {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.2);
+          filter: drop-shadow(0 0 10px #ff69b4);
+        }
+      }
+
+      /* Animated Yacht - Because who doesn't need a CSS yacht? */
+      .yacht-water {
+        position: relative;
+        margin: 1rem 0;
+        height: 40px;
+        background: linear-gradient(
+          90deg,
+          #1e3a8a 0%,
+          #3b82f6 50%,
+          #1e3a8a 100%
+        );
+        border-radius: 20px;
+        overflow: hidden;
+        /* No actual fish were harmed in the making of this animation */
+      }
+
+      .yacht {
+        position: absolute;
+        font-size: 2rem;
+        animation: sailYacht 6s ease-in-out infinite;
+        top: 5px;
+      }
+
+      @keyframes sailYacht {
+        0% {
+          transform: translateX(-50px) rotate(-5deg);
+        }
+        50% {
+          transform: translateX(calc(100% + 20px)) rotate(5deg);
+        }
+        100% {
+          transform: translateX(-50px) rotate(-5deg);
+        }
+      }
+
+      .water-waves {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: repeating-linear-gradient(
+          90deg,
+          transparent 0px,
+          rgba(255, 255, 255, 0.1) 10px,
+          transparent 20px
+        );
+        animation: waves 2s linear infinite;
+      }
+
+      @keyframes waves {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(20px);
+        }
+      }
+
+      /* Enhanced project cards */
+      .project-description {
+        font-size: 1rem;
+        line-height: 1.6;
+        margin-bottom: 1rem;
+      }
+
+      .project-fun-fact {
+        background: rgba(255, 64, 129, 0.1);
+        border-left: 3px solid #ff4081;
+        padding: 0.8rem;
+        margin: 1rem 0;
+        font-style: italic;
+        border-radius: 5px;
+        font-size: 0.9rem;
+      }
+
+      .project-stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 0.5rem;
+        margin: 1rem 0;
+        font-size: 0.8rem;
+      }
+
+      .stat-item {
+        background: rgba(0, 255, 204, 0.1);
+        padding: 0.5rem;
+        border-radius: 8px;
+        text-align: center;
+        border: 1px solid rgba(0, 255, 204, 0.3);
+      }
+
+      .stat-number {
+        color: #00ffcc;
+        font-weight: bold;
+        font-size: 1.2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+      <div class="loading-text" id="loadingText">Loading Digital Empire...</div>
+      <div class="loading-spinner"></div>
+      <div
+        id="loadingSubtext"
+        style="color: #666; margin-top: 1rem; font-size: 0.9rem"
+      >
+        Initializing awesomeness...
+      </div>
+    </div>
+
+    <!-- Parallax Background -->
+    <div class="parallax-bg"></div>
+
+    <!-- Morphing Background Shapes -->
+    <div class="morphing-bg">
+      <div class="morph-shape"></div>
+      <div class="morph-shape"></div>
+      <div class="morph-shape"></div>
+    </div>
+
+    <!-- Floating Geometric Light Show - More visually stunning -->
+    <div class="geometric-light geometric-path-1">
+      <div class="geometric-shape triangle"></div>
+    </div>
+
+    <div class="geometric-light geometric-path-2">
+      <div class="geometric-shape hexagon"></div>
+    </div>
+
+    <div class="geometric-light geometric-path-3">
+      <div class="geometric-shape diamond"></div>
+    </div>
+
+    <div class="geometric-light geometric-path-4">
+      <div class="geometric-shape octagon"></div>
+    </div>
+
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Page Transition -->
+    <div class="page-transition" id="pageTransition"></div>
+
+    <div class="floating-elements">
+      <div
+        class="floating-element"
+        style="top: 10%; left: 10%; animation-delay: 0s"
+      ></div>
+      <div
+        class="floating-element"
+        style="top: 20%; left: 80%; animation-delay: 1s"
+      ></div>
+      <div
+        class="floating-element"
+        style="top: 60%; left: 20%; animation-delay: 2s"
+      ></div>
+      <div
+        class="floating-element"
+        style="top: 80%; left: 70%; animation-delay: 3s"
+      ></div>
+      <div
+        class="floating-element"
+        style="top: 40%; left: 90%; animation-delay: 4s"
+      ></div>
+      <div
+        class="floating-element"
+        style="top: 30%; left: 60%; animation-delay: 5s"
+      ></div>
+    </div>
+
+    <!-- Matrix Rain Background -->
+    <div class="matrix-rain" id="matrixRain"></div>
+
+    <!-- Floating Code Syntax Elements - Programming Passion Display -->
+    <div
+      class="code-syntax-float"
+      style="top: 10%; left: 5%; animation-delay: 0s"
+    >
+      <span class="syntax-symbol code-keyword">const</span>
+    </div>
+    <div
+      class="code-syntax-float"
+      style="top: 25%; right: 10%; animation-delay: 1s"
+    >
+      <span class="syntax-symbol code-function">function()</span>
+    </div>
+    <div
+      class="code-syntax-float"
+      style="top: 40%; left: 15%; animation-delay: 2s"
+    >
+      <span class="syntax-symbol">{}</span>
+    </div>
+    <div
+      class="code-syntax-float"
+      style="top: 55%; right: 20%; animation-delay: 3s"
+    >
+      <span class="syntax-symbol code-variable">let innovation</span>
+    </div>
+    <div
+      class="code-syntax-float"
+      style="top: 70%; left: 25%; animation-delay: 4s"
+    >
+      <span class="syntax-symbol code-keyword">class</span>
+    </div>
+    <div
+      class="code-syntax-float"
+      style="top: 85%; right: 15%; animation-delay: 5s"
+    >
+      <span class="syntax-symbol">=></span>
+    </div>
+    <div
+      class="code-syntax-float"
+      style="top: 15%; left: 80%; animation-delay: 1.5s"
+    >
+      <span class="syntax-symbol">&lt;/&gt;</span>
+    </div>
+    <div
+      class="code-syntax-float"
+      style="top: 35%; right: 5%; animation-delay: 2.5s"
+    >
+      <span class="syntax-symbol code-comment">// Dream. Code. Repeat.</span>
+    </div>
+    <div
+      class="code-syntax-float"
+      style="top: 60%; left: 70%; animation-delay: 3.5s"
+    >
+      <span class="syntax-symbol code-function">async</span>
+    </div>
+    <div
+      class="code-syntax-float"
+      style="top: 80%; right: 30%; animation-delay: 4.5s"
+    >
+      <span class="syntax-symbol">&&</span>
+    </div>
+
+    <!-- Code Rain Background -->
+    <div class="code-rain" id="codeRain"></div>
+
+    <div class="container">
+      <section class="hero">
+        <h1
+          style="
+            font-size: 5rem;
+            color: #ffffff;
+            margin-bottom: 2rem;
+            text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc, 0 0 30px #00ffcc;
+            font-weight: bold;
+            font-family: 'Arial', sans-serif;
+            z-index: 1000;
+            position: relative;
+            opacity: 1;
+            text-align: center;
+            line-height: 1.2;
+          "
+        >
+          Edward Terry
+        </h1>
+        <p class="tagline text-reveal">
+          <span>Digital</span> <span>Entrepreneur</span> <span>from</span>
+          <span>the</span> <span>heart</span> <span>of</span>
+          <span>Tanzania</span><br />
+          <span>Systems</span> <span>hacker.</span> <span>Mobile</span>
+          <span>&</span> <span>Web</span> <span>wizard.</span>
+          <span>Business</span> <span>builder.</span> <span>Adventure</span>
+          <span>curator.</span><br />
+          <span>I</span> <span>don't</span> <span>just</span>
+          <span>code—I</span> <span>create</span> <span>digital</span>
+          <span>experiences</span> <span>that</span>
+          <span class="highlight">actually</span>
+          <span class="highlight">work</span> <span>in</span>
+          <span>real-world</span> <span>conditions.</span>
+        </p>
+
+        <!-- Live Code Typing Animation - Showcasing Programming Passion -->
+        <div class="code-typing" id="liveCode">
+          <div class="code-line syntax-highlight" style="animation-delay: 0.5s">
+            <span class="keyword">const</span>
+            <span class="variable">passion</span>
+            <span class="operator">=</span> <span class="string">"coding"</span
+            ><span class="operator">;</span>
+          </div>
+          <div class="code-line syntax-highlight" style="animation-delay: 1s">
+            <span class="keyword">function</span>
+            <span class="function">buildAmazingThings</span
+            ><span class="operator">()</span> <span class="operator">{</span>
+          </div>
+          <div class="code-line syntax-highlight" style="animation-delay: 1.5s">
+            &nbsp;&nbsp;<span class="keyword">return</span>
+            <span class="variable">creativity</span>
+            <span class="operator">+</span> <span class="variable">code</span>
+            <span class="operator">+</span> <span class="variable">coffee</span
+            ><span class="operator">;</span>
+          </div>
+          <div class="code-line syntax-highlight" style="animation-delay: 2s">
+            <span class="operator">}</span>
+          </div>
+          <div class="code-line syntax-highlight" style="animation-delay: 2.5s">
+            <span class="comment"
+              >// Life motto: Dream in code, build in reality</span
+            >
+          </div>
+          <div class="code-line syntax-highlight" style="animation-delay: 3s">
+            <span class="function">buildAmazingThings</span
+            ><span class="operator">();</span>
+            <span class="code-cursor">█</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="skills-grid">
+        <div class="skill-card">
+          <div class="skill-icon">📱</div>
+          <h3>Mobile Development</h3>
+          <p>
+            Flutter expert crafting smooth cross-platform experiences that work
+            flawlessly from Dar es Salaam to Silicon Valley.
+          </p>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">🌐</div>
+          <h3>Web Applications</h3>
+          <p>
+            React + Vite powered web apps. Lightning fast, pixel perfect, user
+            obsessed.
+          </p>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">⚡</div>
+          <h3>Systems Engineering</h3>
+          <p>
+            C++ & Python mastery for when you need raw performance and elegant
+            automation.
+          </p>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">🎮</div>
+          <h3>Reverse Engineering</h3>
+          <p>
+            Game modding, hardware hacking, and making impossible things
+            possible—just for the thrill.
+          </p>
+        </div>
+      </section>
+
+      <section class="projects">
+        <h2 class="section-title">My Digital Empire</h2>
+        <p
+          style="
+            text-align: center;
+            font-size: 1.2rem;
+            margin-bottom: 4rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+          "
+        >
+          From luxury yachts to life-saving healthcare, I don't just build
+          apps—I build <span class="highlight">experiences that matter</span>.
+          Welcome to my collection of digital ventures that are changing lives
+          across Tanzania and beyond.
+        </p>
+
+        <div class="project-grid">
+          <div
+            class="project-card tooltip"
+            data-tooltip="Click to see live stats!"
+          >
+            <h3 class="project-title">Tanzania Premiere Yacht Company</h3>
+            <div class="yacht-water">
+              <div class="water-waves"></div>
+              <div class="yacht">🛥️</div>
+            </div>
+            <p class="project-description">
+              <strong>Luxury yacht experiences</strong> on Tanzania's pristine
+              waters. Because why settle for a boring boat ride when you can
+              have a <em>yacht experience</em>? Built with modern tech stack for
+              seamless maritime adventures that would make even Poseidon
+              jealous.
+            </p>
+
+            <div class="project-stats">
+              <div class="stat-item">
+                <div class="stat-number" data-target="247">0</div>
+                <div class="stat-label">Happy Clients</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-number" data-target="15">0</div>
+                <div class="stat-label">Luxury Yachts</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-number" data-target="98">0</div>
+                <div class="stat-label">Satisfaction %</div>
+              </div>
+            </div>
+            <div class="business-highlight">
+              <strong>🌊 Set sail with us:</strong>
+              <a
+                href="https://tpyctz.com"
+                target="_blank"
+                style="color: #00ffcc"
+                >tpyctz.com</a
+              ><br />
+              <em>Where every voyage is a story worth telling!</em>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <h3 class="project-title">Oxpecker Safaris</h3>
+            <div class="safari-car">
+              <div class="car">🚙</div>
+            </div>
+            <p class="project-description">
+              <strong>Director & Tech Lead</strong> - Premium safari experiences
+              meets cutting-edge booking technology. Tanzania's wildlife, my
+              way. I don't just show you the Big Five—I make sure you remember
+              it forever! (And yes, our booking system works even in the middle
+              of the Serengeti. No kidding!)
+            </p>
+            <div class="project-fun-fact">
+              Plot twist: I actually debugged code while a lion was 20 meters
+              away. True story! The lion was not impressed by my JavaScript.
+            </div>
+            <div class="project-stats">
+              <div class="stat-item">
+                <div class="stat-number">500+</div>
+                <div>Adventures</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-number">Big 5</div>
+                <div>Guaranteed</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-number">0</div>
+                <div>Boring Moments</div>
+              </div>
+            </div>
+            <div class="business-highlight">
+              <strong>🌍 Experience the wild:</strong>
+              <span style="color: #666">Website coming soon!</span><br />
+              <em
+                >Domain shopping is harder than lion tracking! 🦁 Hit me up
+                directly for bookings! �</em
+              >
+            </div>
+          </div>
+
+          <div
+            class="project-card tooltip"
+            data-tooltip="Healthcare Innovation Hub"
+          >
+            <h3 class="project-title">Swaheels Health</h3>
+            <div
+              class="health-pulse"
+              style="text-align: center; margin: 1rem 0"
+            >
+              <span
+                style="
+                  font-size: 3rem;
+                  animation: heartBeat 2s ease-in-out infinite;
+                "
+                >💓</span
+              >
+            </div>
+            <p class="project-description">
+              <strong>Healthcare Innovation</strong> - Revolutionizing
+              healthcare access in Tanzania because good health shouldn't be a
+              luxury! Bridging technology and wellness for better community
+              health outcomes. Making quality healthcare accessible to every
+              Tanzanian.
+            </p>
+
+            <div class="project-stats">
+              <div class="stat-item">
+                <div class="stat-number" data-target="1247">0</div>
+                <div class="stat-label">Lives Touched</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-number" data-target="24">0</div>
+                <div class="stat-label">Hours Support</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-number" data-target="100">0</div>
+                <div class="stat-label">Commitment %</div>
+              </div>
+            </div>
+            <div class="business-highlight">
+              <strong>🩺 Transform health with us:</strong>
+              <a
+                href="https://swaheels.com"
+                target="_blank"
+                style="color: #00ffcc"
+                >swaheels.com</a
+              ><br />
+              <em>Because everyone deserves world-class healthcare! 💚</em>
+            </div>
+          </div>
+
+          <div class="project-card pulse">
+            <h3 class="project-title">🏠 Gangilonga Homes</h3>
+            <p class="project-description">
+              <strong>Hospitality Entrepreneur</strong> - Premium Airbnb in
+              vibrant Dar es Salaam where comfort meets authentic Tanzanian
+              warmth. Not just a place to sleep, but a place to
+              <em>experience</em> Tanzania! We've got everything: killer views,
+              blazing Wi-Fi (yes, for all you digital nomads), and the kind of
+              hospitality that makes you extend your stay "just one more night"
+              three times.
+            </p>
+            <div class="project-fun-fact">
+              🏡 Confession: I designed the smart home system while staying in
+              my own Airbnb. Inception level: Airbnb-ception! 🤯
+            </div>
+            <div class="project-stats">
+              <div class="stat-item">
+                <div class="stat-number">4.9★</div>
+                <div>Rating</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-number">90%</div>
+                <div>Return Rate</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-number">∞</div>
+                <div>Tanzanian Vibes</div>
+              </div>
+            </div>
+            <div class="business-highlight">
+              <strong>�️ Stay with us:</strong>
+              <a
+                href="https://www.booking.com/hotel/tz/gangilonga-homes.html?label=gen173bo-10CAEoggI46AdIM1gDaOgBiAEBmAEzuAEXyAEM2AED6AEB-AEBiAIBmAICqAIBuAKEyOHFBsACAdICJDA3MGJkZTFjLWRmOTgtNDIwNy04ODM5LWM0MjVkMDY4OTI0MdgCAeACAQ&aid=304142&ucfs=1&arphpl=1&dest_id=12114975&dest_type=hotel&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=1&hapos=1&sr_order=popularity&srpvid=501f6f90a450001a&srepoch=1756914726&from=searchresults"
+                target="_blank"
+                style="color: #00ffcc"
+                >Book Gangilonga Homes</a
+              ><br />
+              <em>Your home away from home in beautiful Iringa Tanzania! �</em>
+            </div>
+          </div>
+
+          <div
+            class="project-card"
+            style="border: 2px dashed #444; background: rgba(34, 34, 34, 0.5)"
+          >
+            <h3 class="project-title">🚀 Next Big Thing</h3>
+            <p class="project-description">
+              <strong>Classified Project</strong> - Can't tell you what it is
+              yet, but let's just say it involves AI, blockchain, quantum
+              computing, and a really good cup of Tanzanian coffee. ☕
+            </p>
+            <div class="project-fun-fact">
+              🤫 Hint: It's going to make everything else look like child's
+              play. But you'll have to wait and see! 😉
+            </div>
+            <div class="business-highlight">
+              <strong>🔮 Coming Soon:</strong>
+              <span style="color: #666">??? 2025</span><br />
+              <em>Trust me, it's going to be epic! 🔥</em>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section style="margin: 4rem 0; text-align: center">
+        <h2 class="section-title">System Status</h2>
+        <p style="margin-bottom: 3rem; opacity: 0.8">
+          Live stats from Edward's digital ecosystem
+        </p>
+
+        <div
+          style="
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+          "
+        >
+          <div class="cpu-display">
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 0.5rem;
+              "
+            >
+              <span>☕ Coffee Level</span>
+              <span id="coffeeLevel">87%</span>
+            </div>
+            <div class="cpu-bar">
+              <div class="cpu-fill" style="width: 87%"></div>
+            </div>
+
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 0.5rem;
+              "
+            >
+              <span>💻 Coding Efficiency</span>
+              <span id="codingLevel">94%</span>
+            </div>
+            <div class="cpu-bar">
+              <div
+                class="cpu-fill"
+                style="width: 94%; animation-delay: 0.5s"
+              ></div>
+            </div>
+
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 0.5rem;
+              "
+            >
+              <span>🐛 Bug Fix Rate</span>
+              <span id="bugLevel">76%</span>
+            </div>
+            <div class="cpu-bar">
+              <div
+                class="cpu-fill"
+                style="width: 76%; animation-delay: 1s"
+              ></div>
+            </div>
+
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 0.5rem;
+              "
+            >
+              <span>🚀 Innovation Mode</span>
+              <span id="innovationLevel">98%</span>
+            </div>
+            <div class="cpu-bar">
+              <div
+                class="cpu-fill"
+                style="width: 98%; animation-delay: 1.5s"
+              ></div>
+            </div>
+          </div>
+
+          <div class="cpu-display">
+            <div style="color: #00ffcc; margin-bottom: 1rem; font-weight: bold">
+              🎵 Currently Coding To:
+            </div>
+            <div class="music-bars">
+              <div class="bar"></div>
+              <div class="bar"></div>
+              <div class="bar"></div>
+              <div class="bar"></div>
+              <div class="bar"></div>
+              <div class="bar"></div>
+              <div class="bar"></div>
+              <div class="bar"></div>
+            </div>
+            <div style="margin-top: 1rem; color: #ff4081; font-weight: 500">
+              "Brent Faiyaz - Sonder Son"
+            </div>
+            <div style="font-size: 0.8rem; opacity: 0.7; margin-top: 0.5rem">
+              Smooth vibes for smooth code... 🎶
+            </div>
+          </div>
+
+          <div class="cpu-display">
+            <div style="color: #00ffcc; margin-bottom: 1rem; font-weight: bold">
+              🧬 Digital DNA Analysis:
+            </div>
+
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 0.5rem;
+              "
+            >
+              <span>🎯 Problem Solving</span>
+              <span style="color: #00ffcc; font-family: monospace"
+                >LEGENDARY</span
+              >
+            </div>
+
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 0.5rem;
+              "
+            >
+              <span>� Code Quality</span>
+              <span style="color: #ff69b4; font-family: monospace"
+                >PRISTINE</span
+              >
+            </div>
+
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 0.5rem;
+              "
+            >
+              <span>⚡ Execution Speed</span>
+              <span style="color: #ffb347; font-family: monospace"
+                >BLAZING</span
+              >
+            </div>
+
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 0.5rem;
+              "
+            >
+              <span>� Innovation Level</span>
+              <span style="color: #98fb98; font-family: monospace"
+                >MAXIMUM</span
+              >
+            </div>
+
+            <div
+              style="
+                margin-top: 1rem;
+                padding-top: 1rem;
+                border-top: 1px solid #333;
+                font-size: 0.8rem;
+                opacity: 0.7;
+              "
+            >
+              🔬 Scanned: 2025.09.03 | Status:
+              <span style="color: #00ff00">ACTIVE</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="terminal-section">
+        <h2 class="section-title">Live Terminal 💻</h2>
+        <p style="margin-bottom: 2rem; opacity: 0.8">
+          Watch me code in real-time (simulated, but still cool!)
+        </p>
+
+        <div class="terminal">
+          <div class="terminal-header">
+            <div class="terminal-dots">
+              <div class="terminal-dot red"></div>
+              <div class="terminal-dot yellow"></div>
+              <div class="terminal-dot green"></div>
+            </div>
+            <div class="terminal-title">edward@tanzania:~/projects</div>
+          </div>
+          <div class="terminal-body" id="terminal">
+            <!-- Terminal content will be populated by JavaScript -->
+          </div>
+        </div>
+      </section>
+
+      <section class="game-section">
+        <h2 class="section-title">Auto-Snake Game 🐍</h2>
+        <p style="margin-bottom: 2rem; opacity: 0.8">
+          Watch this AI snake play itself! (Because I automate everything)
+        </p>
+
+        <div class="game-container">
+          <div class="game-score" id="score">Score: 0</div>
+          <div class="game-canvas" id="gameCanvas">
+            <!-- Game elements will be populated by JavaScript -->
+          </div>
+          <div class="game-status" id="gameStatus">🤖 AI Playing...</div>
+        </div>
+      </section>
+
+      <section class="contact-section">
+        <h2 class="section-title">Let's Build Something Epic</h2>
+        <p style="font-size: 1.2rem; margin-bottom: 2rem">
+          Ready to collaborate? Need a safari? Looking for a place to stay in
+          Tanzania?<br />
+          <span class="highlight"
+            >Hit me up—I don't just solve problems, I make them look good while
+            I do it!</span
+          >
+        </p>
+
+        <div class="contact-grid">
+          <div class="contact-badge pulse">
+            <a href="tel:+255763815413">📞 +255 763 815 413</a>
+          </div>
+          <div class="contact-badge">
+            <a href="mailto:terry.edwardx@gmail.com"
+              >📧 terry.edwardx@gmail.com</a
+            >
+          </div>
+          <div class="contact-badge">
+            <a href="mailto:sir_edward@icloud.com">📨 sir_edward@icloud.com</a>
+          </div>
+          <div class="contact-badge">
+            <a href="https://github.com/ed-terry" target="_blank"
+              >🐙 GitHub: ed-terry</a
+            >
+          </div>
+          <div class="contact-badge">
+            <a href="https://instagram.com/m.r_terry" target="_blank"
+              >📸 Instagram: @m.r_terry</a
+            >
+          </div>
+          <div class="contact-badge neon-button" style="padding: 1rem">
+            <a href="mailto:terry.edwardx@gmail.com" style="color: inherit"
+              >💬 Start a Project</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <section class="cta">
+        <p style="font-size: 1.3rem; margin-bottom: 2rem; opacity: 0.9">
+          Whether you need a <span class="highlight">killer app</span>, an
+          <span class="highlight">unforgettable safari</span>, or just want to
+          <span class="highlight">geek out about tech</span>—I'm your guy!
+        </p>
+        <a href="mailto:terry.edwardx@gmail.com" class="cta-button">
+          Let's Make Magic Happen
+        </a>
+      </section>
+
+      <footer
+        style="
+          text-align: center;
+          padding: 2rem 0;
+          opacity: 0.7;
+          border-top: 1px solid #444;
+          margin-top: 4rem;
+        "
+      >
+        <p>
+          Built with
+          <span
+            style="
+              color: #ff69b4;
+              animation: heartBeat 1.5s ease-in-out infinite;
+            "
+            >❤️</span
+          >
+          by Edward Terry from Dar es Salaam, Tanzania
+        </p>
+        <p style="margin-top: 0.5rem; font-size: 0.9rem">
+          © 2025 Edward Terry - Making the impossible, possible.
+        </p>
+      </footer>
+    </div>
+
+    <script>
+      // Welcome to Edward's JavaScript playground!
+      // Where bugs are features and features are... well, also bugs sometimes
+
+      // Interactive sparkle effect on mouse movement - DEFERRED
+      // Because who doesn't need sparkles in their life?
+      function initializeSparkleEffects() {
+        document.addEventListener("mousemove", (e) => {
+          if (Math.random() > 0.92) {
+            createSparkle(e.clientX, e.clientY);
+          }
+        });
+
+        // Touch support for mobile with throttling
+        // Because mobile users deserve sparkles too, but not too many
+        let touchThrottle = false;
+        document.addEventListener("touchmove", (e) => {
+          if (touchThrottle) return;
+          touchThrottle = true;
+          setTimeout(() => {
+            touchThrottle = false;
+          }, 100);
+
+          if (Math.random() > 0.95) {
+            const touch = e.touches[0];
+            createSparkle(touch.clientX, touch.clientY);
+          }
+        });
+
+        // Tap sparkles for mobile
+        // Tap tap sparkle sparkle!
+        document.addEventListener("touchstart", (e) => {
+          if (Math.random() > 0.7) {
+            const touch = e.touches[0];
+            createSparkle(touch.clientX, touch.clientY);
+          }
+        });
+      }
+
+      function createSparkle(x, y) {
+        const sparkle = document.createElement("div");
+        sparkle.className = "sparkle";
+        sparkle.style.left = x - 2 + "px";
+        sparkle.style.top = y - 2 + "px";
+        sparkle.style.width = "4px";
+        sparkle.style.height = "4px";
+        document.body.appendChild(sparkle);
+
+        setTimeout(() => sparkle.remove(), 1000);
+      }
+
+      // DOM operations will be deferred until page is ready
+      function initializeDOMOperations() {
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute("href"));
+            if (target) {
+              target.scrollIntoView({ behavior: "smooth" });
+            }
+          });
+        });
+      }
+
+      // Add random floating elements
+      function addRandomFloatingElement() {
+        const floatingContainer = document.querySelector(".floating-elements");
+        const element = document.createElement("div");
+        element.className = "floating-element";
+        element.style.top = Math.random() * 100 + "%";
+        element.style.left = Math.random() * 100 + "%";
+        element.style.animationDelay = Math.random() * 6 + "s";
+        floatingContainer.appendChild(element);
+
+        setTimeout(() => element.remove(), 12000);
+      }
+
+      // Intervals will be started after page loads
+      let intervalsInitialized = false;
+
+      function initializeIntervals() {
+        if (intervalsInitialized) return;
+        intervalsInitialized = true;
+
+        // Add new floating elements periodically
+        setInterval(addRandomFloatingElement, 3000);
+
+        // Matrix rain effect
+        setInterval(createMatrixRain, 3000);
+
+        // Update system stats
+        setInterval(updateSystemStats, 3000);
+      }
+
+      // Intersection Observer for scroll animations - DEFERRED
+      let scrollAnimationInitialized = false;
+
+      function initializeScrollAnimations() {
+        if (scrollAnimationInitialized) return;
+        scrollAnimationInitialized = true;
+
+        const observerOptions = {
+          threshold: 0.1,
+          rootMargin: "0px 0px -50px 0px",
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.style.opacity = "1";
+              entry.target.style.transform = "translateY(0)";
+            }
+          });
+        }, observerOptions);
+
+        // Observe all cards for scroll animations
+        document
+          .querySelectorAll(".skill-card, .project-card")
+          .forEach((card) => {
+            card.style.opacity = "0";
+            card.style.transform = "translateY(30px)";
+            card.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+            observer.observe(card);
+          });
+      }
+
+      console.log(
+        "🇹🇿 Welcome to Edward Terry's digital empire! Built with love from Tanzania."
+      );
+      console.log("🎮 Try the Konami code for a surprise!");
+      console.log(
+        "✨ Enjoy the new geometric light show - upgraded from running sprites!"
+      );
+      console.log("🤖 AI Snake game and live terminal are now enabled!");
+
+      // Matrix Rain Effect - Because we're living in the Matrix
+      function createMatrixRain() {
+        const matrixContainer = document.getElementById("matrixRain");
+
+        if (!matrixContainer) {
+          console.error("Matrix rain container not found");
+          return;
+        }
+
+        const chars =
+          "01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン";
+
+        for (let i = 0; i < 50; i++) {
+          const char = document.createElement("div");
+          char.className = "matrix-char";
+          char.textContent = chars[Math.floor(Math.random() * chars.length)];
+          char.style.left = Math.random() * 100 + "vw";
+          char.style.animationDuration = Math.random() * 3 + 2 + "s";
+          char.style.animationDelay = Math.random() * 2 + "s";
+          matrixContainer.appendChild(char);
+
+          // Remove after animation
+          setTimeout(() => {
+            if (char.parentNode) char.parentNode.removeChild(char);
+          }, 8000);
+        }
+      }
+
+      // Matrix rain will be initialized after page loads
+
+      // Code Rain Effect - Showcasing Programming Languages & Syntax
+      function createCodeRain() {
+        const codeContainer = document.getElementById("codeRain");
+
+        if (!codeContainer) {
+          console.error("Code rain container not found");
+          return;
+        }
+
+        // Programming keywords, functions, and syntax from various languages
+        const codeElements = [
+          // JavaScript/TypeScript
+          { text: "const", class: "keyword" },
+          { text: "function", class: "keyword" },
+          { text: "async", class: "keyword" },
+          { text: "await", class: "keyword" },
+          { text: "=>", class: "operator" },
+          { text: "useState", class: "function" },
+          { text: "useEffect", class: "function" },
+          { text: "console.log", class: "function" },
+
+          // Python
+          { text: "def", class: "keyword" },
+          { text: "class", class: "keyword" },
+          { text: "import", class: "keyword" },
+          { text: "lambda", class: "keyword" },
+          { text: "print()", class: "function" },
+
+          // Flutter/Dart
+          { text: "Widget", class: "keyword" },
+          { text: "StatefulWidget", class: "keyword" },
+          { text: "build()", class: "function" },
+          { text: "setState", class: "function" },
+
+          // C++
+          { text: "#include", class: "keyword" },
+          { text: "iostream", class: "variable" },
+          { text: "std::", class: "variable" },
+          { text: "cout", class: "function" },
+
+          // General Programming
+          { text: "{}", class: "operator" },
+          { text: "[]", class: "operator" },
+          { text: "()", class: "operator" },
+          { text: "&&", class: "operator" },
+          { text: "||", class: "operator" },
+          { text: "!=", class: "operator" },
+          { text: "===", class: "operator" },
+          { text: "</>", class: "operator" },
+
+          // Comments
+          { text: "// TODO:", class: "keyword" },
+          { text: "/* */", class: "operator" },
+          { text: "# Fix bug", class: "keyword" },
+        ];
+
+        for (let i = 0; i < 30; i++) {
+          const randomElement =
+            codeElements[Math.floor(Math.random() * codeElements.length)];
+          const codeChar = document.createElement("div");
+          codeChar.className = `code-char ${randomElement.class}`;
+          codeChar.textContent = randomElement.text;
+          codeChar.style.left = Math.random() * 100 + "vw";
+          codeChar.style.animationDuration = Math.random() * 4 + 3 + "s";
+          codeChar.style.animationDelay = Math.random() * 3 + "s";
+          codeChar.style.fontSize = Math.random() * 6 + 10 + "px";
+          codeContainer.appendChild(codeChar);
+
+          // Remove after animation
+          setTimeout(() => {
+            if (codeChar.parentNode) codeChar.parentNode.removeChild(codeChar);
+          }, 10000);
+        }
+      }
+
+      // Programming Passion Showcase - Animated Code Typing
+      function startLiveCodeTyping() {
+        const codeLines = document.querySelectorAll("#liveCode .code-line");
+
+        codeLines.forEach((line, index) => {
+          setTimeout(() => {
+            line.style.opacity = "1";
+            line.style.animation = "typeIn 0.5s ease-out forwards";
+          }, index * 500);
+        });
+
+        // Restart the animation after it completes
+        setTimeout(() => {
+          codeLines.forEach((line) => {
+            line.style.opacity = "0";
+          });
+          setTimeout(startLiveCodeTyping, 1000);
+        }, codeLines.length * 500 + 3000);
+      }
+
+      // Enhanced Code Passion Features
+      function addRandomCodeSymbol() {
+        const symbols = [
+          { text: "++", class: "operator" },
+          { text: "=>", class: "operator" },
+          { text: "null", class: "keyword" },
+          { text: "true", class: "keyword" },
+          { text: "false", class: "keyword" },
+          { text: "void", class: "keyword" },
+          { text: "return", class: "keyword" },
+          { text: "if", class: "keyword" },
+          { text: "else", class: "keyword" },
+          { text: "for", class: "keyword" },
+          { text: "while", class: "keyword" },
+          { text: "switch", class: "keyword" },
+          { text: ".map()", class: "function" },
+          { text: ".filter()", class: "function" },
+          { text: ".reduce()", class: "function" },
+          { text: "API", class: "variable" },
+          { text: "JSON", class: "variable" },
+          { text: "HTTP", class: "variable" },
+        ];
+
+        const randomSymbol =
+          symbols[Math.floor(Math.random() * symbols.length)];
+        const element = document.createElement("div");
+        element.className = `code-syntax-float ${randomSymbol.class}`;
+        element.innerHTML = `<span class="syntax-symbol">${randomSymbol.text}</span>`;
+
+        // Random position
+        element.style.top = Math.random() * 80 + 10 + "%";
+        element.style.left = Math.random() * 80 + 10 + "%";
+        element.style.animationDelay = "0s";
+
+        document.body.appendChild(element);
+
+        // Remove after animation cycle
+        setTimeout(() => {
+          if (element.parentNode) {
+            element.parentNode.removeChild(element);
+          }
+        }, 8000);
+      }
+
+      // Dynamic system stats updates
+      function updateSystemStats() {
+        const coffeeLevel = document.getElementById("coffeeLevel");
+        const codingLevel = document.getElementById("codingLevel");
+        const bugLevel = document.getElementById("bugLevel");
+
+        if (coffeeLevel) {
+          const coffee = Math.floor(Math.random() * 30) + 70; // 70-100%
+          coffeeLevel.textContent = coffee + "%";
+        }
+
+        if (codingLevel) {
+          const coding = Math.floor(Math.random() * 20) + 80; // 80-100%
+          codingLevel.textContent = coding + "%";
+        }
+
+        if (bugLevel) {
+          const bugs = Math.floor(Math.random() * 40) + 60; // 60-100%
+          bugLevel.textContent = bugs + "%";
+        }
+      }
+
+      // System stats will be updated after page loads
+
+      // Cursor trail variables - will be initialized later
+      const coords = { x: 0, y: 0 };
+      let cursorCircles = [];
+
+      function initializeCursorTrail() {
+        // Create cursor trail circles
+        for (let i = 0; i < 20; i++) {
+          const circle = document.createElement("div");
+          circle.className = "circle";
+          circle.style.position = "fixed";
+          circle.style.width = "10px";
+          circle.style.height = "10px";
+          circle.style.background = i % 2 === 0 ? "#00ffcc" : "#ff4081";
+          circle.style.borderRadius = "50%";
+          circle.style.pointerEvents = "none";
+          circle.style.zIndex = "9999";
+          circle.style.transition = "transform 0.1s ease-out";
+          document.body.appendChild(circle);
+          cursorCircles.push(circle);
+        }
+
+        cursorCircles.forEach(function (circle, index) {
+          circle.x = 0;
+          circle.y = 0;
+        });
+
+        window.addEventListener("mousemove", function (e) {
+          coords.x = e.clientX;
+          coords.y = e.clientY;
+        });
+      }
+
+      function animateCircles() {
+        let x = coords.x;
+        let y = coords.y;
+
+        cursorCircles.forEach(function (circle, index) {
+          circle.style.left = x - 5 + "px";
+          circle.style.top = y - 5 + "px";
+          circle.style.transform = `scale(${
+            (cursorCircles.length - index) / cursorCircles.length
+          })`;
+          circle.style.opacity =
+            (cursorCircles.length - index) / cursorCircles.length;
+
+          circle.x = x;
+          circle.y = y;
+
+          const nextCircle = cursorCircles[index + 1] || cursorCircles[0];
+          x += (nextCircle.x - x) * 0.3;
+          y += (nextCircle.y - y) * 0.3;
+        });
+
+        requestAnimationFrame(animateCircles);
+      }
+
+      // Cursor animation will be initialized after page loads
+      let cursorAnimationInitialized = false;
+
+      function initializeCursorAnimation() {
+        if (cursorAnimationInitialized) return;
+        cursorAnimationInitialized = true;
+
+        // Initialize cursor trail first
+        initializeCursorTrail();
+
+        // Then start the animation
+        animateCircles();
+      }
+
+      // Secret developer console easter egg
+      console.log(`
+    ╔═══════════════════════════════════════╗
+    ║     🇹🇿 EDWARD'S SECRET MESSAGE 🇹🇿      ║
+    ╠═══════════════════════════════════════╣
+    ║  Hey there, fellow developer! 👋      ║
+    ║                                       ║
+    ║  Since you're checking the console,   ║
+    ║  here's a bonus fact:                 ║
+    ║                                       ║
+    ║  This portfolio was coded at 2 AM     ║
+    ║  with way too much Tanzanian coffee   ║
+    ║  and a playlist of 90s hip-hop.      ║
+    ║                                       ║
+    ║  Want to work together? Hit me up!    ║
+    ║  terry.edwardx@gmail.com              ║
+    ║                                       ║
+    ║  PS: Try typing 'edward()' below 😉   ║
+    ╚═══════════════════════════════════════╝
+    `);
+
+      // Secret console function
+      window.edward = function () {
+        console.log("🚀 Edward Terry - Full Stack Developer");
+        console.log("📍 Location: Dar es Salaam, Tanzania");
+        console.log("☕ Coffee consumed today: Probably too much");
+        console.log(
+          "🐛 Bugs squashed this week: " + Math.floor(Math.random() * 50 + 20)
+        );
+        console.log("🎯 Current mood: Ready to build something awesome!");
+        return "Thanks for exploring! Let's create something amazing together 🇹🇿";
+      };
+
+      // Terminal Simulator
+      // Fake it 'til you make it! This isn't a real terminal, but it looks cool
+      let terminal; // Will be initialized later
+      const terminalCommands = [
+        {
+          delay: 1000,
+          text: '<span class="terminal-prompt">edward@tanzania:~/projects$</span> ls -la',
+        },
+        {
+          delay: 500,
+          text: "total 42 # The answer to life, universe, and everything",
+        },
+        { delay: 200, text: "drwxr-xr-x  8 edward edward 4096 Sep  3 15:30 ." },
+        {
+          delay: 200,
+          text: "drwxr-xr-x  3 edward edward 4096 Sep  3 15:30 ..",
+        },
+        {
+          delay: 200,
+          text: "drwxr-xr-x  3 edward edward 4096 Sep  3 15:30 tpyc-yacht-platform",
+        },
+        {
+          delay: 200,
+          text: "drwxr-xr-x  3 edward edward 4096 Sep  3 15:30 oxpecker-safaris",
+        },
+        {
+          delay: 200,
+          text: "drwxr-xr-x  3 edward edward 4096 Sep  3 15:30 swaheels-health",
+        },
+        {
+          delay: 200,
+          text: "drwxr-xr-x  3 edward edward 4096 Sep  3 15:30 gangilonga-homes",
+        },
+        {
+          delay: 1000,
+          text: '<span class="terminal-prompt">edward@tanzania:~/projects$</span> git status',
+        },
+        { delay: 300, text: "On branch main" },
+        { delay: 200, text: "Your branch is up to date with 'origin/main'." },
+        { delay: 200, text: "nothing to commit, working tree clean ✅" },
+        {
+          delay: 1500,
+          text: '<span class="terminal-prompt">edward@tanzania:~/projects$</span> flutter doctor',
+        },
+        {
+          delay: 500,
+          text: "Doctor summary (to see all details, run flutter doctor -v):",
+        },
+        { delay: 300, text: "[✓] Flutter (Channel stable, 3.16.0)" },
+        {
+          delay: 200,
+          text: "[✓] Android toolchain - develop for Android devices",
+        },
+        { delay: 200, text: "[✓] iOS toolchain - develop for iOS devices" },
+        { delay: 200, text: "[✓] VS Code (version 1.83.0)" },
+        { delay: 200, text: "[✓] Connected device (3 available)" },
+        { delay: 200, text: "• No issues found! 🚀" },
+        {
+          delay: 2000,
+          text: '<span class="terminal-prompt">edward@tanzania:~/projects$</span> python --version',
+        },
+        { delay: 300, text: "Python 3.11.5" },
+        {
+          delay: 1000,
+          text: '<span class="terminal-prompt">edward@tanzania:~/projects$</span> echo "Building the future from Tanzania 🇹🇿"',
+        },
+        { delay: 500, text: "Building the future from Tanzania 🇹🇿" },
+        {
+          delay: 1500,
+          text: '<span class="terminal-prompt">edward@tanzania:~/projects$</span> <span class="terminal-cursor">█</span>',
+        },
+      ];
+
+      let terminalIndex = 0;
+      let currentDelay = 0;
+
+      function typeTerminalLine() {
+        if (terminalIndex < terminalCommands.length) {
+          const command = terminalCommands[terminalIndex];
+          currentDelay += command.delay;
+
+          setTimeout(() => {
+            const line = document.createElement("div");
+            line.className = "terminal-line";
+            line.innerHTML = command.text;
+            line.style.animationDelay = "0s";
+            terminal.appendChild(line);
+            terminal.scrollTop = terminal.scrollHeight;
+
+            terminalIndex++;
+            if (terminalIndex < terminalCommands.length) {
+              typeTerminalLine();
+            } else {
+              // Restart after a delay
+              setTimeout(() => {
+                terminal.innerHTML = "";
+                terminalIndex = 0;
+                currentDelay = 0;
+                typeTerminalLine();
+              }, 5000);
+            }
+          }, command.delay);
+        }
+      }
+
+      // Terminal and game will be initialized after page loads
+      let terminalInitialized = false;
+      let gameInitialized = false;
+
+      function initializeTerminal() {
+        if (terminalInitialized) return;
+        terminalInitialized = true;
+
+        console.log("Starting terminal initialization...");
+        try {
+          // Initialize terminal element
+          terminal = document.getElementById("terminal");
+          if (!terminal) {
+            console.error("Terminal element not found!");
+            return;
+          }
+
+          // Start terminal animation
+          typeTerminalLine();
+          console.log("Terminal initialized successfully!");
+        } catch (error) {
+          console.error("Error initializing terminal:", error);
+        }
+      }
+      function initializeGame() {
+        if (gameInitialized) return;
+        gameInitialized = true;
+
+        console.log("Starting game initialization...");
+        try {
+          // Start the game
+          new AutoSnake();
+          console.log("Game initialized successfully!");
+        } catch (error) {
+          console.error("Error initializing game:", error);
+        }
+      }
+
+      // Auto-playing Snake Game
+      // Because every portfolio needs a pointless but cool game
+      class AutoSnake {
+        constructor() {
+          this.canvas = document.getElementById("gameCanvas");
+          this.scoreElement = document.getElementById("score");
+          this.statusElement = document.getElementById("gameStatus");
+
+          this.gridSize = 20;
+          this.tileCount = Math.floor(400 / this.gridSize);
+
+          this.reset();
+          this.gameLoop();
+          // Edward's note: This AI is smarter than most of my dates
+        }
+
+        reset() {
+          this.snake = [{ x: 10, y: 10 }];
+          this.food = this.randomFood();
+          this.dx = 0;
+          this.dy = 0;
+          this.score = 0;
+          this.updateScore();
+          this.updateDisplay();
+        }
+
+        randomFood() {
+          return {
+            x: Math.floor(Math.random() * this.tileCount),
+            y: Math.floor(Math.random() * (300 / this.gridSize)),
+          };
+        }
+
+        moveSnake() {
+          // AI logic - simple pathfinding
+          const head = { ...this.snake[0] };
+
+          // Calculate direction to food
+          const foodX = this.food.x;
+          const foodY = this.food.y;
+
+          // Simple AI: move towards food
+          if (head.x < foodX && this.dx !== -1) {
+            this.dx = 1;
+            this.dy = 0;
+          } else if (head.x > foodX && this.dx !== 1) {
+            this.dx = -1;
+            this.dy = 0;
+          } else if (head.y < foodY && this.dy !== -1) {
+            this.dx = 0;
+            this.dy = 1;
+          } else if (head.y > foodY && this.dy !== 1) {
+            this.dx = 0;
+            this.dy = -1;
+          }
+
+          head.x += this.dx;
+          head.y += this.dy;
+
+          // Wall collision
+          if (
+            head.x < 0 ||
+            head.x >= this.tileCount ||
+            head.y < 0 ||
+            head.y >= 300 / this.gridSize
+          ) {
+            this.gameOver();
+            return;
+          }
+
+          // Self collision
+          if (
+            this.snake.some(
+              (segment) => segment.x === head.x && segment.y === head.y
+            )
+          ) {
+            this.gameOver();
+            return;
+          }
+
+          this.snake.unshift(head);
+
+          // Check food collision
+          if (head.x === this.food.x && head.y === this.food.y) {
+            this.score += 10;
+            this.updateScore();
+            this.food = this.randomFood();
+            this.statusElement.textContent = "🍎 Nom nom nom!";
+            setTimeout(() => {
+              this.statusElement.textContent = "🤖 AI Playing...";
+            }, 500);
+          } else {
+            this.snake.pop();
+          }
+        }
+
+        updateDisplay() {
+          // Clear canvas
+          this.canvas.innerHTML = "";
+
+          // Draw snake
+          this.snake.forEach((segment, index) => {
+            const segmentElement = document.createElement("div");
+            segmentElement.className = "snake-segment";
+            segmentElement.style.left = segment.x * this.gridSize + "px";
+            segmentElement.style.top = segment.y * this.gridSize + "px";
+            if (index === 0) {
+              segmentElement.style.background = "#00ff41"; // Head
+            }
+            this.canvas.appendChild(segmentElement);
+          });
+
+          // Draw food
+          const foodElement = document.createElement("div");
+          foodElement.className = "food";
+          foodElement.style.left = this.food.x * this.gridSize + "px";
+          foodElement.style.top = this.food.y * this.gridSize + "px";
+          this.canvas.appendChild(foodElement);
+        }
+
+        updateScore() {
+          this.scoreElement.textContent = `Score: ${this.score}`;
+        }
+
+        gameOver() {
+          this.statusElement.textContent = "💥 Game Over! Restarting...";
+          setTimeout(() => {
+            this.reset();
+          }, 2000);
+        }
+
+        gameLoop() {
+          this.moveSnake();
+          this.updateDisplay();
+          setTimeout(() => this.gameLoop(), 200);
+        }
+      }
+
+      // Game will be initialized after page loads
+
+      // Floating Action Button - Quick Contact - DEFERRED
+      function createFloatingActionButton() {
+        const fab = document.createElement("div");
+        fab.className = "fab tooltip";
+        fab.setAttribute("data-tooltip", "Quick Contact");
+        fab.innerHTML = "✉️";
+        fab.onclick = () => {
+          window.location.href =
+            "mailto:edwardterry94@gmail.com?subject=Hello Edward!&body=Hi Edward, I found your portfolio and would love to connect!";
+        };
+        document.body.appendChild(fab);
+      }
+
+      // Scroll Progress Indicator
+      function updateScrollProgress() {
+        const scrollProgressElement = document.getElementById("scrollProgress");
+
+        if (!scrollProgressElement) {
+          console.error("Scroll progress element not found");
+          return;
+        }
+
+        const scrollTop =
+          window.pageYOffset || document.documentElement.scrollTop;
+        const scrollHeight =
+          document.documentElement.scrollHeight -
+          document.documentElement.clientHeight;
+        const scrollProgress = (scrollTop / scrollHeight) * 100;
+        scrollProgressElement.style.width = scrollProgress + "%";
+      }
+
+      // Initialize Progress Rings (removed - function kept for compatibility)
+      function initProgressRings() {
+        // Progress rings removed - keeping empty function for compatibility
+      }
+
+      // Text Reveal Animation
+      function initTextReveal() {
+        const textElements = document.querySelectorAll(".text-reveal span");
+
+        textElements.forEach((span, index) => {
+          span.style.animationDelay = `${index * 0.1}s`;
+        });
+      }
+
+      // Particle System for Cursor Trail
+      function createParticle(x, y) {
+        const particle = document.createElement("div");
+        particle.className = "particle";
+        particle.style.left = x + "px";
+        particle.style.top = y + "px";
+        particle.style.width = Math.random() * 6 + "px";
+        particle.style.height = particle.style.width;
+        particle.style.background = `hsl(${Math.random() * 360}, 70%, 50%)`;
+        particle.style.animation = "particleFade 1s ease-out forwards";
+
+        document.body.appendChild(particle);
+
+        setTimeout(() => {
+          if (particle.parentNode) {
+            particle.parentNode.removeChild(particle);
+          }
+        }, 1000);
+      }
+
+      // Add particle fade animation - DEFERRED
+      function addParticleFadeStyles() {
+        const style = document.createElement("style");
+        style.textContent = `
+        @keyframes particleFade {
+          0% { opacity: 1; transform: scale(1); }
+          100% { opacity: 0; transform: scale(0) translateY(-20px); }
+        }
+      `;
+        document.head.appendChild(style);
+      }
+
+      // Cursor trail effect - DEFERRED
+      function initializeParticleTrail() {
+        let mouseTrail = [];
+        document.addEventListener("mousemove", (e) => {
+          if (Math.random() < 0.3) {
+            // Reduce frequency for performance
+            createParticle(e.clientX, e.clientY);
+          }
+        });
+      }
+
+      // Initialize all effects - REMOVED TO AVOID CONFLICTS
+      // Moved to single load event listener
+
+      // Animated Counters
+      function initCounters() {
+        const counters = document.querySelectorAll(".stat-number");
+
+        counters.forEach((counter) => {
+          const target = parseInt(counter.getAttribute("data-target"));
+          const increment = target / 100; // Animation duration control
+          let current = 0;
+
+          const updateCounter = () => {
+            if (current < target) {
+              current += increment;
+              counter.textContent = Math.ceil(current);
+              requestAnimationFrame(updateCounter);
+            } else {
+              counter.textContent = target;
+            }
+          };
+
+          // Trigger animation when card is hovered
+          counter
+            .closest(".project-card")
+            .addEventListener("mouseenter", () => {
+              current = 0;
+              updateCounter();
+            });
+        });
+      }
+
+      // Page transition effect
+      function smoothPageTransition() {
+        const transition = document.getElementById("pageTransition");
+
+        if (!transition) {
+          console.error("Page transition element not found");
+          return;
+        }
+
+        transition.style.opacity = "1";
+
+        setTimeout(() => {
+          if (transition) {
+            transition.style.opacity = "0";
+          }
+        }, 500);
+      }
+
+      // Initialize page with loading screen - SINGLE LOAD HANDLER
+      window.addEventListener("load", () => {
+        console.log("Page load event fired!");
+
+        // Handle loading screen with dynamic text updates
+        const loadingScreen = document.getElementById("loadingScreen");
+        const loadingText = document.getElementById("loadingText");
+        const loadingSubtext = document.getElementById("loadingSubtext");
+
+        if (loadingScreen) {
+          console.log("Starting loading screen sequence...");
+
+          // Update loading text dynamically
+          const loadingMessages = [
+            {
+              main: "Loading Digital Empire...",
+              sub: "Initializing awesomeness...",
+            },
+            {
+              main: "Setting up animations...",
+              sub: "Preparing geometric light show...",
+            },
+            { main: "Starting AI systems...", sub: "Booting up snake AI..." },
+            { main: "Almost ready...", sub: "Final touches..." },
+          ];
+
+          let messageIndex = 0;
+          const updateInterval = setInterval(() => {
+            if (
+              messageIndex < loadingMessages.length &&
+              loadingText &&
+              loadingSubtext
+            ) {
+              loadingText.textContent = loadingMessages[messageIndex].main;
+              loadingSubtext.textContent = loadingMessages[messageIndex].sub;
+              messageIndex++;
+            }
+          }, 400);
+
+          // Show loading screen for at least 1.5 seconds for better UX
+          setTimeout(() => {
+            clearInterval(updateInterval);
+
+            // Add fade-out class for smooth transition
+            loadingScreen.classList.add("fade-out");
+
+            // Remove the loading screen after fade animation completes
+            setTimeout(() => {
+              if (loadingScreen && loadingScreen.parentNode) {
+                loadingScreen.parentNode.removeChild(loadingScreen);
+                console.log("Loading screen removed successfully!");
+              }
+            }, 1000); // Match the CSS transition duration
+          }, 1600); // Show loading screen for 1.6 seconds
+        }
+
+        // Run page transition
+        smoothPageTransition();
+
+        // Initialize all functionality in correct order (delayed slightly)
+        setTimeout(() => {
+          console.log("Initializing all page functionality...");
+
+          // Add required styles first
+          addParticleFadeStyles();
+          addSparkleTrailStyles();
+
+          // Initialize DOM operations
+          initializeDOMOperations();
+
+          // Initialize scroll animations and events
+          initializeScrollAnimations();
+          initializeScrollEvents();
+
+          // Initialize event listeners
+          initializeSmoothScroll();
+          initializeKonamiCode();
+          initializeSparkleEffects();
+          initializeParticleTrail();
+
+          // Initialize cursor animations
+          initializeCursorAnimation();
+
+          // Create UI elements
+          createFloatingActionButton();
+
+          // Initialize UI effects
+          initProgressRings();
+          initTextReveal();
+          initCounters();
+
+          // Initialize interaction sounds
+          const projectCards = document.querySelectorAll(".project-card");
+          projectCards.forEach((card) => {
+            card.addEventListener("mouseenter", () =>
+              playInteractionSound("hover")
+            );
+            card.addEventListener("click", () => playInteractionSound("click"));
+          });
+
+          // Initialize terminal and game after basic setup
+          console.log("Starting terminal and game initialization...");
+          initializeTerminal();
+          initializeGame();
+          initializeIntervals();
+
+          // Initialize Programming Passion Features
+          console.log("Initializing programming passion showcase...");
+
+          // Start code rain effect
+          if (document.getElementById("codeRain")) {
+            setInterval(createCodeRain, 3000); // Code rain every 3 seconds
+            console.log("Code rain effect initialized");
+          }
+
+          // Start live code typing animation
+          if (document.getElementById("liveCode")) {
+            setTimeout(startLiveCodeTyping, 1000); // Start typing animation
+            console.log("Live code typing animation initialized");
+          }
+
+          // Add floating code symbols periodically
+          setInterval(addRandomCodeSymbol, 2000);
+          console.log("Floating code symbols initialized");
+
+          // Initialize geometric trail effects
+          setTimeout(() => {
+            console.log("Initializing geometric trail effects...");
+            createGeometricTrail();
+          }, 500); // Give shapes time to load
+
+          console.log("Page initialization complete!");
+        }, 200); // Small delay to let loading screen show
+      });
+
+      // Add sound effect simulation for interactions
+      function playInteractionSound(type = "click") {
+        // Visual feedback instead of actual sound for better user experience
+        const body = document.body;
+
+        if (type === "click") {
+          body.style.filter = "brightness(1.1)";
+          setTimeout(() => (body.style.filter = "brightness(1)"), 100);
+        } else if (type === "hover") {
+          // Subtle screen vibration effect
+          body.style.transform = "translateX(1px)";
+          setTimeout(() => (body.style.transform = "translateX(0)"), 50);
+        }
+      }
+
+      // Add interaction sounds to project cards - REMOVED TO AVOID CONFLICTS
+      // Moved to single load event listener
+
+      // Easter egg: Konami code - DEFERRED
+      function initializeKonamiCode() {
+        let konamiCode = [
+          "ArrowUp",
+          "ArrowUp",
+          "ArrowDown",
+          "ArrowDown",
+          "ArrowLeft",
+          "ArrowRight",
+          "ArrowLeft",
+          "ArrowRight",
+          "KeyB",
+          "KeyA",
+        ];
+        let konamiIndex = 0;
+
+        document.addEventListener("keydown", (e) => {
+          if (e.code === konamiCode[konamiIndex]) {
+            konamiIndex++;
+            if (konamiIndex === konamiCode.length) {
+              // Unlock secret mode
+              document.body.style.animation = "rainbow 2s linear infinite";
+              console.log("🎉 KONAMI CODE ACTIVATED! You found the secret! 🚀");
+
+              // Add rainbow animation
+              const style = document.createElement("style");
+              style.textContent = `
+              @keyframes rainbow {
+                0% { filter: hue-rotate(0deg); }
+                100% { filter: hue-rotate(360deg); }
+              }
+            `;
+              document.head.appendChild(style);
+
+              konamiIndex = 0;
+            }
+          } else {
+            konamiIndex = 0;
+          }
+        });
+      }
+
+      // Smooth scroll for anchor links - DEFERRED
+      function initializeSmoothScroll() {
+        document.addEventListener("click", (e) => {
+          if (
+            e.target.tagName === "A" &&
+            e.target.getAttribute("href")?.startsWith("#")
+          ) {
+            e.preventDefault();
+            const targetId = e.target.getAttribute("href").slice(1);
+            const targetElement = document.getElementById(targetId);
+
+            if (targetElement) {
+              targetElement.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+              });
+            }
+          }
+        });
+      }
+
+      // Performance optimization: Throttle scroll events
+      function throttle(func, limit) {
+        let inThrottle;
+        return function () {
+          const args = arguments;
+          const context = this;
+          if (!inThrottle) {
+            func.apply(context, args);
+            inThrottle = true;
+            setTimeout(() => (inThrottle = false), limit);
+          }
+        };
+      }
+
+      // Apply throttling to scroll events - DEFERRED
+      function initializeScrollEvents() {
+        window.addEventListener("scroll", throttle(updateScrollProgress, 16)); // ~60fps
+      }
+
+      // Geometric Light Trail Effects
+      function createGeometricTrail(retryCount = 0) {
+        const geometricShapes = document.querySelectorAll(".geometric-shape");
+
+        // Only proceed if geometric shapes exist, with max 3 retries
+        if (geometricShapes.length === 0 && retryCount < 3) {
+          console.log(
+            `No geometric shapes found, retrying in 1 second... (attempt ${
+              retryCount + 1
+            }/3)`
+          );
+          setTimeout(() => createGeometricTrail(retryCount + 1), 1000);
+          return;
+        } else if (geometricShapes.length === 0) {
+          console.log("Max retries reached, skipping geometric trail effects");
+          return;
+        }
+
+        geometricShapes.forEach((shape, index) => {
+          shape.addEventListener("animationiteration", () => {
+            // Create glowing trail effect
+            if (Math.random() < 0.4) {
+              const trail = document.createElement("div");
+              const rect = shape.getBoundingClientRect();
+              trail.style.position = "fixed";
+              trail.style.left = rect.left + rect.width / 2 + "px";
+              trail.style.top = rect.top + rect.height / 2 + "px";
+              trail.style.width = "6px";
+              trail.style.height = "6px";
+
+              // Random bright colors for trail
+              const colors = [
+                "#ff6b6b",
+                "#4ecdc4",
+                "#45b7d1",
+                "#f9ca24",
+                "#00ffcc",
+                "#ff4081",
+              ];
+              const randomColor =
+                colors[Math.floor(Math.random() * colors.length)];
+
+              trail.style.background = randomColor;
+              trail.style.borderRadius = "50%";
+              trail.style.boxShadow = `0 0 12px ${randomColor}`;
+              trail.style.zIndex = "-1";
+              trail.style.pointerEvents = "none";
+              trail.style.animation = "geometricTrail 1.5s ease-out forwards";
+
+              document.body.appendChild(trail);
+
+              setTimeout(() => trail.remove(), 1500);
+            }
+          });
+        });
+
+        console.log(
+          `Geometric trail effects initialized for ${geometricShapes.length} shapes`
+        );
+      }
+
+      // Add sparkle trail animation - DEFERRED
+      function addSparkleTrailStyles() {
+        const style = document.createElement("style");
+        style.textContent += `
+        @keyframes sparkleTrail {
+          0% { opacity: 1; transform: scale(1); }
+          100% { opacity: 0; transform: scale(0) translateY(-20px); }
+        }
+        @keyframes geometricTrail {
+          0% { 
+            opacity: 1; 
+            transform: scale(1) rotate(0deg); 
+          }
+          50% {
+            opacity: 0.8;
+            transform: scale(1.5) rotate(180deg);
+          }
+          100% { 
+            opacity: 0; 
+            transform: scale(0) rotate(360deg) translateY(-30px); 
+          }
+        }
+      `;
+        document.head.appendChild(style);
+      }
+
+      // Add some console art because why not? 🎨
+      console.log(`
+    ██████╗  ██████╗ ██████╗ ████████╗███████╗ ██████╗ ██╗     ██╗ ██████╗ 
+    ██╔══██╗██╔═══██╗██╔══██╗╚══██╔══╝██╔════╝██╔═══██╗██║     ██║██╔═══██╗
+    ██████╔╝██║   ██║██████╔╝   ██║   █████╗  ██║   ██║██║     ██║██║   ██║
+    ██╔═══╝ ██║   ██║██╔══██╗   ██║   ██╔══╝  ██║   ██║██║     ██║██║   ██║
+    ██║     ╚██████╔╝██║  ██║   ██║   ██║     ╚██████╔╝███████╗██║╚██████╔╝
+    ╚═╝      ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚═╝      ╚═════╝ ╚══════╝╚═╝ ╚═════╝ 
+    
+    🚀 Welcome to the matrix! You've discovered my digital realm.
+    💻 This portfolio is more than just code - it's a digital experience.
+    🇹🇿 Built with passion from Tanzania to the world.
+    `);
+    </script>
+  </body>
+</html>

@@ -774,6 +774,28 @@
         }
       }
 
+      @keyframes heartBounce {
+        0%,
+        20%,
+        50%,
+        80%,
+        100% {
+          transform: translateY(0) scale(1);
+        }
+        10% {
+          transform: translateY(-8px) scale(1.1);
+        }
+        40% {
+          transform: translateY(-4px) scale(1.05);
+        }
+      }
+
+      .bouncing-heart {
+        display: inline-block;
+        animation: heartBounce 2s ease-in-out infinite;
+        color: #ff6b9d;
+      }
+
       .terminal-buttons {
         display: flex;
         gap: 8px;
@@ -2298,9 +2320,8 @@
                   href="https://tpyctz.com"
                   target="_blank"
                   class="project-link"
-                  >Visit site</a
+                  >Visit site →</a
                 >
-                <a href="#" class="project-link">Case study</a>
               </div>
             </div>
           </div>
@@ -2310,13 +2331,16 @@
               <div class="project-number">.02</div>
               <h3 class="project-title">Oxpecker Safaris</h3>
               <p class="project-description">
-                Safari booking and management platform connecting travelers with
-                authentic Tanzanian wildlife experiences.
+                Family-owned safari tour company where I serve as Director. We
+                connect travelers with authentic Tanzanian wildlife experiences
+                through our booking and management platform.
               </p>
               <div class="project-links">
-                <a href="https://oxpeckersafaris.com" class="project-link">Oxpecker Tours</a>
-                <a href="mailto:terry.edwardx@gmail.com" class="project-link"
-                  >Inquire</a
+                <a
+                  href="https://oxpeckersafaris.com"
+                  target="_blank"
+                  class="project-link"
+                  >Explore oxpecker →</a
                 >
               </div>
             </div>
@@ -2327,13 +2351,16 @@
               <div class="project-number">.03</div>
               <h3 class="project-title">Gangilonga Homes</h3>
               <p class="project-description">
-                Real estate platform revolutionizing property discovery and
-                transactions in East Africa's growing markets.
+                Family-owned cosy bed and breakfast where I manage all online
+                bookings and reservations. Offering comfortable accommodations
+                in Tanzania.
               </p>
               <div class="project-links">
-                <a href="https://oxpeckersafaris.com" class="project-link">View our homes</a>
-                <a href="mailto:terry.edwardx@gmail.com" class="project-link"
-                  >Learn more</a
+                <a
+                  href="https://www.booking.com/hotel/tz/gangilonga-homes.en-gb.html"
+                  target="_blank"
+                  class="project-link"
+                  >Book your stay →</a
                 >
               </div>
             </div>
@@ -2348,9 +2375,11 @@
                 accessibility across Tanzania's communities.
               </p>
               <div class="project-links">
-                <a href="#" class="project-link">Private beta</a>
-                <a href="mailto:terry.edwardx@gmail.com" class="project-link"
-                  >Contact</a
+                <a
+                  href="https://swaheals.com"
+                  target="_blank"
+                  class="project-link"
+                  >Learn more →</a
                 >
               </div>
             </div>
@@ -2412,7 +2441,7 @@
         <h2>Edward Terry</h2>
         <p>Digital creator based in Dar es Salaam, Tanzania</p>
         <p style="color: #999; font-size: 0.9rem; margin-top: 2rem">
-          © 2025 Made with ❤️ from Tanzania
+          Crafted with <span class="bouncing-heart">❤️</span> by Edward Terry
         </p>
       </div>
     </section>

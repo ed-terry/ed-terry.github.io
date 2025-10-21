@@ -129,6 +129,7 @@
         text-align: center;
         position: relative;
         z-index: 1;
+        padding-bottom: var(--space-2xl);
       }
 
       /* Enhanced Typography */
@@ -603,6 +604,19 @@
       .project-content {
         padding: var(--space-xl);
         position: relative;
+      }
+
+      .project-icon {
+        font-size: 2.5rem;
+        margin-bottom: var(--space-md);
+        display: inline-block;
+        opacity: 0.9;
+        transition: var(--transition-base);
+      }
+
+      .project-card:hover .project-icon {
+        transform: scale(1.1);
+        opacity: 1;
       }
 
       .project-number {
@@ -1692,6 +1706,8 @@
         gap: var(--space-xs);
         cursor: pointer;
         transition: var(--transition-base);
+        z-index: 5;
+        pointer-events: auto;
       }
 
       .scroll-indicator:hover {
@@ -1737,6 +1753,9 @@
         justify-content: center;
         flex-wrap: wrap;
         margin-top: var(--space-xl);
+        margin-bottom: var(--space-2xl);
+        position: relative;
+        z-index: 10;
       }
 
       /* Hide scrollbar but keep functionality */
@@ -2308,6 +2327,7 @@
         <div class="projects-grid">
           <div class="project-card">
             <div class="project-content">
+              <div class="project-icon">⛵</div>
               <div class="project-number">.01</div>
               <h3 class="project-title">Tanzania Premiere Yacht Company</h3>
               <p class="project-description">
@@ -2328,6 +2348,7 @@
 
           <div class="project-card">
             <div class="project-content">
+              <div class="project-icon">🦏</div>
               <div class="project-number">.02</div>
               <h3 class="project-title">Oxpecker Safaris</h3>
               <p class="project-description">
@@ -2348,6 +2369,7 @@
 
           <div class="project-card">
             <div class="project-content">
+              <div class="project-icon">🏡</div>
               <div class="project-number">.03</div>
               <h3 class="project-title">Gangilonga Homes</h3>
               <p class="project-description">
@@ -2368,6 +2390,7 @@
 
           <div class="project-card">
             <div class="project-content">
+              <div class="project-icon">💚</div>
               <div class="project-number">.04</div>
               <h3 class="project-title">Swaheels Health</h3>
               <p class="project-description">
@@ -2400,10 +2423,10 @@
 
         <div class="contact-info">
           <a href="mailto:terry.edwardx@gmail.com" class="contact-link"
-            >terry.edwardx@gmail.com</a
+            >✉️ terry.edwardx@gmail.com</a
           >
           <a href="tel:+255763815413" class="contact-link"
-            >(+255) 763 815 413</a
+            >📞 (+255) 763 815 413</a
           >
         </div>
 
@@ -2412,19 +2435,19 @@
             href="https://github.com/ed-terry"
             target="_blank"
             class="social-link"
-            >GitHub</a
+            >GitHub →</a
           >
           <a
             href="https://instagram.com/m.r_terry"
             target="_blank"
             class="social-link"
-            >Instagram</a
+            >Instagram →</a
           >
           <a
             href="https://linkedin.com/in/edwardterry"
             target="_blank"
             class="social-link"
-            >LinkedIn</a
+            >LinkedIn →</a
           >
         </div>
 
